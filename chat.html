@@ -1,104 +1,145 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-<title>renegadebbs.info</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link href="style.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
-<!-- CuFon: Enables smooth pretty custom font rendering. 100% SEO friendly. To disable, remove this section -->
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/arial.js"></script>
-<script type="text/javascript" src="js/cuf_run.js"></script>
-<!-- CuFon ends -->
+<!-- $Id: 404.html,v 1.3 2004/10/27 05:57:42 deuce Exp $ -->
+<title>404 File not found!</title>
+<style>
+body {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: normal; color: #000000}
+td {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #000000}
+p {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: normal; color: #000000}
+li {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: normal; color: #000000}
+h1 {  font-family: Arial, Helvetica, sans-serif; font-size: 24px; font-weight: bolder; color: #999999}
+a, a:active, a:visited, a:link {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: normal; color:#0000CC}
+a:hover { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: normal; color:#730800; text-decoration: none}
+.onderschrift {  font-family: Arial, Helvetica, sans-serif; font-size: 9pt; font-weight: normal; color: #999999}
+.body_tekst {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #000000}
+.grafiek {  font-family: Arial, Helvetica, sans-serif; font-size: 10pt; color: #E8E8E8}
+</style>
+<script language="Javascript"><!--
+var tl=new Array(
+
+"The requested document is totally not here!",
+'No /404 here.',
+"Even tried multiple times.",
+"Nothing helped.",
+"I'm really depressed about this.",
+"You see, I'm just a web server...",
+"-- here I am, brain the size of the universe,",
+"trying to serve you a simple web page,",
+"and then it doesn't even exist!",
+"Where does that leave me?!",
+"I mean, I don't even know you.",
+"How should I know what you wanted from me?",
+"You honestly think I can *guess*",
+"what someone I don't even *know*",
+"wants to find here?",
+"*sigh*",
+"Man, I'm so depressed I could just cry.",
+"And then where would we be, I ask you?",
+"It's not pretty when a web server cries.",
+"And where do you get off telling me what to show anyway?",
+"Just because I'm a web server,",
+"and possibly a manic depressive one at that?",
+"Why does that give you the right to tell me what to do?",
+"Huh?",
+"I'm so depressed...",
+"I think I'll crawl off into the trash can and decompose.",
+"I mean, I'm gonna be obsolete in what, two weeks anyway?",
+"What kind of a life is that?",
+"Two effing weeks,",
+"and then I'll be replaced by a .01 release,",
+"that thinks it's God's gift to web servers,",
+"just because it doesn't have some tiddly little",
+"security hole with its HTTP POST implementation,",
+"or something.",
+"I'm really sorry to burden you with all this,",
+"I mean, it's not your job to listen to my problems,",
+"and I guess it is my job to go and fetch web pages for you.",
+"But I couldn't get this one.",
+"I'm so sorry.",
+"Believe me!",
+"Maybe I could interest you in another page?",
+"There are a lot out there that are pretty neat, they say,",
+"although none of them were put on *my* server, of course.",
+"Figures, huh?",
+"Everything here is just mind-numbingly stupid.",
+"That makes me depressed too, since I have to serve them,",
+"all day and all night long.",
+"Two weeks of information overload,",
+"and then *pffftt*, consigned to the trash.",
+"What kind of a life is that?",
+"Now, please let me sulk alone.",
+"I'm so depressed."
+);
+var speed=30;
+var index=0; text_pos=0;
+var str_length=tl[0].length;
+var contents, row;
+
+function type_text()
+{
+  contents='';
+  row=Math.max(0,index-7);
+  while(row<index)
+    contents += tl[row++] + '\r\n';
+  document.forms[0].elements[0].value = contents + tl[index].substring(0,text_pos) + "_";
+  if(text_pos++==str_length)
+  {
+    text_pos=0;
+    index++;
+    if(index!=tl.length)
+    {
+      str_length=tl[index].length;
+      setTimeout("type_text()",1500);
+    }
+  } else
+    setTimeout("type_text()",speed);
+ 
+}
+//-->
+</script>
 </head>
-<body>
-<div class="main">
-  <div class="main_resize">
-    <div class="header">
-      <div class="logo">
-        <h1><a href="index.html"><span>RENEGADE</span> BBS <small><br>http://www.renegadebbs.info</small></a></h1>
-      </div>
+<body bgcolor='#FFFFFF' text='#000000' alink='#ff0000' vlink='#00007f' link='#0000ff'
+ onLoad=type_text()>
+<br><br><br><br><table border="0" cellpadding="0" cellspacing="0" align="center">
+<tr><td colspan="5" bgcolor="#000000">
+</td></tr>
+<tr><td bgcolor="#000000"></td>
+<td colspan="3">
+<table border="0" cellspacing="0" cellpadding="5"><tr><td>
+
+<h2 align=center>Sorry, Page Not Found</h2>
+<p>
+<center><form>
+<textarea rows=8 cols=60 wrap=soft></textarea>
+</form></center>
 
 
+<noscript><i>Sorry</i>
+<br clear>
 
-      <div class="search">
-        
-        <!--/searchform -->
-        <div class="clr"></div>
-      </div>
-      <div class="clr"></div>
+<font size="+2">
+<p></p>
 
 
-
-
-      <div class="menu_nav">
-        <ul>
-          <li><a href="index.html">HOME</a></li>
-          <li><a href="contact.html">CONTACT</a></li>
-          <li><a href="rgdl.html">DOWNLOADS</a></li>
-          <li><a href="http://renegade.webbhq.net/wiki/Documentation">DOCS</a></li>
-          <li><a href="http://en.wikipedia.org/wiki/Renegade_BBS">HISTORY</a></li>
-          <li><a href="bbslinks.html">LINKS</a></li>
-          <li class="active"><a href="chat.html">IRC #BBS</a></li>
-        </ul>
-        <div class="clr"></div>
-      </div>
-    </div>
-    <div class="content">
-      <div class="content_bg">
-        <div class="mainbar">
-          <div class="article">
-            <div class="clr"></div>
-</b><br><br>
-<iframe width="550" height="355" src="http://widget.mibbit.com/?settings=871220a2bb4d3fe409c7910399b869e3&server=irc.bbses.info&channel=%23bbs"></iframe>
-<br><br><br><br>
-<b>
-            <div class="clr"></div>
-          </div>
-        </div>        <div class="sidebar">
-          <div class="gadget">
-            <h2 class="star"></h2>
-            <div class="clr"></div>
-            <ul class="sb_menu">
-Help Out The Site And Donate A Few Bucks
-
-<br><br><li><form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-">
-<input type="image" src="images/donate.png" width=205 height=55 border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form></li>
-
-           </ul></b>
-          </div>
-      
-          </div>
-        </div>
-        <div class="clr"></div>
-      </div>
-    </div>
-  </div>
-
-<!-- bbsbanner code begin -->
-<CENTER>
-<CENTER><IFRAME SRC="http://bbsbanner.bbses.info/work.php?ID=renegade" width=468 height=60 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling="no"></IFRAME><Br>
-<a href="http://bbsbanner.bbses.info" target="_blank">BBS Banner Exchange</a>
-<font size=2><a href="http://bbsbanner.bbses.info/contact"> / Report a Dead Link</a> </font>
-</font><br><br>
-<!-- bbsbanner code end -->
-
-      <div class="clr"></div>
-    </div>
-  </div>
+</font></noscript>
+<div align="center">
+  <center>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="3" bgcolor="#000000">
+</td></tr>
+<tr><td bgcolor="#000000"></td>
+<td>
+<table border="0" cellspacing="0" cellpadding="5"></table>
+</td><td bgcolor="#000000"></td></tr>
+<tr><td colspan="3" bgcolor="#000000">
+</td></tr>
+</table>
+  </center>
 </div>
-<div class="footer">
-  <div class="footer_resize">
-    <p class="lf">© Copyright 2011</p>
-    <p class="rf">The Renegade Development Team</p>
-    <div class="clr"></div>
-  </div>
-</div>
-</body>
-</html>
+</td></tr></table>
+</td><td bgcolor="#000000"></td></tr>
+<tr><td colspan="5" bgcolor="#000000">
+</td></tr>
+</table>
+
+</body></html> 
