@@ -6,9 +6,9 @@ body {
     font-family:Segoe UI,Tahoma,Arial,Verdana,sans-serif;
 }
 .example {
-    background:#000000  url(../images/toplogo.jpg);;
+    background:#000000;
     width:1740px;
-    height:770px;
+    height:100px;
     border:1px #000000 solid;
     margin:20px auto;
     padding:15px;
@@ -21,7 +21,7 @@ body {
 /* main menu styles */
 .menu {
     background-color:Gray;
-    text-align:center;
+    text-align:left;
     font-weight:bold;
     width:100%;
 }
