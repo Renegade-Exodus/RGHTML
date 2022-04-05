@@ -1,15 +1,70 @@
-<link rel="stylesheet" href="css/style1.css" type="text/css" media="screen">
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<body bgcolor = "black">
-<div class="example">
-    <div class="menu">
-        <span>
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8" />
+        <title>The Renegade BBS Home</title>
+        <link href="css/layout1.css" rel="stylesheet" type="text/css" />
+        <link href="css/menu.css" rel="stylesheet" type="text/css" />
+<LINK REL="icon" HREF="favicon.ico" TYPE="image/x-icon"> 
+<LINK REL="shortcut icon" HREF="favicon.ico" TYPE="image/x-icon"> 
+    </head>
+    <body>
+        <header>
+            <h2><b>The Renegade BBS Home</h2></b>
+            <a href="ftelnet.html" class="stuts"><span>The Titantic BBS Telnet</span></a>
+       
+        </header>
+       <div class="container">
+
+
             <ul id="nav">
-                <li><a href="http://www.rgbbs.info/index.html">HOME</a></li>
+                <li><a href="http://www.rgbbs.info/">HOME</a></li>
+                <li><a class="hsubs" href="#">CURRENT RELEASES</a>
+                    <ul class="subs">
+
+            
+              <li><a href="files/RGV125F.ZIP">v1.25/DOS FULL</a></li>
+              <li><a href="files/RGV125U.ZIP">v1.25/DOS UPGRADE</a></li>
+              <li><a href="zip/METRO290.ZIP">METRONET APP PACK</a></li>
+</ul></a>
+                <li><a class="hsubs" href="#">OLD RELEASES</a>
+                    <ul class="subs">
+
+              <li><a href="files/RGV122U.ZIP">Renegade v1.22/DOS</a></li>
+              <li><a href="files/RGV120U.ZIP">Renegade v1.20a/DOS</a></li>
+              <li><a href="files/RGV119A.ZIP">Renegade v1.19a/DOS</a></li>
+              <li><a href="files/RGV118A.ZIP">Renegade v1.18a/DOS</a></li>
+              <li><a href="files/RGV110U.ZIP">Renegade v1.10/DOS</a></li>
+              <li><a href="files/RGV100U.ZIP">Renegade v1.00/DOS</a></li>
+              <li><a href="files/RG0930UP.ZIP">Renegade v09-30.6/DOS</a></li>
+              <li><a href="files/RG0630UP.ZIP">Renegade v06-30.6/DOS</a></li>
+              <li><a href="files/RG0519UP.ZIP">Renegade v05-19.4/DOS</a></li>
+              <li><a href="files/RG0110UP.ZIP">Renegade v01-10.4/DOS</a></li>
+              <li><a href="files/RGU1126D.ZIP">Renegade v11-26.3/DOS
+</a></li>
+              
+                    </ul>
+                </li>
+
+                <li><a class="hsubs" href="#">BBS SERVERS</a>
+                    <ul class="subs">
+                           
+              <li><a href="http://ftelnet.ca">FTELNET CLIENT</a></li>
+              <li><a href="http://www.defsol.com">DEFINITE SOLUTIONS</a>  </li>
+              <li><a href="http://gamesrv.ca">GAMESRV</a>  </li>
+              <li><a href="http://pcmicro.com/NetFoss/download.html">NETFOSS DOWNLOAD</a></li>
+              <li><a href="http://pcmicro.com/NetSerial/">NETSERIAL DOWNLOAD</a> </li>
+
+                    </ul>
+                </li>
+                <li><a href="http://en.wikipedia.org/wiki/Renegade_BBS">HISTORY</a></li>
+                <li><a href="contact.html">CONTACT</a>
+                <li><a href="ftelnet.html">THE TITANTIC BBS TELNET</a></li>
+                <div id="lavalamp"></div>
             </ul>
-        </span>
-    </div>
-</div>
+
+        </div>
+
 <center>
 <div id="fTelnetContainer" class="fTelnetContainer"></div>
 <script>document.write('<script src="//embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js?v=' + (new Date()).getTime() + '"><\/script>');</script>
@@ -34,24 +89,9 @@
     Options.SendLocation = false;
     var fTelnet = new fTelnetClient('fTelnetContainer', Options);
 </script>
-<script type="text/javascript">
-jQuery(window).load(function() {
 
-    $("#nav > li > a").click(function () { // binding onclick
-        if ($(this).parent().hasClass('selected')) {
-            $("#nav .selected div div").slideUp(100); // hiding popups
-            $("#nav .selected").removeClass("selected");
-        } else {
-            $("#nav .selected div div").slideUp(100); // hiding popups
-            $("#nav .selected").removeClass("selected");
 
-            if ($(this).next(".subs").length) {
-                $(this).parent().addClass("selected"); // display popup
-                $(this).next(".subs").children().slideDown(200);
-            }
-        }
-    }); 
 
-});
-</script><Font color ="gray"><b><center>
-(c) 2022 - The Renegade Development Team</center>
+
+    </body>
+</html>
