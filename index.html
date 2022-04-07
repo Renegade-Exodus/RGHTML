@@ -68,38 +68,6 @@
               <li><a href="http://pcmicro.com/NetFoss/download.html">NetFOSS</a></li>
               <li><a href="http://pcmicro.com/NetSerial/">NetSerial</a></li>
 </ul>
-
-        <li><a href="#">Telnet</a>
-      <ul>
-<PRE>
-
-</PRE>
-<center>
-<div id="fTelnetContainer" class="fTelnetContainer"></div>
-<script>document.write('<script src="//embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js?v=' + (new Date()).getTime() + '"><\/script>');</script>
-<script>
-    var Options = new fTelnetOptions();
-    Options.BareLFtoCRLF = false;
-    Options.BitsPerSecond = 115200;
-    Options.ConnectionType = 'telnet';
-    Options.Emulation = 'ansi-bbs';
-    Options.Enter = '\r';
-    Options.Font = 'CP437';
-    Options.ForceWss = false;
-    Options.Hostname = 'ttb.rgbbs.info';
-    Options.LocalEcho = false;
-    Options.NegotiateLocalEcho = true;
-    Options.Port = 23;
-    Options.ProxyHostname = 'proxy-us-ga.ftelnet.ca';
-    Options.ProxyPort = 80;
-    Options.ProxyPortSecure = 443;
-    Options.ScreenColumns = 80;
-    Options.ScreenRows = 25;
-    Options.SendLocation = false;
-    var fTelnet = new fTelnetClient('fTelnetContainer', Options);
-</script>
-</center>
-</ul>
                 <li><a href="http://en.wikipedia.org/wiki/Renegade_BBS">History</a></li>
                 <li><a href="mailto:e@rgbbs.info?subject=Renegade BBS E-Mail">Contact</a>
 
