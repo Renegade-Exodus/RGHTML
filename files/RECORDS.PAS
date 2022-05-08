@@ -1,12 +1,5 @@
-{
-LeeW: search for ** to find proposed changes to data files
-TODO: add user flag to force password change next logon 
-10/07/2021 - Updated names of user flags so they're intuitive; ARFlags, ACFlags, S(tatus)Flags
-12/02/2021 - Combined GeneralRec lightbar booleans, all lightbars either on or off now
-03/13/2022 - Combined user statusflags msg & file lightbars into 1 - lightbars
-}
 CONST
-  Build = '1.25';
+  Build = '1.30';
 
 {$IFDEF MSDOS}
   OS = '/DOS';
@@ -25,7 +18,7 @@ CONST
   MaxEvents = 10;
   MaxArcs = 8;
   MaxCmds = 200;
-  MaxMenus = 200;
+  MaxMenus = 200; { LeeW: Increased from 100 }
   MaxResultCodes = 20;
   MaxExtDesc = 99;
   MaxFileAreas = 32767;
@@ -94,6 +87,7 @@ TYPE
     Alert,                        { Alert SysOp upon login }
     SMW,                          { Short message(s) waiting }
     NoMail,                       { Mailbox is closed }
+                                  { ** ^ ALL THESE MIDDLE ONES SHOULDN"T BE HERE -- MOVE }
 
     FNoDLRatio,                   { 1 - No UL/DL ratio }
     FNoPostRatio,                 { 2 - No post/call ratio }
@@ -117,6 +111,11 @@ TYPE
     AutoDetect,                   { Is user having emulation auto-detected }
     LightBars, { LeeW: Was FileAreaLightBar -- they're all combined into 1 now }
     
+{
+ ** ONLY FLAGS RELATED TO USER ACCOUNT STATUS SHOULD BE HERE -- MOVE CLSMSG,RIP,FSEditor,
+ AutoDetect,lightbars OUT!!!
+ ALSO alert SHOULD BE HERE
+}
     UnUsedStatusFlag0, { LeeW: Was MsgAreaLightBar }
     UnUsedStatusFlag1,
     UnUsedStatusFlag2,
@@ -243,8 +242,8 @@ TYPE
     UnUsedLongInt1,              { / }
     UnUsedLongInt2: LongInt;     { / }
 
-    TeleConfEcho,                { TeleConference echo? } 
-    TeleConfInt,                 { TeleConference interrupt? }
+    TeleConfEcho,                { TeleConference echo? } (**REMOVE--UNUSEDor will be when teleconf finished**)
+    TeleConfInt,                 { TeleConference interrupt? } (**REMOVE--UNUSED**)
     GetOwnQWK,                   { Own messages in QWK? }
     ScanFilesQWK,                { New files in QWK? }
     PrivateQWK,                  { Private mail in QWK? }
@@ -338,7 +337,7 @@ TYPE
     Hangup,                      { hangup STRING }
     Offhook: STRING[30];         { phone off-hook STRING }
     DoorPath,                    { door drop files written to }
-    TeleConfNormal,              { Teleconferencing strings } 
+    TeleConfNormal,              { Teleconferencing strings } (** REMOVE ALL OF THESE -- IN MAIN LNG NOW! *)
     TeleConfAnon,                { ^ }
     TeleConfGlobal,              { ^ }
     TeleConfPrivate: STRING[40]; { ^ }
@@ -350,13 +349,13 @@ TYPE
     Connect:                     { 300,   600,   1200,  2400,  4800,  7200,  9600,  12000, 14400, 16800, 19200,
                                    21600, 24000, 26400, 28800, 31200, 33600, 38400, 57600, 115200 + 2 extra }
       ARRAY [1..22] OF STRING[20];
-    UseCallerID: Boolean;        { Insert Caller ID into sysop note? } 
+    UseCallerID: Boolean;        { Insert Caller ID into sysop note? } (** THIS ISN'T USED -- REMOVE! *)
     LogonACS: ACString;          { ACS for this node }
     IRQ,                         { Functional MCI: %E = IRQ }
     Address: STRING[10];         { Functional MCI: %C = Comport address }
     AnswerOnRing: Byte;          { Answer after how many rings? }
     MultiRing: Boolean;          { Answer Ringmaster or some other type OF multiple-ring system ONLY }
-    NodeTelnetURL: STRING[65];   { Telnet URL } 
+    NodeTelnetURL: STRING[65];   { Telnet URL } (** WHY IS THIS HERE? -- DELETE AND MOVE TO GENERALREC **)
   END;
 
   ValidationRecordType = {$IFDEF WIN32} PACKED {$ENDIF} RECORD
@@ -444,15 +443,15 @@ TYPE
     CSMaxWaiting,                   { max mail waiting for Co-SysOp + }
     MaxMassMailList,                {  }
     MaxLogonTries,                  { tries allowed for PW's at logon }
-    SysOpColor,                     { SysOp color in chat mode }
-    UserColor,                      { user color in chat mode }
+    SysOpColor,                     { SysOp chat color }
+    UserColor,                      { User char color }
     SliceTimer,                     {  }
     MaxBatchDLFiles,                {  }
     MaxBatchULFiles,                {  }
-    Text_Color,                     { Color of standard text } 
-    Quote_Color,                    { Color of quoted text } {^}
-    Tear_Color,                     { Color of tear line } {^}
-    Origin_Color,                   { Color of origin line } {^}
+    Text_Color,                     { Color of message standard text }
+    Quote_Color,                    { Color of message quoted text }
+    Tear_Color,                     { Color of message tear line }
+    Origin_Color,                   { Color of message origin line }
     BackSysOpLogs,                  { Number of days to keep SysOp logs }
     EventWarningTime,               { Minutes before warning user of upcoming event }
     WFCBlankTime,                   { Minutes before blanking out WFC menu }
@@ -507,7 +506,7 @@ TYPE
     MaxDepositPerDay,               { Maximum minutes allowed for daily deposit }
     MaxWithdrawalPerDay,            { Maximum minutes allowed for daily withdrawal }
     CallerNum,                      { system caller number }
-    RegNumber,                      { registration number }               
+    RegNumber,                      { registration number }                 (** UNUSED -- DELETE? **)
     TotalCalls,                     { incase different from callernum }
     TotalUsage,                     { total usage in minutes }
     TotalPosts,                     { total number OF posts }
@@ -534,8 +533,8 @@ TYPE
     SearchDup,                      { Search for dupes on UL? }
     ForceBatchDL,                   {  }
     ForceBatchUL,                   {  }
-    LogonQuote,                     {  }
-    UserAddQuote,                   {  }
+    LogonQuote,                     { Display random quote during logon? }
+    UserAddQuote,                   { Prompt user to add quote -- LeeW: make this during logon only, will add acs later}
     StripCLog,                      { strip colors from SysOp log? }
     SKludge,                        { Show kludge lines? }
     SSeenby,                        { Show seen-by lines? }
@@ -556,7 +555,7 @@ TYPE
     IsTopWindow,                    { is window at top OF screen? }
     ReCompress,                     { recompress like archives? }
     RewardSystem,                   { use file rewarding system? }
-    TrapGroup,                      { record group chats? } 
+    TrapGroup,                      { record group chats? } (** UNUSED -- REMOVE THIS! or implement??**)
     QWKTimeIgnore,                  { ignore time remaining for qwk download? }
     NetworkMode,                    { Network mode ? }
     WindowOn,                       { is the sysop window on? }
@@ -604,8 +603,25 @@ TYPE
     
     NewUserQToggles:                { Toggles for new user application questions }
       ARRAY [1..30] OF Boolean;
+    OneLinersNewTop,                { Newest OneLiners on top? }
+    LogonLastCallers,               { Display Last Callers Information During Logon }
+    LogonOneLiners,                 { OneLiners during logon? }
+    LogonVoting: Boolean;           { Prompt user to vote on topics during logon? (or force if mandatory) }
+    AddQuoteACS,                    { Add A Quote ACS }
+    AddOneLinerACS: ACString;       { Add A OneLiner ACS }
+    TopFilesDownload,               { Prompt user to download top files? }
+    TimeStampLogs,                  { Apply TimeStamp To Log Files? }
+    DefSplitChat: Boolean;          { Use split chat as default? }
     
+    (*
+    { ** THINGS I INTEND TO IMPLEMENT ** }
     
+    DefNumOneLiners: SmallInt;      { Default Number Of OneLiners To Display If MenuOption = 0 }
+    DefNumLastCallers: SmallInt;    { Default Number Of LastCallers To Display If MenuOption = 0}
+    
+    NewAppMsgMandatory: Boolean;    { Are we forcing new user to send message to SysOp or just prompting? }
+    MaxAnswerAttempts: Byte;        { Max answer attempts for questions before giving up }
+    *)
     
   END; { END OF GENERALREC }
 
@@ -640,7 +656,7 @@ TYPE
     MAFilter,    { whether to filter ANSI/8-bit ASCII }
     MAPrivate,   { allow private messages }
     MAForceRead, { force the reading of this area }
-    MAQuote,     { Allow Quote/Tagline to messages posted in this area }
+    MAQuote,     { Allow Quote/Tagline to messages posted in this area ** RENAME THIS MATagLine **}
     MASKludge,   { strip IFNA kludge lines }
     MASSeenBy,   { strip SEEN-BY lines }
     MASOrigin,   { strip origin lines }
@@ -653,7 +669,7 @@ TYPE
   MessageAreaRecordType = {$IFDEF WIN32} PACKED {$ENDIF} RECORD { MBASES.DAT : Message area records }
     Name: STRING[40];       { Message area name }
     FileName: STRING[8];    { HDR/DAT data filename }
-    MsgPath: STRING[40];    { messages pathname   } 
+    MsgPath: STRING[40];    { messages pathname   } (** NOT USED -- DELETE **)
     ACS,                    { Access ACS }
     PostACS,                { Post ACS }
     MCIACS,                 { MCI ACS }
@@ -664,7 +680,7 @@ TYPE
     MAFlags: MAFlagSet;     { Area flags }
     MAType: Integer;        { Area type (0=Local,1=Echo,3=QWK) }
     Origin: STRING[50];     { Origin line }
-    Text_Color,             { Color of standard text } 
+    Text_Color,             { Color of standard text } {**CHANGE THESE TO STRING[6] "|00|00" **}
     Quote_Color,            { Color of quoted text }
     Tear_Color,             { Color of tear line }
     Origin_Color,           { Color of origin line }
@@ -695,8 +711,8 @@ TYPE
     ULPath: STRING[40];   { upload path       }
     MaxFiles: Integer;    { max files allowed - VerbRec Limit would allow up to LongInt Value or Maximum 433835}
     Password: STRING[20]; { password required }
-    ArcType,              { wanted archive type (1..255,0=inactive) }
-    CmtType: Byte;        { wanted comment type (1..3,0=inactive) }
+    ArcType,              { Wanted archive type (1..255,0=Inactive) }
+    CmtType: Byte;        { Wanted comment type (1..3,0=Inactive) }
     ACS,                  { access requirements }
     ULACS,                { upload requirements }
     DLACS: ACString;      { download requirements }
@@ -731,23 +747,23 @@ TYPE
 
   LastCallerRec = {$IFDEF WIN32} PACKED {$ENDIF} RECORD { LASTON.DAT : Last few callers records }
     Node: Byte;           { Node number }
-    UserName: STRING[36]; { User name OF caller }
-    Location: STRING[30]; { Location OF caller }
-    Caller,               { system caller number }
-    UserID,               { User ID # }
-    Speed: LongInt;       { Speed OF caller 0=Local }
-    LogonTime,            { time user logged on }
-    LogoffTime: UnixTime; { time user logged off }
-    NewUser,              { was it a new user? }
-    Invisible: Boolean;   { Invisible user? }
-    Uploads,              { Uploads during call }
-    Downloads,            { Downloads ^ }
-    MsgRead,              { Messages Read }
-    MsgPost,              { Messages Posted }
-    EmailSent,            { Emails sent }
+    UserName: STRING[36]; { Callers username }
+    Location: STRING[30]; { Callers location }
+    Caller,               { System caller number }
+    UserID,               { User ID number }
+    Speed: LongInt;       { Connection speed (0=Local) }
+    LogonTime,            { Time logged on }
+    LogoffTime: UnixTime; { Time logged off }
+    NewUser,              { Was user new? }
+    Invisible: Boolean;   { Was user invisible? }
+    Uploads,              { Uploads }
+    Downloads,            { Downloads }
+    MsgRead,              { Messages read }
+    MsgPost,              { Messages posted }
+    EmailSent,            { E-Mails sent }
     FeedbackSent: Word;   { Feedback sent }
-    UK,                   { Upload kbytes during call }
-    DK: LongInt;          { Download ^ }
+    UK,                   { kBytes uploaded }
+    DK: LongInt;          { kBytes downloaded }
     Reserved:             { Reserved }
       ARRAY [1..17] OF Byte; 
   END;
@@ -796,8 +812,8 @@ TYPE
     HiBaud: LongInt;              { High baud rate limit }
     EventACS: ACString;           { Event ACS }
     MaxTimeAllowed: WORD;         { Max Time per user this event }
-    SetARflag,                    { AR Flag to Set }
-    ClearARflag: CHAR;            { AR Flag to Clear }
+    SetARFlag,                    { AR flag to set }
+    ClearARFlag: CHAR;            { AR flag to clear }
     EFlags: EFlagSet;             { Kinds of Events Supported}   { Changed }
   END;
 
@@ -844,7 +860,7 @@ TYPE
     NUpdate,     { This node should re-read it's user }
     NHangup,     { Hangup on this node }
     NRecycle,    { Recycle this node to the OS }
-    NInvisible); { This node is Invisible } 
+    NInvisible); { This node is Invisible } {** REMOVING THIS???}
 
   NodeFlagSet = SET OF NodeFlagType;
 
@@ -859,7 +875,7 @@ TYPE
     ActivityDesc: STRING[50]; { Activity STRING }
     Status: NodeFlagSet;      {  }
     Room: Byte;               { What room are they in? }
-    Channel: Word;            { What channel are they in? } 
+    Channel: Word;            { What channel are they in? } {**do we need BOTH room and channel??}
     Invited,                  { Invited to ... }
     Booted,                   { Banned from ... }
     Forget:                   { Ignoring ... }
@@ -876,7 +892,7 @@ TYPE
 
   ScanRec = {$IFDEF WIN32} PACKED {$ENDIF} RECORD { *.SCN files / MESSAGES }
     NewScan: Boolean;   { Scan this area? }
-    LastRead: UnixTime; { Last date read  }
+    LastRead: UnixTime; { Last read date }
   END;
 
   SchemeRec = {$IFDEF WIN32} PACKED {$ENDIF} RECORD { SCHEME.DAT }
@@ -908,10 +924,10 @@ TYPE
     Software: STRING[8];      { Software used by BBS }
     Speed: STRING[8];         { Highest connect speed OF BBS }
     Description: STRING[60];  { Description OF BBS }
-    Description2: STRING[60]; { Second line OF descrition }
+    Description2: STRING[60]; { Second line OF description }
     DateAdded: UnixTime;      { Date entry was added }
     DateEdited: UnixTime;     { Date entry was last edited }
-    XA: STRING[8];            { sysop definable A }
+    XA: STRING[8];            { SysOp definable A }
     XB: STRING[30];           { sysop definable B }
     XC: STRING[30];           { sysop definable C }
     XD: STRING[40];           { sysop definable D }
