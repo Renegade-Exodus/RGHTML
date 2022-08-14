@@ -7,6 +7,7 @@ body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, li, dl, dt, dd, img, form, fieldse
 body {
   background: #000000 url(toplogo.jpg);
   font-family: Helvetica, sans-serif; font-size: 18px; line-height: 24px;
+  background-position: 15% 85%;
 }
 
 nav {
