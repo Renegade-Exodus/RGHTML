@@ -324,8 +324,57 @@ zmodem, phonebook, ansi, vt100 & color backscroll!">mTelnet</a></li>
 
 					<!-- Banner -->
 						<div id="banner">
+<h2><script type="text/javascript">
 
-<h2><img src="images/pic1.png" width="900" height="550"><br></h2></b>
+var x=0;
+
+function rotate(num){
+fs=document.ff.slide;
+x=num%fs.length;
+if(x<0) x=fs.length-1;
+document.images.show.src=fs.options[x].value;
+fs.selectedIndex=x;}
+
+function auto() {
+if(document.ff.fa.value == "Stop"){
+rotate(++x);setTimeout("auto()", 5000);}}
+window.onload=function(){document.ff.fa.value="Stop";auto();}
+</script>
+
+<form name="ff">
+<table cellpadding="3" style="border:1px black solid;border-collapse:collapse;">
+<tr><th align="center"></th></tr>
+
+<tr><td align="center">
+<img src="images/pic1.png" width="900" height="550" name="show">
+</td></tr>
+
+<tr><td align="center" style="display:none;">
+<select name="slide" onChange="rotate(this.selectedIndex);">
+<option value="images/pic1.png" width="900" height="550">1</option>
+<option value="images/pic1.png" width="900" height="550">1</option>
+<option value="images/pic2.png" width="900" height="550">2</option>
+<option value="images/pic3.png" width="900" height="550">3</option>
+<option value="images/pic4.png" width="900" height="550">4</option>
+<option value="images/pic5.png" width="900" height="550">5</option>
+<option value="images/pic6.png" width="900" height="550">6</option>
+<option value="images/pic7.png" width="900" height="550">7</option>
+<option value="images/pic8.png" width="900" height="550">8</option>
+<option value="images/pic9.png" width="900" height="550">9</option>
+<option value="images/pic10.png" width="900" height="550">10</option>
+<option value="images/pic11.png" width="900" height="550">11</option>
+<option value="images/pic12.png" width="900" height="550">12</option>
+<option value="images/pic13.png" width="900" height="550">13</option>
+</select>
+</td></tr>
+
+<tr><td align="center" style="display:none;">
+<input type="button" onclick="rotate(0);" value="&lt;&lt;" title="Jump to beginning" />
+<input type="button" onclick="rotate(x-1);" value="&lt;&lt;" title="Last Picture" />
+<input type="button" name="fa"onClick="this.value=((this.value=='Stop')?'Start':'Stop');auto();" value="Start" title="Autoplay" style="width:75px;" />
+<input type="button" onclick="rotate(x+1);" value="&gt;&gt;" title="Next Picture" />
+<input type="button" onclick="rotate(this.form.slide.length-1);" value="&gt;&gt;" title="Jump to end" />
+</td></tr></table></form></h2>
 						</div>
 
 				</div>
