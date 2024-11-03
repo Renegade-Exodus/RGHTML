@@ -118,31 +118,29 @@
 .dropdown.active {
     display: block;
 }
-   .overlay {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: none; /* Hidden by default */
-            z-index: 1000; /* Ensure it covers the image */
-        }
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; /* Hidden by default */
+    z-index: 1000; /* Ensure it covers the image */
+}
 
-        .expanded {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            max-width: 90%;
-            max-height: 90%;
-            z-index: 1001; /* Ensure it is above the overlay */
-            display: none; /* Hidden by default */
-            border: 5px solid white;
-            border-radius: 10px;
-            padding: 10px;
-        }
-
+.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    z-index: 1001; /* Ensure it is above the overlay */
+    display: none; /* Hidden by default */
+    border: 5px solid white;
+    border-radius: 10px;
+}
 
 
 .control-button {
@@ -186,10 +184,14 @@
 </head>
 
 <body>
+<div class="overlay" id="imageOverlay" onclick="closeFullscreen()"></div>
+<div class="expanded" id="expandedImageContainer">
+    <img id="expandedImage" src="" alt="Expanded View" style="width: 100%; height: auto;">
+</div>
     <div class="black-bar">
     </div>
 <center>
-      <img src="resources/title.png" alt="https://www.rgbbs.info" class="fixed-image" width="900" height="100">
+      <img src="resources\title.png" alt="https://www.rgbbs.info" class="fixed-image" width="900" height="100">
 </center>
 
 
@@ -248,9 +250,7 @@
 
                 <li><a href="zip/METRO290.ZIP">MetroNet Application Pack</a></li>
                 <li><a href="resources/echo.png" height="800" width="800">MetroNet Echo Listings</a></li>
-
-    <li><a href="resources/echo.png" class="fullscreen-link" onclick="openFullscreen(event)">MetroNet Echo Listings</a></li>
-                  <li><a href="metrohis.html">MetroNet History</a></li>
+                <li><a href="metrohis.html">MetroNet History</a></li>
 
 </li></ul>
            </li></ul>
@@ -328,9 +328,12 @@
               <li><a href="zip/MTELB12.ZIP">mTelnet</a></li>      
               <li><a href="zip/NR22_W32.ZIP">NetRunner</a></li>
               <li><a href="zip/STV11WIN.ZIP">SyncTERM</a></li>
+
 </ul></ul>
+        </li>
       </ul>
-	<li><a href="contact.html">CONTACT</a></li>
+
+	<li><a href="cnew.html">CONTACT</a></li>
 
 </ul></ul>										
 
@@ -566,63 +569,83 @@
     <div class="tui-panel-content ">
         <fieldset class="tui-fieldset" style="width: 1470px">
             <div class="thumbnail-container">
-                <div class="image-container" onclick="toggleImage(0)">
-                    <img src="resources/pic1.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(1)">
-                    <img src="resources/pic2.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(2)">
-                    <img src="resources/pic3.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(3)">
-                    <img src="pic4.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(4)">
-                    <img src="pic5.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(5)">
-                    <img src="pic6.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(6)">
-                    <img src="pic7.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(7)">
-                    <img src="pic8.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(8)">
-                    <img src="pic9.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(9)">
-                    <img src="pic10.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(10)">
-                    <img src="pic11.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(11)">
-                    <img src="pic12.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(12)">
-                    <img src="pic13.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(13)">
-                    <img src="pic14.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(14)">
-                    <img src="pic15.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(15)">
-                    <img src="pic16.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(16)">
-                    <img src="pic17.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(17)">
-                    <img src="pic18.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
-                <div class="image-container" onclick="toggleImage(18)">
-                    <img src="pic19.png" alt="Thumbnail" style="max-width: 100px;">
-                </div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic1.png')">
+    <img src="resources/pic1.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic2.png')">
+    <img src="resources/pic2.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic3.png')">
+    <img src="resources/pic4.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic4.png')">
+    <img src="resources/pic4.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic5.png')">
+    <img src="resources/pic5.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic6.png')">
+    <img src="resources/pic6.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic7.png')">
+    <img src="resources/pic7.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic8.png')">
+    <img src="resources/pic8.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic9.png')">
+    <img src="resources/pic9.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic10.png')">
+    <img src="resources/pic10.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic11.png')">
+    <img src="resources/pic11.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic12.png')">
+    <img src="resources/pic12.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic13.png')">
+    <img src="resources/pic13.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic14.png')">
+    <img src="resources/pic14.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic15.png')">
+    <img src="resources/pic15.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic16.png')">
+    <img src="resources/pic16.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic17.png')">
+    <img src="resources/pic17.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic18.png')">
+    <img src="resources/pic18.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
+<div class="image-container" onclick="openFullscreen('resources/pic19.png')">
+    <img src="resources/pic19.png" alt="Thumbnail" style="max-width: 100px;">
+</div>
+
 </div>
         </fieldset>
     </div>
@@ -648,24 +671,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function openFullscreen(imageSrc) {
+    const overlay = document.getElementById('imageOverlay');
+    const expandedImageContainer = document.getElementById('expandedImageContainer');
+    const expandedImage = document.getElementById('expandedImage');
 
-let currentImageIndex = 0;
-const images = ['pic1.png', 'pic2.png', 'pic3.png', 'pic4.png', 'pic5.png', 'pic6.png', 'pic7.png']; // Add all your images here
-const overlay = document.createElement('div');
-const expandedImage = document.createElement('img');
-const controls = document.createElement('div');
-const prevButton = document.createElement('button');
-const nextButton = document.createElement('button');
+    // Set the source of the expanded image
+    expandedImage.src = imageSrc;
 
+    // Show overlay and expanded image container
+    overlay.style.display = 'block';
+    expandedImageContainer.style.display = 'block';
+}
 
- function openFullscreen(event) {
-      event.preventDefault(); // Prevent the default link behavior
-      const imageUrl = event.currentTarget.href;
-      const newWindow = window.open(imageUrl, "_blank");
-      newWindow.moveTo(0, 0);
-      newWindow.resizeTo(screen.width, screen.height);
-    }
-</script>
+function closeFullscreen() {
+    const overlay = document.getElementById('imageOverlay');
+    const expandedImageContainer = document.getElementById('expandedImageContainer');
+
+    // Hide overlay and expanded image container
+    overlay.style.display = 'none';
+    expandedImageContainer.style.display = 'none';
+}</script>
 </body>
 
 </html>
