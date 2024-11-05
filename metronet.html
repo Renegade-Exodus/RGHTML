@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>The Renegade BBS Home</title>
+		<title>SINCE 2003: THE OFFICIAL HOME OF RENEGADE BBS</title>
     <script src="dist/tuicss.min.js"></script>
     <link rel="stylesheet" href="dist/tuicss.min.css">
     <style>
@@ -63,7 +63,6 @@
             z-index: 1000; /* Ensures the image is on top of other elements */
             background-color: black;
         }
-
 
 
 
@@ -185,6 +184,31 @@
 
 /* ----------------------------------------------------------------------- */
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none; /* Hidden by default */
+    z-index: 1000; /* Ensure it covers the image */
+}
+
+.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    z-index: 1001; /* Ensure it is above the overlay */
+    display: none; /* Hidden by default */
+    border: 5px solid white;
+    border-radius: 10px;
+}
+
+
 .control-button {
     background-color: rgba(0, 0, 0, 0.5); /* Transparent background */
     border: none;
@@ -221,11 +245,32 @@
       color: #0000EE;
     } 
 
+.container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between images */
+            margin-top: 20px;
+        }
+        .container img {
+            height: auto;
+        }
+        .container img:first-child {
+            width: 53%; /* Wider image */
+        }
+        .container img:last-child {
+            width: 45%; /* Narrower image */
+        }
+
+
    </style>
     
 </head>
 
 <body>
+<div class="overlay" id="imageOverlay" onclick="closeFullscreen()"></div>
+<div class="expanded" id="expandedImageContainer">
+    <img id="expandedImage" src="" alt="Expanded View" style="width: 100%; height: auto;">
+</div>
     <div class="black-bar">
     </div>
 <center>
@@ -237,13 +282,13 @@
         <div class="info-text"></div>
         <div class="tui-panel white-168 black-255-text">
             <div class="tui-panel-header">
-                Telnet
+                Download Now!!
             </div>
             <div class="tui-panel-content">
-<b>                The Titantic BBS Telnet - Home of Renegade BBS</b>
+                Download the MetroNet Applicaton Pack and apply today!
                 <br><br>
                 <div class="center">
-                    <button class="tui-button white-255" style="width: 100px"><a href="telnet://ttb.rgbbs.info">CONNECT!</a></button>
+                    <button class="tui-button white-255" style="width: 100px"><a href="zip/METRO290.ZIP">CLICK!</a></button>
                 </div>
 </div>
 </div>
@@ -266,9 +311,7 @@
                 </ul>
             </li>
 <ul>
-
 <ul>
-
 
 	<a href="whatdone.html">RENEGADE BBS INFO</a>
 
@@ -276,13 +319,41 @@
 
 	<a href="links.html">LINKS</a>
 
-        <a href="contact.html">CONTACT</a>
+	<a href="contact.html">CONTACT</a>
+
 </ul></ul>										
 
 
 
         </ul>
     </div>
+
+
+   <div class="center" style="margin-top: 1px; margin-bottom: 1px">
+
+
+        <!-- Panel title -->
+        <div class="info-text"></div>
+        <div class="tui-panel white-168 black-255-text">
+            <div class="tui-panel-header">
+                Download Now!!
+            </div>
+            <div class="tui-panel-content">
+                Download the MetroNet Applicaton Pack and apply today!
+                <br><br>
+                <div class="center">
+                    <button class="tui-button white-255" style="width: 100px"><a href="zip/METRO290.ZIP">CLICK!</a></button>
+                </div>
+</div>
+</div>
+
+
+
+<div class="container">
+        <img src="resources/metrohis.png" alt="MetroNet History">
+        <img src="resources/echo.png" alt="MetroNet Echo Listings">
+    </div>
+
 
 
 
@@ -302,33 +373,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function openFullscreen(imageSrc) {
+    const overlay = document.getElementById('imageOverlay');
+    const expandedImageContainer = document.getElementById('expandedImageContainer');
+    const expandedImage = document.getElementById('expandedImage');
 
-let currentImageIndex = 0;
-const images = ['pic1.png', 'pic2.png', 'pic3.png', 'pic4.png', 'pic5.png', 'pic6.png', 'pic7.png']; // Add all your images here
-const overlay = document.createElement('div');
-const expandedImage = document.createElement('img');
-const controls = document.createElement('div');
-const prevButton = document.createElement('button');
-const nextButton = document.createElement('button');
+    // Set the source of the expanded image
+    expandedImage.src = imageSrc;
 
+    // Show overlay and expanded image container
+    overlay.style.display = 'block';
+    expandedImageContainer.style.display = 'block';
+}
 
- function openFullscreen(event) {
-      event.preventDefault(); // Prevent the default link behavior
-      const imageUrl = event.currentTarget.href;
-      const newWindow = window.open(imageUrl, "_blank");
-      newWindow.moveTo(0, 0);
-      newWindow.resizeTo(screen.width, screen.height);
-    }
-</script>
+function closeFullscreen() {
+    const overlay = document.getElementById('imageOverlay');
+    const expandedImageContainer = document.getElementById('expandedImageContainer');
 
-					<!-- Banner -->
-<CENTER>
-<div data-aidaform-widget="form-2019-12" data-url="https://tjm694.aidaform.com/free-basic-contact-form68" data-width="100%" data-height="500px" data-do-resize></div><script>(function(){var r,d=document,gt=d.getElementById,cr=d.createElement,tg=d.getElementsByTagName,id="aidaform-embed";if(!gt.call(d,id)){r=cr.call(d,"script");r.id=id;r.src="https://embed.aidaform.com/embed.js";(d.head || tg.call(d,"head")[0]).appendChild(r);}})()</script>
-</CENTER>						</div>
-
-				</div>
-			</div>
-
+    // Hide overlay and expanded image container
+    overlay.style.display = 'none';
+    expandedImageContainer.style.display = 'none';
+}</script>
 </body>
 
 </html>
