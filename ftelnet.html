@@ -300,6 +300,31 @@
 </center>
 
 
+<script>
+
+function openFullscreen(imageSrc) {
+    const overlay = document.getElementById('imageOverlay');
+    const expandedImageContainer = document.getElementById('expandedImageContainer');
+    const expandedImage = document.getElementById('expandedImage');
+
+    // Set the source of the expanded image
+    expandedImage.src = imageSrc;
+
+    // Show overlay and expanded image container
+    overlay.style.display = 'block';
+    expandedImageContainer.style.display = 'block';
+}
+
+function closeFullscreen() {
+    const overlay = document.getElementById('imageOverlay');
+    const expandedImageContainer = document.getElementById('expandedImageContainer');
+
+    // Hide overlay and expanded image container
+    overlay.style.display = 'none';
+    expandedImageContainer.style.display = 'none';
+}</script>
+
+
 
 
 <!-- Banner -->
@@ -333,33 +358,6 @@
 				</div>
 			</div>
 
-
-
-
-
-<script>
-
-function openFullscreen(imageSrc) {
-    const overlay = document.getElementById('imageOverlay');
-    const expandedImageContainer = document.getElementById('expandedImageContainer');
-    const expandedImage = document.getElementById('expandedImage');
-
-    // Set the source of the expanded image
-    expandedImage.src = imageSrc;
-
-    // Show overlay and expanded image container
-    overlay.style.display = 'block';
-    expandedImageContainer.style.display = 'block';
-}
-
-function closeFullscreen() {
-    const overlay = document.getElementById('imageOverlay');
-    const expandedImageContainer = document.getElementById('expandedImageContainer');
-
-    // Hide overlay and expanded image container
-    overlay.style.display = 'none';
-    expandedImageContainer.style.display = 'none';
-}</script>
 
 
 </body>
