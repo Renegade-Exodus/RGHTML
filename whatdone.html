@@ -387,20 +387,86 @@ function closeFullscreen() {
         <div class="tui-window white-168 black-255-text">
             <fieldset class="tui-fieldset">
                 <legend class="white-255-text">[ WHATDONE.TXT ]</legend>
-                <div style="overflow-y: auto; height: 520px; width: 800px; white-space: normal">
-                    <span class="tui-shadow"> Renegade BBS What Done Since v1.35/DOS  </span><br><br>
+                <div style="overflow-y: auto; height: 570px; width: 800px; white-space: normal">
+                    <span class="tui-shadow"> Renegade BBS What Done Since November 2003</span><br><br>
 
 
+
+<h1 id="1.35"><b style="color:#FFFFFF">----[ Changes in v1.35/DOS ]----</h1></b>
+<br>
+
+Miscellaneous Code clean up.<br>
+<br>
+New Menu CMDKEY, HQ  Hangs up User and quits the BBS to DOS.<br>
+<br>
+New Menu CMDKEY, HD  Displays GOODBYE.ANS/.ASC to the user<br>
+upon slow logoff as before without the YES/NO Lightbar prompt<br>
+being used.<br>
+<br>
+ ■   New Menu CMDKEY, 1E  Edit Oneliners.  This will allow you to<br>
+  edit or remove onleiners you do not approve of on your BBS.<br>
+<br>
+ ■   Miscellaneous Color Fixes within some prompts.<br>
+<br>
+ ■   Updated miscellaneous bullet character "■" infront of titles and<br>
+  information after downloads finish to quit changing to a ? each<br>
+  time the source was compiled. :)<br>
+<br>
+ ■   Updated File Description Search functions to log what user was<br>
+  searching for in the SYSOP.LOG file.<br>
+<br>
+ ■   New Menu CMDKEY, DX  Output ALL Door Files at the same time.<br>
+  Useful when running a program that uses one and spawns into<br>
+  another program that only works with different drop file in the<br>
+  same batch file.<br>
+<br>
+ ■   Found and FINALLY killed bug that causes NTVDM crashes when using<br>
+  any program that used the ComPort directly.<br>
+<br>
+ ■   New Renegade starting parameter, -K  causes Renegade to drop to<br>
+  DOS on all disconnects from the BBS.  Useful if you are using RG<br>
+  as a door server.  Updated Renegade -? Help screen to<br>
+  reflect this.  This will act the same as -T except it will drop<br>
+  to DOS and not the WFC screen.<br>
+<br>
+ ■   _MORE_ Color Fixes within some prompts.<br>
+<br>
+ ■   Updated Netmail area internal display prompts and procedures.<br>
+<br>
+ ■   Updated & Bullet proofed Renemail thanks to Nick Andre.<br>
+<br>
+ ■   Renemail new option, -X  which will pull messages from <br>
+  Renegade's data files and converts it back to *.MSGs for those<br>
+  wanting to do %RESCAN and pickup past messages.<br>
+<br>
+ ■   New Renegade starting parameter, -R  causes Renegade to update<br>
+  the MULTNODE.DAT file with any information you want from the command<br>
+  prompt.<br>
+<br>
+ ■      Usage: Renegade -R [Node number] [ON or OFF] [Username w/NO spaces]<br>
+            [Activity]<br>
+<br>
+     Renegade -R 5 ON D'Bridge Tossing Mail<br>
+     Will update Node 5 to say D'Bridge and status of Tossing Mail<br>
+<br>
+     Renegade -R 5 OFF<br>
+     This would clear the node status of node 5.<br>
+<br>
+ ■   Removed some old Error Logging to the file areas.<br>
+
+<br>
+
+<h1 id="1.33"><b style="color:#FFFFFF">----[ Changes in v1.33/DOS ]----</h1></b>
 			<br/>
  ============================================================================
 			<br/>
                     U - Updated     A - Added     F - Fixed
 			<br/>
  ============================================================================
-
-
 			<br/>
 			<br/>
+			<br/>
+
      F.  Fixed bug where new ONELINERS would not display if a
 			<br/>
          datafile was remade from scratch and there were not a
@@ -5266,7 +5332,7 @@ File download bug fixes/enhancements:
         <div class="tui-window white-168 black-255-text">
             <fieldset class="tui-fieldset">
                 <legend class="white-255-text">[ RENEGADE.DOC ]</legend>
-                <div style="overflow-y: auto; height: 520px; width: 800px; white-space: normal">
+                <div style="overflow-y: auto; height: 570px; width: 800px; white-space: normal">
                     <span class="tui-shadow"> Renegade BBS Manual - Work in Progress ...  </span><br><br>
 
 
