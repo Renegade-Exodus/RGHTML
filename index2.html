@@ -1,12 +1,110 @@
 <!DOCTYPE html>
 <html lang="en" class="black">
-
 <head>
     <meta charset="UTF-8">
-		<title>SINCE 2003: THE OFFICIAL HOME OF RENEGADE BBS</title>
+    <title>The Renegade BBS Home</title>
     <script src="dist/tuicss.min.js"></script>
     <link rel="stylesheet" href="dist/tuicss.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> <!-- Poppins font -->
     <style>
+        /* Sidebar Styling */
+        .sidebar {
+            font-family: 'Poppins', sans-serif; /* Apply the modern font only to the sidebar */
+            width: 250px;
+            background-color: #000000;
+            color: #f5f5f5;
+            height: 100vh;
+            position: fixed;
+            top: 125px;
+            left: 0;
+            overflow-y: auto;
+            padding-top: 30px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+            transition: width 0.3s ease;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            padding: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 18px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Sidebar link styles with icons */
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 0;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #dcdcdc;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: background-color 0.2s ease, color 0.2s ease, padding 0.2s ease;
+        }
+
+        .sidebar a i {
+            margin-right: 20px;
+            color: #444444;
+        }
+
+        .sidebar a:hover {
+            background-color: #333333;
+            color: #ffffff;
+            padding-left: 25px;
+            box-shadow: inset 2px 0 0 0 #4a90e2;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            display: none;
+            background-color: #202020;
+            padding-left: 20px;
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+            max-height: 0;
+        }
+
+        .dropdown.active {
+            display: block;
+            max-height: 500px;
+        }
+
+        /* Toggle Arrow Styling */
+        .dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-toggle:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .dropdown.active .dropdown-toggle:after {
+            transform: rotate(-180deg);
+        }
+
+
+/* --------------------------------------------- */
+
         .tui-window, .tui-panel {
             margin-bottom: 20px;
             text-align: left;
@@ -64,125 +162,6 @@
             background-color: black;
         }
 
-
-
-/* ----------------------------------------------------------- */
-
-
-
-/* Sidebar Styling */
-.sidebar {
-    width: 250px;
-    background-color: #181818; /* Sleek dark background */
-    color: #f5f5f5; /* Light text for readability */
-    height: 100vh;
-    position: fixed;
-    top: 125px; /* Positioned below the black bar */
-    left: 0;
-    overflow-y: auto;
-    padding-top: 30px;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4); /* Soft shadow for a floating effect */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: width 0.3s ease;
-}
-
-.sidebar:hover {
-    width: 250px; /* Slightly expand on hover */
-}
-
-/* Sidebar Header */
-.sidebar h2 {
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 18px;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #333; /* Subtle divider */
-}
-
-/* Main List Styling */
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar ul li {
-    margin: 0;
-}
-
-/* Link Styling */
-.sidebar a {
-    display: block;
-    color: #dcdcdc;
-    padding: 14px 20px;
-    text-decoration: none;
-    font-size: 15px;
-    border-radius: 5px;
-    transition: background-color 0.2s ease, color 0.2s ease, padding 0.2s ease;
-}
-
-.sidebar a:hover {
-    background-color: #333333; /* Dark background on hover */
-    color: #ffffff; /* White text on hover */
-    padding-left: 25px; /* Indent on hover */
-    box-shadow: inset 2px 0 0 0 #4a90e2; /* Left accent border */
-}
-
-/* Dropdown Menu Styling */
-.dropdown {
-    display: none;
-    background-color: #202020; /* Slight contrast for dropdown items */
-    padding-left: 20px;
-    transition: max-height 0.3s ease;
-    overflow: hidden;
-    max-height: 0; /* Hidden by default */
-}
-
-.dropdown.active {
-    display: block;
-    max-height: 500px; /* Show dropdown with animation */
-}
-
-.dropdown li a {
-    padding-left: 25px;
-    font-size: 14px;
-    color: #b0b0b0;
-    transition: color 0.2s ease;
-}
-
-.dropdown li a:hover {
-    background-color: #444444; /* Subtle darker shade on hover */
-    color: #ffffff;
-}
-
-/* Toggle Arrow Styling */
-.dropdown-toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dropdown-toggle:after {
-    content: '▼';
-    font-size: 12px;
-    transition: transform 0.3s ease;
-    margin-left: 10px;
-}
-
-.dropdown.active .dropdown-toggle:after {
-    transform: rotate(-180deg); /* Rotate arrow when active */
-}
-
-/* Smooth Transition for Sidebar Expand/Collapse */
-.sidebar:hover .dropdown {
-    max-height: 500px;
-}
-
-
-/* ----------------------------------------------------------------------- */
 
 .overlay {
     position: fixed;
@@ -245,11 +224,71 @@
       color: #0000EE;
     } 
 
-   </style>
-    
+.thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px; /* Adjust width as needed */
+    margin: 10px;
+}
+
+
+.button-description {
+    font-size: 14px;
+    color: #000000;
+    margin-top: 15px;
+    max-width: 180px; /* To prevent text from stretching too wide */
+}
+
+
+    </style>
 </head>
 
 <body>
+    <div class="black-bar"></div>
+    <center>
+        <img src="resources/title.png" alt="https://www.rgbbs.info" class="fixed-image" width="900" height="100">
+    </center>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="index2.html"><i class="fas fa-home"></i><b style="color:#0000FF"><span style="font-size: 18px;">HOME</span></b></a></li>
+            <li><a href="whatdone.html"><i class="fas fa-info-circle"></i>RENEGADE BBS INFO</a></li>
+            <li><a href="metronet.html"><i class="fas fa-network-wired"></i>METRONET</a></li>
+            <li><a href="links.html"><i class="fas fa-link"></i>LINKS</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i>CONTACT</a></li>
+        </ul>
+<br>
+<center><span style="font-size: 9px;">&copy; 2003 - 2024 The Renegade BBS Development Team
+</span></center>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dropdown = toggle.nextElementSibling;
+                    dropdown.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+
 <div class="overlay" id="imageOverlay" onclick="closeFullscreen()"></div>
 <div class="expanded" id="expandedImageContainer">
     <img id="expandedImage" src="" alt="Expanded View" style="width: 100%; height: auto;">
@@ -276,40 +315,6 @@
 </div>
 </div>
 
-
-
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <ul>
-            <li><a href="index.html"><b style="color:#F1160B">HOME</a></li></b>
-            <li>
-                <a href="#services" class="dropdown-toggle">RENEGADE UTILITIES</a>
-                <ul class="dropdown">
-<li><a href="zip/RGBOTV04.ZIP">Renegade Bot Blocker</a></li>
-<li><a href="zip/RGAPI20.ZIP">Renegade Programmers API</a></li>
-<li><a href="zip/RGRED100.ZIP">Renegade Replace Empty Descriptions</a></li>
-<li><a href="zip/RUPV100.ZIP">Renegade User Packer</a></li>
-<li><a href="zip/RG2FDV2.ZIP">RG2FD</a></li>
-                </ul>
-            </li>
-<ul>
-
-<ul>
-	<a href="whatdone.html">RENEGADE BBS INFO</a>
-
-	<a href="metronet.html">METRONET</a>
-
-	<a href="links.html">LINKS</a>
-
-	<a href="contact.html">CONTACT</a>
-
-</ul></ul>										
-
-
-
-        </ul>
-    </div>
 
 
    <div class="center" style="margin-top: 1px; margin-bottom: 1px">
@@ -341,7 +346,7 @@
                 <legend>[ Renegade Download Window ]</legend>
                <b> <center>Renegade v1.35/DOS has been released on<br>
  September 01, 2024.<br></center></b>
-<br>
+
                 <br>
                 <div class="tui-divider"></div>
                 <br>
@@ -533,6 +538,57 @@
 </div>
 
 
+
+<div class="tui-panel white-168 black-255-text">
+    <div class="tui-panel-header">Renegade BBS Utilities Download Area</div>
+    <div class="tui-panel-content">
+        <fieldset class="tui-fieldset" style="width: 1470px">
+            <div class="thumbnail-container">
+
+                <div class="button-container">
+                    <button class="tui-button white-255-text" onclick="location.href='zip/RGBOTV04.ZIP'">RGBOTV04.ZIP</button>
+                    <div class="button-description">(RGBOT) v0.40 The User will have to press <ESC> twice in order
+for  the program to  drop  out and load the BBS.If any other key  is pressed, it will hang up on the  user/bot.</div>
+                </div>
+
+                <div class="button-container">
+                    <button class="tui-button white-255-text" onclick="location.href='zip/RGAPI20.ZIP'">RGAPI20.ZIP</button>
+                    <div class="button-description">(RGAPI) v2.00 Renegade Programmers API.  Includes FUNCTIONS and PROCEDURES commonly used
+in programming Renegade utils.  Useful tool for programmers. Updated for Renegade v1.33/DOS+</div>
+                </div>
+
+                <div class="button-container">
+                    <button class="tui-button white-255-text" onclick="location.href='zip/RGRED100.ZIP'">RGRED100.ZIP</button>
+                    <div class="button-description">(RGRED) v1.00 This will check through all of your file bases and any one
+                     line description file without anytext will be replaced with whatever you set on the command line.</div>
+                </div>
+
+                <div class="button-container">
+                    <button class="tui-button white-255-text" onclick="location.href='zip/RUPV100.ZIP'">RUPV100.ZIP</button>
+                    <div class="button-description">(RUP) v1.00 RUP - Is for Renegade v1.30+ that will remove
+deleted user accounts from your USERS.DAT file.  It also packs & backs up the file and updates all Message Area .SCN files.</div>
+                </div>
+
+                <div class="button-container">
+                    <button class="tui-button white-255-text" onclick="location.href='zip/RG2FDV2.ZIP'">RG2FDV2.ZIP</button>
+                    <div class="button-description">(RG2FD) v2.0 Renegade v1.22/DOS+ Last Caller to FrontDoor v2.26/2.3x Last
+ Caller.  Import your Last Caller from Renegade into FrontDoor's Waiting For Caller Screen.</div>
+                </div>
+
+                <div class="button-container">
+                    <button class="tui-button white-255-text" onclick="location.href='files/RECORDS.PAS'">RECORDS.PAS</button>
+                    <div class="button-description">Turbo Pascal Records Structures for the Renegade BBS v1.33-v1.35/DOS.</div>
+                </div>
+
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+
+
+
+
 <div class="tui-panel white-168 black-255-text">
     <div class="tui-panel-header">Renegade BBS In Action</div>
     <div class="tui-panel-content ">
@@ -548,7 +604,7 @@
 </div>
 
 <div class="image-container" onclick="openFullscreen('resources/pic3.png')">
-    <img src="resources/pic4.png" alt="Thumbnail" style="max-width: 100px;">
+    <img src="resources/pic3.png" alt="Thumbnail" style="max-width: 100px;">
 </div>
 
 <div class="image-container" onclick="openFullscreen('resources/pic4.png')">
@@ -616,9 +672,6 @@
 </div>
 
 </div>
-<center>
-&copy; 2003 - 2024 The Renegade BBS Development Team.
-</center>
 
         </fieldset>
     </div>
@@ -627,22 +680,8 @@
 
     </div>
 
-<center>
-&copy; 2003 - 2024 The Renegade BBS Development Team.
-</center>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const dropdown = toggle.nextElementSibling;
-            dropdown.classList.toggle('active');
-        });
-    });
-});
 
 function openFullscreen(imageSrc) {
     const overlay = document.getElementById('imageOverlay');
@@ -665,6 +704,8 @@ function closeFullscreen() {
     overlay.style.display = 'none';
     expandedImageContainer.style.display = 'none';
 }</script>
-</body>
 
+
+</body>
 </html>
+
