@@ -1,12 +1,110 @@
 <!DOCTYPE html>
 <html lang="en" class="black">
-
 <head>
     <meta charset="UTF-8">
-		<title>SINCE 2003: THE OFFICIAL HOME OF RENEGADE BBS</title>
+    <title>The Renegade BBS Home</title>
     <script src="dist/tuicss.min.js"></script>
     <link rel="stylesheet" href="dist/tuicss.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet"> <!-- Poppins font -->
     <style>
+        /* Sidebar Styling */
+        .sidebar {
+            font-family: 'Poppins', sans-serif; /* Apply the modern font only to the sidebar */
+            width: 250px;
+            background-color: #000000;
+            color: #f5f5f5;
+            height: 100vh;
+            position: fixed;
+            top: 125px;
+            left: 0;
+            overflow-y: auto;
+            padding-top: 30px;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4);
+            transition: width 0.3s ease;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            padding: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            font-size: 18px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Sidebar link styles with icons */
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 0;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #dcdcdc;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: background-color 0.2s ease, color 0.2s ease, padding 0.2s ease;
+        }
+
+        .sidebar a i {
+            margin-right: 20px;
+            color: #444444;
+        }
+
+        .sidebar a:hover {
+            background-color: #333333;
+            color: #ffffff;
+            padding-left: 25px;
+            box-shadow: inset 2px 0 0 0 #4a90e2;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            display: none;
+            background-color: #202020;
+            padding-left: 20px;
+            transition: max-height 0.3s ease;
+            overflow: hidden;
+            max-height: 0;
+        }
+
+        .dropdown.active {
+            display: block;
+            max-height: 500px;
+        }
+
+        /* Toggle Arrow Styling */
+        .dropdown-toggle {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dropdown-toggle:after {
+            content: '▼';
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .dropdown.active .dropdown-toggle:after {
+            transform: rotate(-180deg);
+        }
+
+
+/* --------------------------------------------- */
+
         .tui-window, .tui-panel {
             margin-bottom: 20px;
             text-align: left;
@@ -24,7 +122,7 @@
         }
 
         .side-by-side {
-            width: 48%; /* Adjust the width as needed */
+            width: 44%; /* Adjust the width as needed */
             margin-right: 1%; /* Space between the two blocks */
         }
         
@@ -64,125 +162,6 @@
             background-color: black;
         }
 
-
-
-/* ----------------------------------------------------------- */
-
-
-
-/* Sidebar Styling */
-.sidebar {
-    width: 250px;
-    background-color: #181818; /* Sleek dark background */
-    color: #f5f5f5; /* Light text for readability */
-    height: 100vh;
-    position: fixed;
-    top: 125px; /* Positioned below the black bar */
-    left: 0;
-    overflow-y: auto;
-    padding-top: 30px;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.4); /* Soft shadow for a floating effect */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: width 0.3s ease;
-}
-
-.sidebar:hover {
-    width: 250px; /* Slightly expand on hover */
-}
-
-/* Sidebar Header */
-.sidebar h2 {
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-    font-weight: 600;
-    color: #ffffff;
-    font-size: 18px;
-    letter-spacing: 1px;
-    border-bottom: 1px solid #333; /* Subtle divider */
-}
-
-/* Main List Styling */
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar ul li {
-    margin: 0;
-}
-
-/* Link Styling */
-.sidebar a {
-    display: block;
-    color: #dcdcdc;
-    padding: 14px 20px;
-    text-decoration: none;
-    font-size: 15px;
-    border-radius: 5px;
-    transition: background-color 0.2s ease, color 0.2s ease, padding 0.2s ease;
-}
-
-.sidebar a:hover {
-    background-color: #333333; /* Dark background on hover */
-    color: #ffffff; /* White text on hover */
-    padding-left: 25px; /* Indent on hover */
-    box-shadow: inset 2px 0 0 0 #4a90e2; /* Left accent border */
-}
-
-/* Dropdown Menu Styling */
-.dropdown {
-    display: none;
-    background-color: #202020; /* Slight contrast for dropdown items */
-    padding-left: 20px;
-    transition: max-height 0.3s ease;
-    overflow: hidden;
-    max-height: 0; /* Hidden by default */
-}
-
-.dropdown.active {
-    display: block;
-    max-height: 500px; /* Show dropdown with animation */
-}
-
-.dropdown li a {
-    padding-left: 25px;
-    font-size: 14px;
-    color: #b0b0b0;
-    transition: color 0.2s ease;
-}
-
-.dropdown li a:hover {
-    background-color: #444444; /* Subtle darker shade on hover */
-    color: #ffffff;
-}
-
-/* Toggle Arrow Styling */
-.dropdown-toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.dropdown-toggle:after {
-    content: '▼';
-    font-size: 12px;
-    transition: transform 0.3s ease;
-    margin-left: 10px;
-}
-
-.dropdown.active .dropdown-toggle:after {
-    transform: rotate(-180deg); /* Rotate arrow when active */
-}
-
-/* Smooth Transition for Sidebar Expand/Collapse */
-.sidebar:hover .dropdown {
-    max-height: 500px;
-}
-
-
-/* ----------------------------------------------------------------------- */
 
 .overlay {
     position: fixed;
@@ -245,53 +224,71 @@
       color: #0000EE;
     } 
 
-.container {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Space between images */
-            margin-top: 20px;
-        }
-        .container img {
-            height: auto;
-        }
-        .container img:first-child {
-            width: 53%; /* Wider image */
-        }
-        .container img:last-child {
-            width: 45%; /* Narrower image */
-        }
+.thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+}
 
-.tui-window, .tui-panel {
-            margin-bottom: 20px;
-            text-align: left;
-        }
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 200px; /* Adjust width as needed */
+    margin: 10px;
+}
 
-        /* Minimized content styles */
-        .collapsible-content {
-            display: none;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
 
-        .collapsible-header {
-            cursor: pointer;
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-        }
+.button-description {
+    font-size: 14px;
+    color: #000000;
+    margin-top: 15px;
+    max-width: 180px; /* To prevent text from stretching too wide */
+}
 
-        /* Expanded content style */
-        .collapsible-header.active + .collapsible-content {
-            display: block;
-            max-height: 1000px;
-        }
 
-   </style>
-    
+    </style>
 </head>
 
 <body>
+    <div class="black-bar"></div>
+    <center>
+        <img src="resources/title.png" alt="https://www.rgbbs.info" class="fixed-image" width="900" height="100">
+    </center>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="index2.html"><i class="fas fa-home"></i><b style="color:#0000FF"><span style="font-size: 18px;">HOME</span></b></a></li>
+            <li><a href="whatdone.html"><i class="fas fa-info-circle"></i>RENEGADE BBS INFO</a></li>
+            <li><a href="metronet.html"><i class="fas fa-network-wired"></i>METRONET</a></li>
+            <li><a href="links.html"><i class="fas fa-link"></i>LINKS</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i>CONTACT</a></li>
+        </ul>
+<br>
+<center><span style="font-size: 9px;">&copy; 2003 - 2024 The Renegade BBS Development Team
+</span></center>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const dropdown = toggle.nextElementSibling;
+                    dropdown.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+
 <div class="overlay" id="imageOverlay" onclick="closeFullscreen()"></div>
 <div class="expanded" id="expandedImageContainer">
     <img id="expandedImage" src="" alt="Expanded View" style="width: 100%; height: auto;">
@@ -302,86 +299,96 @@
       <img src="resources/title.png" alt="https://www.rgbbs.info" class="fixed-image" width="900" height="100">
 </center>
 
-       <!-- Panel title -->
+
+
+
+
+
+
+<script>
+
+function openFullscreen(imageSrc) {
+    const overlay = document.getElementById('imageOverlay');
+    const expandedImageContainer = document.getElementById('expandedImageContainer');
+    const expandedImage = document.getElementById('expandedImage');
+
+    // Set the source of the expanded image
+    expandedImage.src = imageSrc;
+
+    // Show overlay and expanded image container
+    overlay.style.display = 'block';
+    expandedImageContainer.style.display = 'block';
+}
+
+function closeFullscreen() {
+    const overlay = document.getElementById('imageOverlay');
+    const expandedImageContainer = document.getElementById('expandedImageContainer');
+
+    // Hide overlay and expanded image container
+    overlay.style.display = 'none';
+    expandedImageContainer.style.display = 'none';
+}</script>
+
+
+   <div class="center" style="margin-top: 1px; margin-bottom: 1px">
+
+
+        <!-- Panel title -->
         <div class="info-text"></div>
         <div class="tui-panel white-168 black-255-text">
             <div class="tui-panel-header">
                 Telnet
             </div>
             <div class="tui-panel-content">
-<b>                The Titantic BBS Telnet - Home of Renegade BBS</b>
+                The Titantic BBS Telnet - Home of Renegade BBS
                 <br><br>
                 <div class="center">
                     <button class="tui-button white-255" style="width: 100px"><a href="ftelnet.html">CONNECT!</a></button>
                 </div>
 </div>
 </div>
+        <!-- Simple window -->
 
-
-
-
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <ul>
-            <li><a href="index2.html"><b style="color:#F1160B">HOME</a></li></b>
-            <li>
-                <a href="#services" class="dropdown-toggle">RENEGADE UTILITIES</a>
-                <ul class="dropdown">
-<li><a href="zip/RGBOTV04.ZIP">Renegade Bot Blocker</a></li>
-<li><a href="zip/RGAPI20.ZIP">Renegade Programmers API</a></li>
-<li><a href="zip/RGRED100.ZIP">Renegade Replace Empty Descriptions</a></li>
-<li><a href="zip/RUPV100.ZIP">Renegade User Packer</a></li>
-<li><a href="zip/RG2FDV2.ZIP">RG2FD</a></li>
-                </ul>
-            </li>
-<ul>
-
-
-<ul>
-
-	<a href="whatdone.html">RENEGADE BBS INFO</a>
-
-	<a href="metronet.html">METRONET</a>
-
-	<a href="links.html">LINKS</a>
-
-	<a href="contact.html">CONTACT</a>
-
-</ul></ul>										
-
-
-
-        </ul>
-    </div>
-
-
-   <div class="center" style="margin-top: 1px; margin-bottom: 1px">
-
-       <!-- Panel title -->
-        <div class="info-text"></div>
-        <div class="tui-panel white-168 black-255-text">
-            <div class="tui-panel-header">
-                Current Renegade BBS Source Code
-            </div>
-            <div class="tui-panel-content">
-                The Renegade BBS Development Team - Help develop the future of Renegade!
-                <br><br>
-                <div class="center">
-                    <button class="tui-button white-255" style="width: 100px"><a href="https://github.com/leewoodridge/RenegadeBBS">GO!</a></button>
-                </div>
-</div>
-</div>
-    
+<div class="info-text"></div>
 <div class="container">
-<div class="tui-window white-168 black-255-text">
-    <div class="collapsible-header">[ COMPLETE WHATDONE.TXT - Complete Changes since November 2003. ]</div>
-    <div class="collapsible-content">
-        <fieldset class="tui-fieldset">
-            <legend class="white-255-text">Renegade BBS What Done Since v1.30/DOS</legend>
-            <div style="overflow-y: auto; height: 700px; width: 1200px; white-space: normal">
-                <span class="tui-shadow"> Renegade BBS What Done Since v1.30/DOS </span><br><br>
-                from a FrontEnd Mailer.<br>
+            <div class="side-by-side">
+        <div class="tui-window">
+
+            <fieldset class="tui-fieldset" style="width: 675px">
+                <legend>[ Telnet Clients Download ]</legend>
+               <b> <center>Download a Telnet Client Below<br></b></center>
+                <br>
+                <div class="tui-divider"></div><br>
+<center>             
+                <button class="tui-button white-255-text"><a href="zip/MTELB12.ZIP">mTelnet</a></button>
+                <button class="tui-button white-255-text"><a href="zip/NR22_W32.ZIP">NetRunner</a></button>
+                <button class="tui-button white-255-text"><a href="zip/STV11WIN.ZIP">SyncTERM</a></button></center
+
+
+
+          </fieldset>
+        </div>
+
+
+     <!-- Item select -->
+        <div class="tui-window">
+        <div class="info-text"></div>
+            <fieldset class="tui-fieldset" style="width: 500px">
+<img src="resources/history.png" alt="MetroNet Echo Listings">
+
+</div></div>
+
+            <div class="side-by-side">
+
+
+
+       <!-- Scroll window -->
+        <div class="info-text"></div>
+        <div class="tui-window white-168 black-255-text">
+            <fieldset class="tui-fieldset">
+                <legend class="white-255-text">[ WHATDONE.TXT ]</legend>
+                <div style="overflow-y: auto; height: 520px; width: 800px; white-space: normal">
+                    <span class="tui-shadow"> Renegade BBS What Done Since v1.35/DOS  </span><br><br>
 
 
 			<br/>
@@ -4815,7 +4822,7 @@ File download bug fixes/enhancements:
 														<br/>
 														<br/>
                Removed the "Q" for quit, pressing 
-														<Enter> now quits
+	<Enter> now quits
 															<br/>
                this command and the command no longer scrolls on the
 															<br/>
@@ -5246,138 +5253,24 @@ File download bug fixes/enhancements:
 [EOF]
 <br>
             </fieldset>
-
         </div>
 
 
 
- <div class="tui-window white-168 black-255-text">
-    <div class="collapsible-header">[ COMPLETE RENEGADE.DOC - Work in progress manual for v1.3x/DOS ]</div>
-    <div class="collapsible-content">
-        <fieldset class="tui-fieldset">
-            <legend class="white-255-text">Renegade BBS Manual</legend>
-            <div style="overflow-y: auto; height: 700px; width: 1200px; white-space: normal">
-                <span class="tui-shadow"> Work in Progress... </span><br><br>
+            <div class="side-by-side">
 
 
 
-		<!- Main Wrapper ->
-			<div id="main-wrapper">
-				<div class="wrapper style2">
-					<div class="inner">
-						<div class="container">
-							<div class="row">
-								<div class="4u">
-									<div id="sidebar">
-
-										<!- Sidebar ->
-									
-											<section>
-												<header class="major">
-													<h2><b style="color:#FFFFFF">Jump to: </h2></b>
-												</header>
-												<ul class="style2">
-													<li><a href="#Chapter 1"><b style="color:#1FF652">Chapter 1</a></li>
-													<li><a href="#Chapter 2">Chapter 2</a></li>
-													<li><a href="#Chapter 3">Chapter 3</a></li>
-													<li><a href="#Chapter 4">Chapter 4</a></li>
-													<li><a href="#Chapter 5">Chapter 5</a></li>
-													<li><a href="#Chapter 6">Chapter 6</a></li>
-													<li><a href="#Chapter 7">Chapter 7</a></li>
-													<li><a href="#Chapter 8">Chapter 8</a></li>
-													<li><a href="#Chapter 9">Chapter 9</a></li>
-													<li><a href="#Chapter 10">Chapter 10</a></li>
-													<li><a href="#Chapter 11">Chapter 11</a></li>
-													<li><a href="#Chapter 12">Chapter 12</a></li>
-													<li><a href="#Chapter 13">Chapter 13</a></li>
-													<li><a href="#Chapter 14">Chapter 14</a></li>
-													<li><a href="#Chapter 15">Chapter 15</a></li>
-													<li><a href="#Chapter 16">Chapter 16</a></li>
-													<li><a href="#Chapter 17">Chapter 17</a></li>
-													<li><a href="#Chapter 18">Chapter 18</a></li>
-													<li><a href="#Chapter 19">Chapter 19</a></li>
-													<li><a href="#Chapter 20">Chapter 20</a></li></b>
-												</ul>
-												</footer>
-											</section>
-		
-									</div>
-								</div>
-								<div class="8u important(collapse)">
-									<div id="content">
-
-										<!- Content ->
-									
-											<article>
-												<header class="major">
-<br>
-<div id="scroll-here"></div>
-<a id="back-to-top" href="#scroll-here">
-  <img src="data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' aria-labelledby='title' aria-describedby='desc' role='img' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EAngle Up%3C/title%3E%3Cdesc%3EA line styled icon from Orion Icon Library.%3C/desc%3E%3Cpath data-name='layer1' fill='none' stroke='%23202020' stroke-miterlimit='10' stroke-width='2' d='M20 40l11.994-14L44 40' stroke-linejoin='round' stroke-linecap='round'%3E%3C/path%3E%3C/svg%3E" alt="Angle Up" />
-</a>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-  $(function(){
-    //Function To Add Class
-    function showBackToTop(){
-      $('#back-to-top').addClass('show-btt');
-    }
-
-    //Function To Add Class
-    function hideBackToTop(){
-      $('#back-to-top').removeClass('show-btt');
-    }
-
-    //Check Scroll and Add Class
-    function checkScrollPos(){
-      if ($(this).scrollTop() >= 700) { //if scroll position is lower than 700px from the top of the screen
-        showBackToTop();
-      } else {
-        hideBackToTop()
-      }
-    }
-    // tell the browser to run the "checkScrollPos()" function just above when the user scrolls
-    $(window).on('scroll', function(){ 
-      checkScrollPos();
-    });
-    //Check the scroll position once when the page loads
-    checkScrollPos();
-  })
-</script>
-<style>
-  html {
-  scroll-behavior:smooth
-}
-#back-to-top{
-  height:50px;
-  width:50px;
-  position:fixed;
-  right:0;
-  z-index:99;
-
-  border-radius:50%;
-  box-shadow: 0px 0px 5px #ccc;
-  margin:17px;
-  background:white;
-
-  /Position Out of View/
-  bottom:-150px;
-  opacity:0;
-  transition: all .5s ease;
-}
-#back-to-top.show-btt{
-  /Position In View/
-  bottom:0;
-  opacity:1;
-  transition: all .5s ease;
-}
-</style>
+       <!-- Scroll window -->
+        <div class="info-text"></div>
+        <div class="tui-window white-168 black-255-text">
+            <fieldset class="tui-fieldset">
+                <legend class="white-255-text">[ RENEGADE.DOC ]</legend>
+                <div style="overflow-y: auto; height: 520px; width: 800px; white-space: normal">
+                    <span class="tui-shadow"> Renegade BBS Manual - Work in Progress ...  </span><br><br>
 
 
-
-</header>
-	 
-
+			<br/>
 <b style="color:#F0FF00">		                   ----[ Renegade BBS v1.3x/DOS Manual ]----</b>
 			<br/>
 			<br/>
@@ -15600,85 +15493,21 @@ BLANK-><br/>
        %S|15 is going to play TradeWars!<br/>
 BLANK-><br/><br/>
        It is imperitive that you leave in necessary blanks!<br/><br/><br/>
-								
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 
+---<br>
+[EOF]
 <br>
             </fieldset>
         </div>
 
-
-</div>
-
-
-
-    </div>
+						
+								
 
 
 
 
 
 
-</div>
-
-    </div>
-
-
-    </div><center>
-        <img src="resources/history.png" alt="MetroNet Echo Listings">
-</center>
-
-
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const dropdown = toggle.nextElementSibling;
-            dropdown.classList.toggle('active');
-        });
-    });
-});
-
-function openFullscreen(imageSrc) {
-    const overlay = document.getElementById('imageOverlay');
-    const expandedImageContainer = document.getElementById('expandedImageContainer');
-    const expandedImage = document.getElementById('expandedImage');
-
-    // Set the source of the expanded image
-    expandedImage.src = imageSrc;
-
-    // Show overlay and expanded image container
-    overlay.style.display = 'block';
-    expandedImageContainer.style.display = 'block';
-}
-
-function closeFullscreen() {
-    const overlay = document.getElementById('imageOverlay');
-    const expandedImageContainer = document.getElementById('expandedImageContainer');
-
-    // Hide overlay and expanded image container
-    overlay.style.display = 'none';
-    expandedImageContainer.style.display = 'none';
-}
-    // Toggle collapsible content display
-    document.querySelectorAll('.collapsible-header').forEach(header => {
-        header.addEventListener('click', () => {
-            header.classList.toggle('active');
-            const content = header.nextElementSibling;
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-
-</script>
 </body>
-
 </html>
+
