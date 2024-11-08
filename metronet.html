@@ -115,11 +115,26 @@
             color: white;
         }
 
-        .container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-        }
+
+.container {
+    display: flex;
+    gap: 10px; /* Space between images */
+    flex-wrap: wrap;
+}
+
+.image-container {
+    width: 48%; /* Sets each image container to take 48% of the width */
+    display: flex;
+    justify-content: center; /* Centers the image horizontally */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto; /* Ensures aspect ratio is maintained */
+    object-fit: contain; /* Maintains aspect ratio within the container */
+}
+
+
 
         .side-by-side {
             width: 48%; /* Adjust the width as needed */
@@ -348,7 +363,7 @@ function closeFullscreen() {
 
   <div class="center" style="margin-top: 1px; margin-bottom: 1px">
 
-
+<br>
         <!-- Panel title -->
         <div class="info-text"></div>
         <div class="tui-panel white-168 black-255-text">
@@ -367,10 +382,13 @@ function closeFullscreen() {
 
 
 <div class="container">
-        <img src="resources/metrohis.png" alt="MetroNet History" style="max-width: 700px;">
-        <img src="resources/echo.png" alt="MetroNet Echo Listings">
+    <div class="image-container">
+<br>        <img src="resources/metrohis.png" alt="MetroNet History" style="max-width: 120%; height: auto; object-fit: contain;">
     </div>
-
+    <div class="image-container">
+<br>        <img src="resources/echo.png" alt="MetroNet Echo Listings" style="max-width: 120%; height: auto; object-fit: contain;">
+    </div>
+</div>
 
 
 
