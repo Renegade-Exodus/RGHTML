@@ -249,27 +249,25 @@
     max-width: 180px; /* To prevent text from stretching too wide */
 }
 
-/* Scrollbar styling for Chrome, Edge, and Safari */
-::-webkit-scrollbar {
+
+#fTelnetContainer::-webkit-scrollbar {
     width: 12px; /* Width of the scrollbar */
-    height: 12px; /* Height of the scrollbar (for horizontal scrollbars) */
 }
 
-::-webkit-scrollbar-track {
-    background: #000000; /* Background of the scrollbar track */
+#fTelnetContainer::-webkit-scrollbar-track {
+    background: #333; /* Background of the scrollbar track */
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #000000; /* Color of the scrollbar thumb */
-    border-radius: 10px; /* Roundness of the scrollbar thumb */
-    border: 3px solid #000000; /* Adds padding around the thumb */
+#fTelnetContainer::-webkit-scrollbar-thumb {
+    background-color: #000; /* Scrollbar color */
+    border-radius: 10px; /* Rounded edges for scrollbar thumb */
 }
 
-/* Scrollbar styling for Firefox */
-* {
-    scrollbar-width: thin; /* Sets scrollbar width to thin */
-    scrollbar-color: #000000 #000000; /* Thumb color followed by track color */
+#fTelnetContainer {
+    scrollbar-color: black black; /* Scrollbar color for Firefox */
+    scrollbar-width: thin; /* Scrollbar width for Firefox */
 }
+
 
 body {
     padding-top: 150px;
