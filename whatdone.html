@@ -249,7 +249,27 @@
     max-width: 180px; /* To prevent text from stretching too wide */
 }
 
+/* Scrollbar styling for Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar (for horizontal scrollbars) */
+}
 
+::-webkit-scrollbar-track {
+    background: #f5f5f5; /* Background of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #333; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Roundness of the scrollbar thumb */
+    border: 3px solid #f5f5f5; /* Adds padding around the thumb */
+}
+
+/* Scrollbar styling for Firefox */
+* {
+    scrollbar-width: thin; /* Sets scrollbar width to thin */
+    scrollbar-color: #333 #f5f5f5; /* Thumb color followed by track color */
+}
     </style>
 </head>
 
