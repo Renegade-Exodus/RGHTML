@@ -269,6 +269,33 @@
 }
 
 
+
+/* For Webkit-based browsers (like Chrome) */
+#fTelnetContainer::-webkit-scrollbar {
+    width: 12px;
+}
+
+#fTelnetContainer::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+#fTelnetContainer::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
+}
+
+#fTelnetContainer::-webkit-scrollbar-button {
+    background-color: #000000;
+}
+
+/* For Firefox */
+#fTelnetContainer {
+    scrollbar-color: black black; /* Sets the scrollbar thumb and track color */
+    scrollbar-width: thin; /* Adjusts scrollbar width */
+}
+
+
+
 body {
     padding-top: 150px;
 }
