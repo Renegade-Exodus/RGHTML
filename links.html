@@ -250,6 +250,15 @@
 }
 
 
+/* Highlight the active tab */
+.sidebar a.active {
+    background-color: #333;
+    color: #ffffff;
+    padding-left: 25px;
+    box-shadow: inset 2px 0 0 0 #ffff02; /* White highlight for active item */
+}
+
+
     </style>
 </head>
 
@@ -838,7 +847,19 @@ function closeFullscreen() {
 
 </div></div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebarLinks = document.querySelectorAll('.sidebar a');
+        const currentPath = window.location.pathname;
 
+        sidebarLinks.forEach(link => {
+            const linkPath = new URL(link.href).pathname;
+            if (linkPath === currentPath) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
