@@ -299,7 +299,29 @@
 body {
     padding-top: 150px;
 }
-    </style>
+
+/* Specific styling for the Donate link */
+.sidebar .donate-link a {
+    color: #ff0000;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-left: 0; /* Ensures no padding shift */
+    transition: none; /* Disables transition for this link */
+    box-shadow: none; /* No shadow effect */
+}
+
+/* Prevent movement or style changes on hover */
+.sidebar .donate-link a:hover {
+    background-color: transparent;
+    color: #ff0000; /* Keeps text color consistent */
+    padding-left: 0; /* Keeps padding fixed */
+    box-shadow: none; /* Ensures no shadow change */
+}
+ 
+
+   </style>
 </head>
 
 <body>
@@ -319,8 +341,14 @@ body {
             <li><a href="contact.html"><i class="fas fa-envelope"></i>CONTACT</a></li>
         </ul>
 <br>
-<center><span style="font-size: 9px;">&copy; 2003 - 2024 The Renegade BBS Development Team
-</span></center>
+<center><span style="font-size: 9px;">&copy; 2003 - 2024 The Renegade BBS Development Team</span>
+
+<br>
+<br>
+<ul>
+    <li class="donate-link"><a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US"><img src="resources/paypal.png" alt="Donate"  width="200" height="75"></a></li></ul></center>
+
+</center>
 
     </div>
 

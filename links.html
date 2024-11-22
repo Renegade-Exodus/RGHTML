@@ -280,6 +280,26 @@
     box-shadow: inset 2px 0 0 0 #ffff02; /* White highlight for active item */
 }
 
+/* Specific styling for the Donate link */
+.sidebar .donate-link a {
+    color: #ff0000;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding-left: 0; /* Ensures no padding shift */
+    transition: none; /* Disables transition for this link */
+    box-shadow: none; /* No shadow effect */
+}
+
+/* Prevent movement or style changes on hover */
+.sidebar .donate-link a:hover {
+    background-color: transparent;
+    color: #ff0000; /* Keeps text color consistent */
+    padding-left: 0; /* Keeps padding fixed */
+    box-shadow: none; /* Ensures no shadow change */
+}
+
 
     </style>
 </head>
@@ -301,10 +321,19 @@
             <li><a href="contact.html"><i class="fas fa-envelope"></i>CONTACT</a></li>
         </ul>
 <br>
-<center><span style="font-size: 9px;">&copy; 2003 - 2024 The Renegade BBS Development Team
-</span></center>
+<center><span style="font-size: 9px;">&copy; 2003 - 2024 The Renegade BBS Development Team</span>
+<br>
+<br>
+<ul>
+    <li class="donate-link"><a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US"><img src="resources/paypal.png" alt="Donate"  width="200" height="75"></a></li></ul></center>
+
+
+</center>
 
     </div>
+
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -329,12 +358,6 @@
 <center>
       <img src="resources/title.png" alt="https://www.rgbbs.info" class="fixed-image" width="900" height="100">
 </center>
-
-
-
-
-
-
 
 <script>
 
@@ -386,7 +409,7 @@ function closeFullscreen() {
         <div class="tui-window">
 
             <fieldset class="tui-fieldset" style="width: 610px">
-                <legend>[ Telnet Clients Download ]</legend>
+                <legend>[ <b style="color:#E0F10B">Telnet Clients Download</b style="color:#E0F10B"> ]</legend>
                <b> <center>Download a Telnet Client Below<br></b></center>
                 <br>
                 <div class="tui-divider"></div><br>
@@ -407,293 +430,12 @@ function closeFullscreen() {
         <div class="tui-window">
         <div class="info-text"></div>
             <fieldset class="tui-fieldset" style="width: 610px">
-                <legend>[ Miscellaneous BBS Sites ]</legend>
+                <legend>[ <b style="color:#E0F10B">BBS Door Game Sites</b style="color:#E0F10B"> ]</legend>
                 <ul>
 
 
-<center>
-<p style="color:#E0F10B";>────────<b style="color:#78786E">[</b style="color:#78786E"> FOSSIL & Telnet <b style="color:#78786E">]</b style="color:#78786E">───────</p>
-</center>
 
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.digsys.se/Obsolete/Default.aspx"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> ADF FOSSIL Driver - AnDan Software <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
 
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.pcmicro.com/bnu/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BNU FOSSIL Driver - David Nugent <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.tacticalsoftware.com/products/com-ip-virtual-modem-redirector?srsltid=AfmBOoqibmryvnZP4-L-PTSmm9AOukb_pnbWYp1xL3BbBrbN-O12GNpc"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> COM/IP - Tactical Software <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                   <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.randm.ca/products/ftelnet/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> fTelnet - R & M Software <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                   <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.randm.ca/products/gamesrv/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> GameSrv  - R & M Software <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://pcmicro.com/NetFoss/download.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> NetFOSS - PC Micro <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://pcmicro.com/NetSerial/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> NetSerial - PC Micro <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://web.archive.org/web/20041127141341/http://www.gwinn.com/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> SIO2K - Ray Gwinn - <b style="color:#FF1102">Archived Site </b style="color:#FF1102"> <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-<center><br>
-<p style="color:#E0F10B";>─────────<b style="color:#78786E">[</b style="color:#78786E"> FTN Mailers <b style="color:#78786E">]</b style="color:#78786E">─────────</p>
-</center>
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.ritlabs.com/en/products/argus/download.php"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Argus - Ritlabs <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://download.binkd.org"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BinkD Download Site <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://sourceforge.net/projects/btxe/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BinkleyTerm XE <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.dbridgemailer.com/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> D'Bridge Mailer <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                   <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.softeq.de/old/Products/FastEcho/fastecho.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> FastEcho <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                   <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://fmail.nl.eu.org/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> FMail Development <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                   <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://www.defsol.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> FrontDoor - Definite Solutions <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                   <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.intermail.net/downloads"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> InterMail FTN Mailer <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                   <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://web.archive.org/web/20161110145050/http://members.shaw.ca/InternetRex/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Internet Rex - <b style="color:#FF1102">Archived Site </b style="color:#FF1102"> <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-<center><br>
-<p style="color:#E0F10B";>──────────<b style="color:#78786E">[</b style="color:#78786E"> BBS Links <b style="color:#78786E">]</b style="color:#78786E">──────────</p>
-</center>
-
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://16colo.rs"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> 16colors ANSI/ASCII Art Archives <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.acid.org/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> ACiD Productions <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://web.archive.org/web/20230209083117/https://allfix.com/downloads/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Allfix File Processor - <b style="color:#FF1102">Archived Site </b style="color:#FF1102"> <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://archives.thebbs.org"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BBS Archives <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://bbscorner.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BBS Corner <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://bbsgamedev.com/intro.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BBS Game Dev - Help with DDPLUS <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://breakintochat.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Break Into Chat <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://cd.textfiles.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> cd.textfiles.com <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://fido-z1.darkrealms.ca"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> FidoNet Zone 1 <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://golded-plus.sourceforge.net/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> GoldED+ Message Editor <b style="color:#78786E">]</b style="color:#78786E"></span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://sourceforge.net/projects/makenl/files/makenl"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> MakeNL - Nodelist Creator <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://wmcbrine.com/MultiMail/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> MultiMail - Offline Mail Reader <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://source.thebbs.org/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> My BBS Source Site <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.ot-track.de/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> O/T - Track <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://archive.org/details/cdbbsarchive?sort=-date"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Shareware CDs Collections <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.telnetbbsguide.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Telnet BBS Guide <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://www.xtcabandonware.com/game/954/the-draw-v-463"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> TheDraw - ANSI Graphics Editor <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="https://ftnapps.sourceforge.net/tinytic.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> TinyTIC <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-                    <li class="cyan-255-hover black-255-text-hover">
-                        <a href="#!">
-                            <span><a href="http://www.winpoint.org/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> WinPoint <b style="color:#78786E">]</b style="color:#78786E"> </span>
-                        </a>
-                    </li>
-
-
-
-
-                </ul><br>
-            </fieldset>
-        </div>
-
-
-
-</div></div>
-
-            <div class="side-by-side">
-
-
-
-
-
-
-
-
-      <!-- Item select -->
-            <div class="side-by-side">
-        <div class="tui-window">
-        <div class="info-text"></div>
-            <fieldset class="tui-fieldset" style="width: 610px">
-                <legend>[ BBS Door Game Sites ]</legend>
-                <ul>
-
-<br>
 
                     <li class="cyan-255-hover black-255-text-hover">
                         <a href="#!">
@@ -964,7 +706,7 @@ function closeFullscreen() {
                     </li>
 
 
-<br>
+
                 </ul>
             </fieldset>
         </div>
@@ -972,6 +714,336 @@ function closeFullscreen() {
 
 
 </div></div>
+
+            <div class="side-by-side">
+
+
+
+
+      <!-- Item select -->
+            <div class="side-by-side">
+        <div class="tui-window">
+        <div class="info-text"></div>
+            <fieldset class="tui-fieldset" style="width: 610px">
+                <legend>[ <b style="color:#E0F10B">Miscellaneous BBS Links</b style="color:#E0F10B"> ]</legend>
+                <ul>
+
+
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://16colo.rs"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> 16colors ANSI/ASCII Art Archives <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.acid.org/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> ACiD Productions <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://web.archive.org/web/20230209083117/https://allfix.com/downloads/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Allfix File Processor - <b style="color:#FF1102">Archived Site </b style="color:#FF1102"> <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://archives.thebbs.org"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BBS Archives <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://bbscorner.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BBS Corner <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://bbsgamedev.com/intro.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BBS Game Dev - Help with DDPLUS <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://breakintochat.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Break Into Chat <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://cd.textfiles.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> cd.textfiles.com <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://fido-z1.darkrealms.ca"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> FidoNet Zone 1 <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://golded-plus.sourceforge.net/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> GoldED+ Message Editor <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://sourceforge.net/projects/makenl/files/makenl"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> MakeNL - Nodelist Creator <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://wmcbrine.com/MultiMail/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> MultiMail - Offline Mail Reader <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://source.thebbs.org/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> My BBS Source Site <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.ot-track.de/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> O/T - Track <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.kennedysoftware.ie/patchcrt.htm"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> PatchCRT - RTE200 DOS .EXE Patch <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://archive.org/details/cdbbsarchive?sort=-date"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Shareware CDs Collections <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.telnetbbsguide.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Telnet BBS Guide <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.xtcabandonware.com/game/954/the-draw-v-463"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> TheDraw - ANSI Graphics Editor <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://ftnapps.sourceforge.net/tinytic.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> TinyTIC <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.ipnet6.org/tppatch.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> TPPatch - RTE200 DOS .EXE Patch <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://www.winpoint.org/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> WinPoint <b style="color:#78786E">]</b style="color:#78786E"> </span>
+                        </a>
+                    </li>
+
+
+
+
+
+                </ul>
+            </fieldset>
+        </div>
+
+
+
+</div>
+
+
+
+
+      <!-- Item select -->
+            <div class="side-by-side">
+        <div class="tui-window">
+        <div class="info-text"></div>
+            <fieldset class="tui-fieldset" style="width: 610px">
+                <legend>[ <b style="color:#E0F10B">FTN Mailers & Tossers</b style="color:#E0F10B"> ]</legend>
+                <ul>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.ritlabs.com/en/products/argus/download.php"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Argus - Ritlabs <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://download.binkd.org"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BinkD Download Site <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://sourceforge.net/projects/btxe/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BinkleyTerm XE <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.dbridgemailer.com/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> D'Bridge Mailer <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                   <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.softeq.de/old/Products/FastEcho/fastecho.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> FastEcho <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                   <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://fmail.nl.eu.org/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> FMail Development <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                   <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://www.defsol.com"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> FrontDoor - Definite Solutions <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                   <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.intermail.net/downloads"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> InterMail FTN Mailer <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                   <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://web.archive.org/web/20161110145050/http://members.shaw.ca/InternetRex/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> Internet Rex - <b style="color:#FF1102">Archived Site </b style="color:#FF1102"> <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+            </fieldset>
+        </div>
+
+
+
+</div>
+
+
+      <!-- Item select -->
+            <div class="side-by-side">
+        <div class="tui-window">
+        <div class="info-text"></div>
+            <fieldset class="tui-fieldset" style="width: 610px">
+                <legend>[ <b style="color:#E0F10B">FOSSIL & Telnet</b style="color:#E0F10B"> ]</legend>
+                <ul>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.digsys.se/Obsolete/Default.aspx"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> ADF FOSSIL Driver - AnDan Software <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.pcmicro.com/bnu/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> BNU FOSSIL Driver - David Nugent <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.tacticalsoftware.com/products/com-ip-virtual-modem-redirector?srsltid=AfmBOoqibmryvnZP4-L-PTSmm9AOukb_pnbWYp1xL3BbBrbN-O12GNpc"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> COM/IP - Tactical Software <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                   <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.randm.ca/products/ftelnet/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> fTelnet - R & M Software <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                   <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="https://www.randm.ca/products/gamesrv/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> GameSrv  - R & M Software <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://pcmicro.com/NetFoss/download.html"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> NetFOSS - PC Micro <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://pcmicro.com/NetSerial/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> NetSerial - PC Micro <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+                    <li class="cyan-255-hover black-255-text-hover">
+                        <a href="#!">
+                            <span><a href="http://web.archive.org/web/20041127141341/http://www.gwinn.com/"><b style="color:#36FF33">-► </b style="color:#78786E"><b style="color:#78786E">[</b style="color:#78786E"> SIO2K - Ray Gwinn - <b style="color:#FF1102">Archived Site </b style="color:#FF1102"> <b style="color:#78786E">]</b style="color:#78786E"></span>
+                        </a>
+                    </li>
+
+
+
+                </ul>
+            </fieldset>
+        </div>
+
+
+
+</div>
+
+
+
+
+
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
