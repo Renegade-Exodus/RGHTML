@@ -247,3 +247,20 @@ function filterGallery(category, btn) {
       }
    });
 }
+
+// ---- fTelnet resize fix ----
+function resizeFTelnetIfVisible(sectionId) {
+    if (sectionId === 'Ftelnet') {
+        setTimeout(() => {
+            if (window.fTelnet && window.fTelnet.Terminal) {
+                window.fTelnet.Terminal.resize();
+            }
+        }, 150);
+    }
+}
+
+window.addEventListener('resize', () => {
+    if (window.fTelnet && window.fTelnet.Terminal) {
+        window.fTelnet.Terminal.resize();
+    }
+});
