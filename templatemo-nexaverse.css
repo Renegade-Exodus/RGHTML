@@ -342,6 +342,14 @@ body {
 	animation-delay: 1.6s;
 }
 
+.menu-item.initial-load:nth-child(7) {
+	animation-delay: 1.7s;
+}
+
+.menu-item.initial-load:nth-child(8) {
+	animation-delay: 1.8s;
+}
+
 @keyframes menuAppear {
 	to {
 		opacity: 1;
