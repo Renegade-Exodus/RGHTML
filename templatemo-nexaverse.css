@@ -1818,3 +1818,15 @@ body {
 		max-width: 250px;
 	}
 }
+/* === fTelnet Fullscreen Fix === */
+
+.ftelnet-wrapper {
+    width: 100%;
+    height: calc(100vh - 120px); /* leaves room for header/back button */
+    display: flex;
+}
+
+#fTelnetContainer {
+    width: 100%;
+    height: 100%;
+}
