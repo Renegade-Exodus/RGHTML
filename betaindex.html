@@ -8,6 +8,145 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="templatemo-nexaverse.css">
 
+
+    <style>
+      /* LINKS LIGHTBAR */
+      .links-lightbar{
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 16px;
+        background: rgba(0,0,0,.72);
+        border: 1px solid rgba(255,255,255,.10);
+      }
+      .links-lightbar *{ box-sizing: border-box; }
+
+      .links-lightbar{
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        font-size: 14px;
+        color: rgba(255,255,255,.82);
+      }
+
+      .links-lightbar .bbs-cols{
+        display:grid;
+        grid-template-columns: repeat(3, minmax(0,1fr));
+        gap: 12px;
+        align-items:start;
+        min-width: 1080px; /* lock columns; allow scroll */
+      }
+      .links-lightbar{ overflow-x: auto; }
+
+      .links-lightbar .bbs-col-stack{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+        min-width: 0;
+      }
+
+      .links-lightbar .bbs-box{
+        background: rgba(255,255,255,.03);
+        border: 1px solid rgba(255,255,255,.10);
+        border-radius: 14px;
+        padding: 12px;
+        box-shadow: 0 10px 22px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05);
+        backdrop-filter: blur(8px);
+      }
+
+      .links-lightbar .legend{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+        padding: 8px 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,.08);
+        background: rgba(0,0,0,.35);
+      }
+      .links-lightbar .legend .title{
+        color: rgba(224,241,11,.95);
+        font-weight: 900;
+        letter-spacing: .2px;
+      }
+      .links-lightbar .legend .hint{
+        color: rgba(255,255,255,.55);
+        font-size: 12px;
+        letter-spacing: .2px;
+        white-space: nowrap;
+      }
+
+      .links-lightbar ul.ansi{ list-style:none; padding:0; margin:0; }
+      .links-lightbar ul.ansi li{ margin: 4px 0; }
+
+      .links-lightbar a.item{
+        display:flex;
+        align-items:center;
+        gap: 10px;
+        padding: 6px 10px;
+        border-radius: 10px;
+        text-decoration:none;
+        color: rgba(255,255,255,.82);
+        border: 1px solid rgba(255,255,255,.06);
+        background: rgba(255,255,255,.03);
+        transition: background .12s ease, box-shadow .12s ease, border-color .12s ease;
+        outline:none;
+      }
+      .links-lightbar a.item:hover{
+        border-color: rgba(255,255,255,.14);
+        background: rgba(255,255,255,.045);
+      }
+
+      /* LightBar (cyan) */
+      .links-lightbar a.item:hover,
+      .links-lightbar a.item:focus-visible,
+      .links-lightbar a.item.is-active{
+        background: rgba(0,255,255,.22);
+        border-color: rgba(0,255,255,.40);
+        box-shadow: 0 0 0 4px rgba(0,255,255,.22);
+        color: rgba(255,255,255,.92);
+      }
+
+      .links-lightbar .arrow{
+        width: 20px;
+        opacity: 0;
+        color: #36ff33;
+        transform: translateX(-4px);
+        transition: opacity .10s ease, transform .10s ease;
+        flex: 0 0 auto;
+      }
+      .links-lightbar a.item:hover .arrow,
+      .links-lightbar a.item:focus-visible .arrow,
+      .links-lightbar a.item.is-active .arrow{
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .links-lightbar .label{
+        flex:1 1 auto;
+        white-space: nowrap;
+        overflow:hidden;
+        text-overflow: ellipsis;
+      }
+      .links-lightbar .bracket{ color: #8f8f86; }
+      .links-lightbar .archived{ color: #ff4b4b; font-weight: 900; }
+
+      .links-lightbar a.item:hover .bracket,
+      .links-lightbar a.item:focus-visible .bracket,
+      .links-lightbar a.item.is-active .bracket{
+        color: rgba(255,255,255,.85);
+      }
+      .links-lightbar a.item:hover .archived,
+      .links-lightbar a.item:focus-visible .archived,
+      .links-lightbar a.item.is-active .archived{
+        color: rgba(255,255,255,.92);
+      }
+
+      .links-hint{
+        margin-top: 10px;
+        color: rgba(255,255,255,.55);
+        font-size: 12px;
+      }
+    </style>
+
 </head>
 <body>
 
@@ -78,10 +217,140 @@
 <CENTER>
 <div data-aidaform-widget="form-2019-12" data-url="https://tjm694.aidaform.com/free-basic-contact-form68" data-width="100%" data-height="500px" data-do-resize></div><script>(function(){var r,d=document,gt=d.getElementById,cr=d.createElement,tg=d.getElementsByTagName,id="aidaform-embed";if(!gt.call(d,id)){r=cr.call(d,"script");r.id=id;r.src="https://embed.aidaform.com/embed.js";(d.head || tg.call(d,"head")[0]).appendChild(r);}})()</script>
 </CENTER>						</div>
+            <div class="content-section" id="Links">
+              <div class="small-logo">
+                <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+              </div>
+
+              <div class="links-lightbar">
+                <div class="bbs-cols">
+                  <section class="bbs-box">
+                    <div class="legend">
+                      <div class="title">[ BBS Doors &amp; Games ]</div>
+                      <div class="hint">↑ ↓ Enter</div>
+                    </div>
+                    <ul class="ansi" role="menu" aria-label="BBS Doors and Games">
+                      <li role="none"><a class="item" role="menuitem" href="http://bbs.foolsquarter.com/files.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Freeware Doors &amp; Keymakers <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://thebbs.org/ambroshia/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Ambroshia: Test of Time <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://web.archive.org/web/20120414025843/http://www.redaxe.com/abr2.htm"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Arrowbridge I &amp; II - <span class="archived">Archived Site</span> <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://bbswordle.com/downloads.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> BBS Wordle <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://bbsdoors.scottcomstock.com/bwlotto/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> BigWins Lotto <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://castlecamelot.sourceforge.net/camelot5.htm"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Castle Camelot LORD Links Page <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://x-bit.org/info/catty/cattyware.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Cattyware Software <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://outpostbbs.net/cheepware.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Cheepware <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://darklands.cx"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Darklands <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://jackphla.sh/darkness/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Darkness <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://www.doorgames.org/noframe.htm"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> DDS - Doorware Distribution System <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://zeltar.tripod.com/doz-door.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Defenders of Zentax <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://dmud.thebbs.org/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> DoorMUD <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.pcmicro.com/doorway/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Doorway To DOS <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://flaxsoftware.20m.com/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Flax Software - S.A.G.E. <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.dreamlandbbs.org/jezebel/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Jezebel Door Game <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://jibbensoftware.com/bbs-door-games.cfm"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Jibben Software <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.johndaileysoftware.com/products/bbsdoors"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> John Dailey Software <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://www.landofdev.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Land Of Devastation <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://web.archive.org/web/20220319104430/http://lord.lordlegacy.com/downloads/index.php"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> LORD Legacy - <span class="archived">Archived Site</span> <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://www.bbsdoorgames.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> M &amp; S Software <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.randm.ca/bbs/mannirc/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> MannIRC <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://www.prowler-pro.com/n-e-ware"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> N-E-Ware Doors - Lunatix <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://operationoverkill.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Operation Overkill <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.phenomprod.com/Doors"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Phenom Productions <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://hilgemann.com/prochess/index.htm"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> ProChess <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.randm.ca/bbs/telnetdoor/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> R &amp; M Software Telnet Door <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.randm.ca/bbs/rmastermind/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> RMastermind <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.codedojo.com/?p=2526"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> RTReader <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://bbs.foolsquarter.com/sinkem.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Sink'Em! <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://x-bit.org/info/spacequest/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Space Quest 2112 <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.angelfire.com/biz/swttrivia/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Star Wars Trilogy Trivia Door Game <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.ipingthereforeiam.com/bbs/stickman/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Stick-Man! <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.sunrisedoors.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Sunrise Doors <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://sysopscorner.thebbs.org/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> SysOps' Corner <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://github.com/rambkk/The-Pit-bbs-door-game-patch"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> The Pit - Complete Game Patch <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://eisonline.classictw.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Tradewars 2002 <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://castlecamelot.sourceforge.net/igmpage.htm"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Trentsoft LORD IGM Site <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://ultrasoft.fortunecity.ws"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> UltraSoft <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.usurper.info"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Usurper <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://www.sprynex.com/wtlord.php"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> WT-LORD Registration Generator Page <span class="bracket">]</span></span></a></li>
+                    </ul>
+                  </section>
+
+                  <section class="bbs-box">
+                    <div class="legend">
+                      <div class="title">[ Miscellaneous BBS Links ]</div>
+                      <div class="hint">↑ ↓ Enter</div>
+                    </div>
+                    <ul class="ansi" role="menu" aria-label="Miscellaneous BBS Links">
+                      <li role="none"><a class="item" role="menuitem" href="https://16colo.rs"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> 16colors ANSI/ASCII Art Archives <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.acid.org/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> ACiD Productions <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://web.archive.org/web/20230209083117/https://allfix.com/downloads/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Allfix File Processor - <span class="archived">Archived Site</span> <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://archives.thebbs.org"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> BBS Archives <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://bbscorner.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> BBS Corner <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://bbsgamedev.com/intro.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> BBS Game Dev - Help with DDPLUS <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://breakintochat.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Break Into Chat <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://cd.textfiles.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> cd.textfiles.com <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://fido-z1.darkrealms.ca"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> FidoNet Zone 1 <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://golded-plus.sourceforge.net/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> GoldED+ Message Editor <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://sourceforge.net/projects/makenl/files/makenl"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> MakeNL - Nodelist Creator <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://wmcbrine.com/MultiMail/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> MultiMail - Offline Mail Reader <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://source.thebbs.org/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> My BBS Source Site <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.ot-track.de/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> O/T - Track <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.kennedysoftware.ie/patchcrt.htm"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> PatchCRT - RTE200 DOS .EXE Patch <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://archive.org/details/cdbbsarchive?sort=-date"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Shareware CDs Collections <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.telnetbbsguide.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Telnet BBS Guide <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.xtcabandonware.com/game/954/the-draw-v-463"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> TheDraw - ANSI Graphics Editor <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://ftnapps.sourceforge.net/tinytic.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> TinyTIC <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="https://www.ipnet6.org/tppatch.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> TPPatch - RTE200 DOS .EXE Patch <span class="bracket">]</span></span></a></li>
+                      <li role="none"><a class="item" role="menuitem" href="http://www.winpoint.org/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> WinPoint <span class="bracket">]</span></span></a></li>
+                    </ul>
+                  </section>
+
+                  <div class="bbs-col-stack">
+                    <section class="bbs-box">
+                      <div class="legend">
+                        <div class="title">[ FTN Mailers &amp; Tossers ]</div>
+                        <div class="hint">↑ ↓ Enter</div>
+                      </div>
+                      <ul class="ansi" role="menu" aria-label="FTN Mailers and Tossers">
+                        <li role="none"><a class="item" role="menuitem" href="https://www.ritlabs.com/en/products/argus/download.php"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Argus - Ritlabs <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="http://download.binkd.org"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> BinkD Download Site <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://sourceforge.net/projects/btxe/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> BinkleyTerm XE <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://www.dbridgemailer.com/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> D'Bridge Mailer <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://www.softeq.de/old/Products/FastEcho/fastecho.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> FastEcho <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://fmail.nl.eu.org/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> FMail Development <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="http://www.defsol.com"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> FrontDoor - Definite Solutions <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://www.intermail.net/downloads"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> InterMail FTN Mailer <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="http://web.archive.org/web/20161110145050/http://members.shaw.ca/InternetRex/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Internet Rex - <span class="archived">Archived Site</span> <span class="bracket">]</span></span></a></li>
+                      </ul>
+                    </section>
+
+                    <section class="bbs-box">
+                      <div class="legend">
+                        <div class="title">[ FOSSIL &amp; Telnet ]</div>
+                        <div class="hint">↑ ↓ Enter</div>
+                      </div>
+                      <ul class="ansi" role="menu" aria-label="FOSSIL and Telnet">
+                        <li role="none"><a class="item" role="menuitem" href="https://www.digsys.se/Obsolete/Default.aspx"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> ADF FOSSIL Driver - AnDan Software <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://www.pcmicro.com/bnu/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> BNU FOSSIL Driver - David Nugent <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://www.tacticalsoftware.com/products/com-ip-virtual-modem-redirector"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> COM/IP - Tactical Software <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://www.randm.ca/products/ftelnet/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> fTelnet - R &amp; M Software <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="https://www.randm.ca/products/gamesrv/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> GameSrv - R &amp; M Software <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="http://pcmicro.com/NetFoss/download.html"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> NetFOSS - PC Micro <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="http://pcmicro.com/NetSerial/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> NetSerial - PC Micro <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="http://web.archive.org/web/20041127141341/http://www.gwinn.com/"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> SIO2K - Ray Gwinn - <span class="archived">Archived Site</span> <span class="bracket">]</span></span></a></li>
+                        <li role="none"><a class="item" role="menuitem" href="http://wiki.synchro.net/util:svdm"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> SVDM - Virtual DOS Modem <span class="bracket">]</span></span></a></li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+
+                <div class="links-hint">Tip: Hover inside a box to activate its LightBar. Use ↑ ↓ in that box.</div>
+              </div>
+            </div>
 
 
 
-        <div id="contentArea">
+
+        
             <!-- Ftelnet Section -->
             <div class="content-section" id="Ftelnet">
             <div class="small-logo">
@@ -105,5 +374,46 @@
                     </footer>
     </div>
 <script src="templatemo-nexa-scripts.js"></script>
+
+<script>
+  // LightBar limited to the hovered box only (Links section)
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('#Links .bbs-box').forEach(box => {
+      const menu = box.querySelector('ul.ansi');
+      if (!menu) return;
+
+      const items = Array.from(menu.querySelectorAll('a.item'));
+      if (!items.length) return;
+
+      let idx = 0;
+
+      function clearAll(){ items.forEach(a => a.classList.remove('is-active')); }
+
+      function setActive(i, focus=true){
+        clearAll();
+        idx = (i + items.length) % items.length;
+        items[idx].classList.add('is-active');
+        if (focus) items[idx].focus({ preventScroll:true });
+      }
+
+      items.forEach((a,i) => {
+        a.tabIndex = -1;
+
+        a.addEventListener('mouseenter', ()=> setActive(i,false));
+        a.addEventListener('focus', ()=> setActive(i,false));
+
+        a.addEventListener('keydown', (e)=>{
+          if (e.key === 'ArrowDown'){ e.preventDefault(); setActive(idx+1); }
+          else if (e.key === 'ArrowUp'){ e.preventDefault(); setActive(idx-1); }
+          else if (e.key === 'Home'){ e.preventDefault(); setActive(0); }
+          else if (e.key === 'End'){ e.preventDefault(); setActive(items.length-1); }
+        });
+      });
+
+      box.addEventListener('mouseleave', clearAll);
+    });
+  });
+</script>
+
 </body>
 </html>
