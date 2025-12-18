@@ -28,7 +28,8 @@ https://templatemo.com/tm-603-nexaverse
 
 body {
 	font-family: 'Outfit', sans-serif;
-	background: var(--dark-1);
+/*	background: var(--dark-1); */
+        background: #000000;
 	color: #ffffff;
 	overflow-x: hidden;
 	min-height: 100vh;
