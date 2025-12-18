@@ -98,42 +98,11 @@ body {
 
 <body>
 
-
-<script>
-
-function openFullscreen(imageSrc) {
-    const overlay = document.getElementById('imageOverlay');
-    const expandedImageContainer = document.getElementById('expandedImageContainer');
-    const expandedImage = document.getElementById('expandedImage');
-
-    // Set the source of the expanded image
-    expandedImage.src = imageSrc;
-
-    // Show overlay and expanded image container
-    overlay.style.display = 'block';
-    expandedImageContainer.style.display = 'block';
-}
-
-function closeFullscreen() {
-    const overlay = document.getElementById('imageOverlay');
-    const expandedImageContainer = document.getElementById('expandedImageContainer');
-
-    // Hide overlay and expanded image container
-    overlay.style.display = 'none';
-    expandedImageContainer.style.display = 'none';
-}</script>
-
 <a href="betaindex.html" class="back-btn">← Back to Menu</a>
 
 <!-- Banner -->
 						<div id="banner"><center>
-
-
-
- <div class="ftelnet-mask"> 
- <div id="fTelnetContainer" class="fTelnetContainer"></div> 
-
-
+<div id="fTelnetContainer" class="fTelnetContainer"></div>
 <script>document.write('<script src="//embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js?v=' + (new Date()).getTime() + '"><\/script>');</script>
 <script>
     var Options = new fTelnetOptions();
@@ -161,7 +130,6 @@ function closeFullscreen() {
 
 				</div>
 			</div>
-
 
 </body>
 </html>
