@@ -24,6 +24,12 @@
     z-index: 1;
 }
 
+/* Hide grid behind fTelnet window */
+#fTelnetContainer {
+    position: relative;
+    z-index: 10;
+    background-color: #000000; /* solid black blocks grid */
+}
 
 
 .back-btn {
@@ -170,6 +176,7 @@ function closeFullscreen() {
 
 <!-- Banner -->
 						<div id="banner"><center>
+<div class="ftelnet-mask">
 <div id="fTelnetContainer" class="fTelnetContainer"></div>
 <script>document.write('<script src="//embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js?v=' + (new Date()).getTime() + '"><\/script>');</script>
 <script>
@@ -202,4 +209,3 @@ function closeFullscreen() {
 
 </body>
 </html>
-

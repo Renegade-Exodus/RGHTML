@@ -1849,3 +1849,11 @@ body {
     position: relative;
     z-index: 10;
 }
+/* fTelnet window mask */
+.ftelnet-mask {
+    position: relative;
+    z-index: 10;
+    background-color: #000000;
+    padding: 10px; /* optional frame */
+    border-radius: 6px; /* optional */
+}
