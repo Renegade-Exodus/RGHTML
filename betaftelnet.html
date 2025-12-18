@@ -42,6 +42,55 @@
     margin-top: 15px;
     max-width: 180px; /* To prevent text from stretching too wide */
 }
+#fTelnetContainer::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+#fTelnetContainer::-webkit-scrollbar-track {
+    background: #000000; /* Background of the scrollbar track */
+}
+
+#fTelnetContainer::-webkit-scrollbar-thumb {
+    background-color: #000000; /* Scrollbar color */
+    border-radius: 10px; /* Rounded edges for scrollbar thumb */
+}
+
+#fTelnetContainer {
+    scrollbar-color: black black; /* Scrollbar color for Firefox */
+    scrollbar-width: thin; /* Scrollbar width for Firefox */
+}
+
+
+
+/* For Webkit-based browsers (like Chrome) */
+#fTelnetContainer::-webkit-scrollbar {
+    width: 12px;
+}
+
+#fTelnetContainer::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+#fTelnetContainer::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
+}
+
+#fTelnetContainer::-webkit-scrollbar-button {
+    background-color: #000000;
+}
+
+/* For Firefox */
+#fTelnetContainer {
+    scrollbar-color: black black; /* Sets the scrollbar thumb and track color */
+    scrollbar-width: thin; /* Adjusts scrollbar width */
+}
+
+
+
+body {
+    padding-top: 150px;
+}
 
 </style>
 <body>
