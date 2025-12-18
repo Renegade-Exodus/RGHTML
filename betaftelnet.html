@@ -24,6 +24,31 @@
     z-index: 1;
 }
 
+/* Centering wrapper (does NOT block grid) */
+.ftelnet-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Mask ONLY the terminal area */
+.ftelnet-mask {
+    background-color: #000000;
+    padding: 8px;              /* thin frame */
+    border-radius: 6px;
+}
+
+/* Actual terminal */
+#fTelnetContainer {
+    width: 80vw;               /* adjust if desired */
+    max-width: 1200px;
+    height: 75vh;
+    background-color: #000000;
+}
+
+
 /* Hide grid behind fTelnet window */
 #fTelnetContainer {
     position: relative;
@@ -176,8 +201,19 @@ function closeFullscreen() {
 
 <!-- Banner -->
 						<div id="banner"><center>
-<div class="ftelnet-mask">
-<div id="fTelnetContainer" class="fTelnetContainer"></div>
+
+
+<div class="ftelnet-wrapper">
+    <div class="ftelnet-mask">
+        <div id="fTelnetContainer"></div>
+    </div>
+</div>
+
+
+/* <div class="ftelnet-mask"> /*
+/* <div id="fTelnetContainer" class="fTelnetContainer"></div> /*
+
+
 <script>document.write('<script src="//embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js?v=' + (new Date()).getTime() + '"><\/script>');</script>
 <script>
     var Options = new fTelnetOptions();
