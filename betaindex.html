@@ -30,7 +30,7 @@
 
         <!-- Menu Grid -->
         <div class="menu-grid" id="menuGrid">
-<a href="ftelnet.html" class="menu-link">
+<a href="betaftelnet.html" class="menu-link">
     <div class="menu-item initial-load">
         <div class="menu-badge">T</div>
         <div class="menu-title">The Titantic BBS</div>
@@ -92,53 +92,6 @@
                     </div>
 						</div>
 
-
-
-<script>
-let fTelnetInstance = null;
-
-function startFtelnet() {
-    const container = document.getElementById('fTelnetContainer');
-    if (!container) return;
-
-    // Hard size BEFORE init
-    container.style.width = '75vw';
-    container.style.height = '75vh';
-
-    // Destroy old instance if exists
-    if (fTelnetInstance) {
-        try { fTelnetInstance.Disconnect(); } catch(e){}
-        fTelnetInstance = null;
-        container.innerHTML = '';
-    }
-
-    // Create new instance
-    fTelnetInstance = new fTelnetClient('fTelnetContainer', Options);
-
-    // FORCE resize after render
-    setTimeout(forceFtelnetResize, 250);
-}
-
-function forceFtelnetResize() {
-    if (!fTelnetInstance) return;
-
-    // This is the key call
-    if (typeof fTelnetInstance.Resize === 'function') {
-        fTelnetInstance.Resize();
-    }
-
-    // Safety: force canvas to container size
-    const canvas = document.querySelector('#fTelnetContainer canvas');
-    const rect = document.getElementById('fTelnetContainer').getBoundingClientRect();
-
-    if (canvas) {
-        canvas.width  = rect.width;
-        canvas.height = rect.height;
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-    }
-}
-</script>
 
 
 
