@@ -1845,3 +1845,7 @@ body {
     color: inherit;
     display: block;
 }
+#fTelnetContainer {
+    position: relative;
+    z-index: 10;
+}
