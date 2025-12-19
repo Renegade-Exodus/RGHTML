@@ -1857,3 +1857,106 @@ body {
     padding: 10px; /* optional frame */
     border-radius: 6px; /* optional */
 }
+/* Highlight the Latest Release box */
+.latest-box {
+  border-color: rgba(255, 215, 0, 0.6);
+  box-shadow:
+    0 0 0 2px rgba(255, 215, 0, 0.25),
+    0 14px 30px rgba(0,0,0,.6);
+}
+
+/* Brighter legend */
+.latest-box .legend {
+  background: linear-gradient(
+    90deg,
+    rgba(255,215,0,.25),
+    rgba(0,255,255,.15)
+  );
+  border-color: rgba(255,215,0,.6);
+}
+
+/* Stronger title */
+.latest-box .legend .title {
+  color: #ffd700;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+}
+
+
+/* ===== FEATURED LATEST RELEASE (ANSI STYLE) ===== */
+.downloads-pane .latest-box{
+  border-color: rgba(255,215,0,.6);
+  box-shadow:
+    0 0 0 2px rgba(255,215,0,.25),
+    0 14px 30px rgba(0,0,0,.6);
+}
+
+.downloads-pane .latest-box .legend{
+  background: linear-gradient(
+    90deg,
+    rgba(255,215,0,.25),
+    rgba(0,255,255,.15)
+  );
+  border-color: rgba(255,215,0,.6);
+}
+
+.downloads-pane .latest-box .legend .title{
+  color: #ffd700;
+  font-weight: 900;
+  letter-spacing: .6px;
+}
+
+
+/* ===== EXTRA POLISH: Featured legend + buttony links + gallery touchups ===== */
+.downloads-pane .latest-box .legend{
+  position: relative;
+  overflow: hidden;
+}
+
+.downloads-pane .latest-box .legend::before{
+  content:"";
+  position:absolute;
+  left:10px; right:10px; bottom:-1px;
+  height:1px;
+  background: linear-gradient(90deg,
+    rgba(255,215,0,0),
+    rgba(255,215,0,.7),
+    rgba(0,255,255,.55),
+    rgba(255,215,0,.7),
+    rgba(255,215,0,0));
+  box-shadow: 0 0 16px rgba(255,215,0,.18);
+}
+
+.downloads-pane .latest-box .legend::after{
+  content:"FEATURED";
+  color:#000;
+  background:#ffd700;
+  border-radius:999px;
+  padding:2px 8px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+/* Button-like feel for the two latest links */
+.downloads-pane .latest-box a.item{
+  border-color: rgba(255,215,0,.25);
+  background: rgba(255,215,0,.06);
+}
+
+.downloads-pane .latest-box a.item:hover,
+.downloads-pane .latest-box a.item:focus-visible,
+.downloads-pane .latest-box a.item.is-active{
+  background: rgba(255,215,0,.22);
+  border-color: rgba(255,215,0,.55);
+  box-shadow: 0 0 0 4px rgba(255,215,0,.18);
+}
+
+/* Tiny gallery polish */
+.downloads-pane .thumbs{
+  border-color: rgba(0,255,255,.16);
+}
+
+.downloads-pane .thumb{
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
+}
