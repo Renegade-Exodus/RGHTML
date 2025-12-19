@@ -1960,3 +1960,17 @@ body {
 .downloads-pane .thumb{
   box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
 }
+
+/* ROBUST MENU STAGGER FIX */
+
+
+/* === ROBUST MENU STAGGER FIX (works with wrapped <a> tiles) === */
+.menu-grid > *:nth-child(1) { --menuDelay: 1.1s; }
+.menu-grid > *:nth-child(2) { --menuDelay: 1.2s; }
+.menu-grid > *:nth-child(3) { --menuDelay: 1.3s; }
+.menu-grid > *:nth-child(4) { --menuDelay: 1.4s; }
+.menu-grid > *:nth-child(5) { --menuDelay: 1.5s; }
+.menu-grid > *:nth-child(6) { --menuDelay: 1.6s; }
+.menu-grid > *:nth-child(7) { --menuDelay: 1.7s; }
+.menu-grid > *:nth-child(8) { --menuDelay: 1.8s; }
+.menu-grid > * .menu-item.initial-load { animation-delay: var(--menuDelay, 1.1s); }
