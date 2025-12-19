@@ -147,6 +147,218 @@
       }
     </style>
 
+
+<style id="downloads-pane-style">
+/* Downloads (Renegade Updates) panel + gallery (scoped) */
+.downloads-pane{
+      --bg:#000;
+      --text: rgba(255,255,255,.82);
+      --muted: rgba(255,255,255,.55);
+      --panel: rgba(255,255,255,.03);
+      --border: rgba(255,255,255,.10);
+      --border2: rgba(255,255,255,.06);
+      --radius: 14px;
+      --rowRadius: 10px;
+    }.downloads-pane *{ box-sizing:border-box; }.downloads-pane .main{ padding: 18px; }.downloads-pane .lightbar-wrap{ overflow-x:auto; padding-bottom: 6px; }.downloads-pane .cols{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      align-items: start;
+      min-width: 860px; /* lock 2 cols */
+    }.downloads-pane .box{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.05);
+      backdrop-filter: blur(8px);
+    }.downloads-pane .legend{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom: 10px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.35);
+    }.downloads-pane .legend .title{ color: rgba(224,241,11,.95); font-weight: 900; }.downloads-pane .legend .hint{ color: var(--muted); font-size: 12px; white-space: nowrap; }.downloads-pane ul.ansi{ list-style:none; padding:0; margin:0; }.downloads-pane ul.ansi li{ margin: 4px 0; }.downloads-pane a.item{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 6px 10px;
+      border-radius: var(--rowRadius);
+      text-decoration:none;
+      color: rgba(255,255,255,.82);
+      border: 1px solid var(--border2);
+      background: rgba(255,255,255,.03);
+      transition: background .12s ease, box-shadow .12s ease, border-color .12s ease;
+      outline:none;
+    }.downloads-pane a.item:hover{ border-color: rgba(255,255,255,.14); background: rgba(255,255,255,.045); }.downloads-pane a.item:hover, .downloads-pane a.item:focus-visible, .downloads-pane a.item.is-active{
+      background: rgba(0,255,255,.22);
+      border-color: rgba(0,255,255,.40);
+      box-shadow: 0 0 0 4px rgba(0,255,255,.22);
+      color: rgba(255,255,255,.92);
+    }.downloads-pane .arrow{ width: 20px; opacity: 0; color: #36ff33; transform: translateX(-4px);
+      transition: opacity .10s ease, transform .10s ease; flex: 0 0 auto; }.downloads-pane a.item:hover .arrow, .downloads-pane a.item:focus-visible .arrow, .downloads-pane a.item.is-active .arrow{ opacity: 1; transform: translateX(0); }.downloads-pane .label{ flex:1 1 auto; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }.downloads-pane .bracket{ color: #8f8f86; }.downloads-pane .archived{ color: #ff4b4b; font-weight: 900; }.downloads-pane .meta{ color: rgba(255,255,255,.58); font-size: 12px; white-space:nowrap; }.downloads-pane .stack{ display:flex; flex-direction:column; gap:12px; }.downloads-pane .util-grid{ display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px; margin-top: 12px; }.downloads-pane /* ANSI-style card header */
+    .ansi-card-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 6px 10px;
+      margin: -2px -2px 10px -2px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.38);
+      color: rgba(224,241,11,.95);
+      font-weight: 900;
+      letter-spacing: .2px;
+    }.downloads-pane .ansi-card-head::after{
+      content: "ANSI";
+      color: rgba(255,255,255,.55);
+      font-weight: 700;
+      letter-spacing: .12em;
+      font-size: 11px;
+    }.downloads-pane /* Keyboard focus support for utility cards */
+    .util-card{
+      outline: none;
+    }.downloads-pane .util-card:focus-visible{
+      border-color: rgba(0,255,255,.45);
+      background: rgba(0,255,255,.07);
+      box-shadow: 0 0 0 4px rgba(0,255,255,.18), 0 14px 30px rgba(0,0,0,.55);
+      transform: translateY(-1px);
+    }.downloads-pane .util-card:focus-visible .util-file{
+      color: rgba(255,255,255,.92);
+      text-decoration: underline;
+    }.downloads-pane /* Utilities card hover highlight (LightBar feel) */
+    .util-card{
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
+    }.downloads-pane .util-card:hover{
+      border-color: rgba(0,255,255,.35);
+      background: rgba(0,255,255,.06);
+      box-shadow: 0 0 0 4px rgba(0,255,255,.12), 0 14px 30px rgba(0,0,0,.55);
+      transform: translateY(-1px);
+    }.downloads-pane .util-card:hover .util-file{
+      color: rgba(255,255,255,.92);
+    }.downloads-pane .util-card{ background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.10);
+      border-radius: 14px; padding: 12px; }.downloads-pane .util-file{ color: rgba(0,255,255,.9); text-decoration:none; font-weight:900; }.downloads-pane .util-file:hover{ text-decoration: underline; }.downloads-pane .util-desc{ margin-top: 8px; color: rgba(255,255,255,.70); line-height:1.35; }.downloads-pane .gallery{ margin-top: 18px; }.downloads-pane .thumbs{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+    }.downloads-pane .thumb{
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      padding: 0;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      overflow:hidden;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      outline: none;
+    }.downloads-pane .thumb img{ width:100%; height:100%; object-fit:cover; display:block; filter: saturate(1.05) contrast(1.05); }.downloads-pane .thumb::before{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,.55) 100%);
+      opacity: .0;
+      transition: opacity .12s ease;
+      pointer-events:none;
+    }.downloads-pane .thumb::after{
+      content: attr(data-label);
+      position:absolute; left:10px; bottom:8px;
+      font-size: 11px;
+      color: rgba(255,255,255,.85);
+      background: rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 3px 8px;
+      border-radius: 999px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity .12s ease, transform .12s ease;
+      pointer-events:none;
+      max-width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }.downloads-pane .thumb:hover, .downloads-pane .thumb:focus-visible{
+      border-color: rgba(0,255,255,.35);
+      box-shadow: 0 0 0 4px rgba(0,255,255,.12), 0 16px 40px rgba(0,0,0,.55);
+      transform: translateY(-1px);
+    }.downloads-pane .thumb:hover::before, .downloads-pane .thumb:focus-visible::before{ opacity: 1; }.downloads-pane .thumb:hover::after, .downloads-pane .thumb:focus-visible::after{ opacity: 1; transform: translateY(0); }.downloads-pane .overlay{ position: fixed; top:0; left:0; width:100%; height:100%;
+      background-color: rgba(0,0,0,0.85); display:none; z-index: 1000; }.downloads-pane .expanded{ position: fixed; top:50%; left:50%; transform: translate(-50%, -50%);
+      max-width: 94%; max-height: 94%; z-index: 1001; display:none;
+      border: 4px solid rgba(255,255,255,.85); border-radius: 14px; overflow:hidden;
+      background:#000; box-shadow: 0 18px 60px rgba(0,0,0,.8); }.downloads-pane .expanded img{ display:block; width:100%; height:auto; }.downloads-pane .viewer-close{
+      position:absolute;
+      top:10px; right:10px;
+      width:40px; height:40px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.55);
+      color: rgba(255,255,255,.9);
+      font-size: 26px;
+      line-height: 38px;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,.55);
+    }.downloads-pane .viewer-close:hover{ border-color: rgba(0,255,255,.35); box-shadow: 0 0 0 4px rgba(0,255,255,.12), 0 14px 30px rgba(0,0,0,.6); }.downloads-pane .viewer-nav{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width:46px; height:46px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(0,0,0,.50);
+      color: rgba(255,255,255,.9);
+      font-size: 30px;
+      cursor:pointer;
+      display:flex; align-items:center; justify-content:center;
+    }.downloads-pane .viewer-nav.prev{ left:10px; }.downloads-pane .viewer-nav.next{ right:10px; }.downloads-pane .viewer-nav:hover{ border-color: rgba(0,255,255,.35); box-shadow: 0 0 0 4px rgba(0,255,255,.12); }.downloads-pane .viewer-caption{
+      position:absolute;
+      left:12px; right:12px; bottom:10px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.55);
+      color: rgba(255,255,255,.85);
+      font-size: 12px;
+      text-align: center;
+      overflow:hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    @media (max-width: 640px){.downloads-pane .viewer-nav{ width:40px; height:40px; font-size: 26px; }.downloads-pane .viewer-close{ width:38px; height:38px; font-size: 24px; line-height: 36px; }
+    }.downloads-pane .section-title{ margin: 18px 0 10px; color: rgba(255,255,255,.90); font-weight: 900; letter-spacing:.4px; }.downloads-pane .note{ color: var(--muted); font-size: 12px; margin-top: 8px; }.downloads-pane /* ANSI-style divider */
+    .ansi-divider{
+      height: 1px;
+      margin: 6px 4px;
+      border-radius: 999px;
+      background:
+        linear-gradient(90deg,
+          rgba(0,255,255,0) 0%,
+          rgba(0,255,255,.55) 18%,
+          rgba(54,255,51,.45) 50%,
+          rgba(0,255,255,.55) 82%,
+          rgba(0,255,255,0) 100%);
+      box-shadow: 0 0 14px rgba(0,255,255,.18);
+    }.downloads-pane /* Ultra-wide centering */
+    .main{
+      max-width: 1400px;
+      margin: 0 auto;
+    }.downloads-pane .lightbar-wrap{
+      display:flex;
+      justify-content:center;
+    }.downloads-pane .lightbar-wrap > .cols{
+      width: 100%;
+    }
+
+  
+  
+</style>
+
 </head>
 <body>
 
@@ -176,7 +388,7 @@
     </div></a>
             <div class="menu-item initial-load" data-section="Downloads">
                 <div class="menu-badge">D</div>
-                <div class="menu-title">Downloads</div>
+                <div class="menu-title">Renegade Updates</div>
             </div>
             <div class="menu-item initial-load" data-section="Links">
                 <div class="menu-badge">L</div>
@@ -207,7 +419,335 @@
 
         <!-- Content Sections -->
         <div id="contentArea">
-            <div class="content-section" id="Contact">
+            
+
+<div class="content-section" id="Downloads">
+  <div class="small-logo">
+    <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+  </div>
+
+  <div class="downloads-pane">
+<div class="section-title">Downloads &amp; Links</div>
+
+    <div class="lightbar-wrap">
+      <div class="cols">
+        <div class="stack">
+          <section class="box bbs-box">
+          <div class="legend">
+            <div class="title">[ Renegade Download Window ]</div>
+            <div class="hint">↑ ↓ Enter</div>
+          </div>
+          <ul class="ansi" role="menu" aria-label="Renegade Downloads">
+            <li role="none">
+      <a class="item" role="menuitem" href="files/RGV135F.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Full Install Download  <span class="bracket">]</span></span>
+        
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV135U.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Upgrade From v1.33/DOS  <span class="bracket">]</span></span>
+        
+      </a>
+    </li>
+          </ul>
+          <div class="note">Extracted from your Renegade Download Window.</div>
+        </section>
+          <section class="box bbs-box">
+          <div class="legend">
+            <div class="title">[ Previous Upgrades to Download ]</div>
+            <div class="hint">↑ ↓ Enter</div>
+          </div>
+          <ul class="ansi" role="menu" aria-label="Previous upgrades">
+            <li role="none">
+      <a class="item" role="menuitem" href="files/RGV133U.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.33/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2023</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV130U.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.30/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2022</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV125U.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.25/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2021</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV122U.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.22/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2020</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV120U.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.20a/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2013</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV119A.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.19a/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2012</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV118A.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.18a/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2011</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV110U.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.10/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2009</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGV100U.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v1.00/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2008</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RG0930UP.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v09-30.6/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2006</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RG0630UP.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v06-30.6/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2006</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RG0519UP.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v05-19.4/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2004</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RG0110UP.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v01-10.4/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2004</span>
+      </a>
+    </li>
+<li role="none">
+      <a class="item" role="menuitem" href="files/RGU1126D.ZIP">
+        <span class="arrow">►</span>
+        <span class="label"><span class="bracket">[</span> Renegade v11-26.3/DOS  <span class="bracket">]</span></span>
+        <span class="meta">Released - 2003</span>
+      </a>
+    </li>
+          </ul>
+        </section>
+        </div>
+
+        <div class="stack">
+          <section class="box">
+            <div class="legend">
+              <div class="title">[ Utilities Details ]</div>
+              <div class="hint">Cards</div>
+            </div>
+            <div class="util-grid">
+              
+      <div class="util-card" tabindex="0" data-idx="6">
+        <div class="ansi-card-head" aria-hidden="true">[ FILE ]</div>
+        <div class="util-top">
+          <a class="util-file" href="zip/RGBOTV04.ZIP">RGBOTV04.ZIP</a>
+        </div>
+        <div class="util-desc">(RGBOT) v0.40 The User will have to press <ESC> twice in order for the program to drop out and load the BBS.If any other key is pressed, it will hang up on the user/bot.</div>
+      </div>
+
+
+      <div class="util-card" tabindex="0" data-idx="7">
+        <div class="ansi-card-head" aria-hidden="true">[ FILE ]</div>
+        <div class="util-top">
+          <a class="util-file" href="zip/RGAPI20.ZIP">RGAPI20.ZIP</a>
+        </div>
+        <div class="util-desc">(RGAPI) v2.00 Renegade Programmers API. Includes FUNCTIONS and PROCEDURES commonly used in programming Renegade utils. Useful tool for programmers. Updated for Renegade v1.33/DOS+</div>
+      </div>
+
+
+      <div class="util-card" tabindex="0" data-idx="8">
+        <div class="ansi-card-head" aria-hidden="true">[ FILE ]</div>
+        <div class="util-top">
+          <a class="util-file" href="zip/RGRED100.ZIP">RGRED100.ZIP</a>
+        </div>
+        <div class="util-desc">(RGRED) v1.00 This will check through all of your file bases and any one line description file without anytext will be replaced with whatever you set on the command line.</div>
+      </div>
+
+
+      <div class="util-card" tabindex="0" data-idx="9">
+        <div class="ansi-card-head" aria-hidden="true">[ FILE ]</div>
+        <div class="util-top">
+          <a class="util-file" href="zip/RUPV100.ZIP">RUPV100.ZIP</a>
+        </div>
+        <div class="util-desc">(RUP) v1.00 RUP - Is for Renegade v1.30+ that will remove deleted user accounts from your USERS.DAT file. It also packs & backs up the file and updates all Message Area .SCN files.</div>
+      </div>
+
+
+      <div class="util-card" tabindex="0" data-idx="10">
+        <div class="ansi-card-head" aria-hidden="true">[ FILE ]</div>
+        <div class="util-top">
+          <a class="util-file" href="zip/RG2FDV2.ZIP">RG2FDV2.ZIP</a>
+        </div>
+        <div class="util-desc">(RG2FD) v2.0 Renegade v1.22/DOS+ Last Caller to FrontDoor v2.26/2.3x Last Caller. Import your Last Caller from Renegade into FrontDoor's Waiting For Caller Screen.</div>
+      </div>
+
+
+      <div class="util-card" tabindex="0" data-idx="11">
+        <div class="ansi-card-head" aria-hidden="true">[ FILE ]</div>
+        <div class="util-top">
+          <a class="util-file" href="files/RECORDS.PAS">RECORDS.PAS</a>
+        </div>
+        <div class="util-desc">Turbo Pascal Records Structures for the Renegade BBS v1.33-v1.35/DOS.</div>
+      </div>
+
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Renegade BBS In Action</div>
+    <div class="gallery">
+      <div class="thumbs">
+        
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic1.png')">
+          <img src="resources/pic1.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic2.png')">
+          <img src="resources/pic2.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic3.png')">
+          <img src="resources/pic3.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic4.png')">
+          <img src="resources/pic4.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic5.png')">
+          <img src="resources/pic5.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic6.png')">
+          <img src="resources/pic6.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic7.png')">
+          <img src="resources/pic7.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic8.png')">
+          <img src="resources/pic8.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic9.png')">
+          <img src="resources/pic9.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic10.png')">
+          <img src="resources/pic10.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic11.png')">
+          <img src="resources/pic11.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic12.png')">
+          <img src="resources/pic12.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic13.png')">
+          <img src="resources/pic13.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic14.png')">
+          <img src="resources/pic14.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic15.png')">
+          <img src="resources/pic15.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic16.png')">
+          <img src="resources/pic16.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic17.png')">
+          <img src="resources/pic17.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic18.png')">
+          <img src="resources/pic18.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic20.png')">
+          <img src="resources/pic20.png" alt="Screenshot thumbnail">
+        </button>
+
+
+        <button class="thumb" type="button" onclick="dlOpenFullscreen('resources/pic19.png')">
+          <img src="resources/pic19.png" alt="Screenshot thumbnail">
+        </button>
+
+      </div>
+      <div class="note">Click a screenshot to expand.</div>
+    </div>
+<div class="overlay" id="dlImageOverlay" onclick="dlCloseFullscreen()"></div>
+  <div class="expanded" id="dlExpandedImageContainer" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="viewer-close" type="button" aria-label="Close" onclick="dlCloseFullscreen()">×</button>
+    <button class="viewer-nav prev" type="button" aria-label="Previous image" onclick="prevImage()">‹</button>
+    <img id="dlExpandedImage" src="" alt="Expanded View">
+    <button class="viewer-nav next" type="button" aria-label="Next image" onclick="nextImage()">›</button>
+    <div class="viewer-caption" id="expandedCaption"></div>
+  </div>
+  </div>
+</div>
+
+<div class="content-section" id="Contact">
 <div class="small-logo">
                 <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
 
@@ -355,20 +895,9 @@
             <div class="content-section" id="Ftelnet">
             <div class="small-logo">
                 <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
-
-
-     
-                    </div>
-						</div>
-
-
-
-
-</div>
-               
-      
-
-        <!-- Footer -->
+               </div>	</div>
+</div>             
+         <!-- Footer -->
         <footer class="footer" id="mainFooter">
 <p style="text-align: center"><span style="font-size: 12px;">&copy; 2003 - <script>document.write(new Date().getFullYear())</script> The Renegade BBS Development Team</p></span>
                     </footer>
@@ -411,6 +940,153 @@
       });
 
       box.addEventListener('mouseleave', clearAll);
+    });
+  });
+</script>
+
+
+<script>
+// LightBar limited to the hovered box only
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('#Downloads .bbs-box').forEach(box => {
+        const menu = box.querySelector('ul.ansi');
+        if (!menu) return;
+
+        const items = Array.from(menu.querySelectorAll('a.item'));
+        if (!items.length) return;
+
+        let idx = 0;
+
+        function clearAll(){ items.forEach(a => a.classList.remove('is-active')); }
+
+        function setActive(i, focus=true){
+          clearAll();
+          idx = (i + items.length) % items.length;
+          items[idx].classList.add('is-active');
+          if (focus) items[idx].focus({ preventScroll:true });
+        }
+
+        items.forEach((a,i) => {
+          a.tabIndex = -1;
+
+          a.addEventListener('mouseenter', ()=> setActive(i,false));
+          a.addEventListener('focus', ()=> setActive(i,false));
+
+          a.addEventListener('keydown', (e)=>{
+            if (e.key === 'ArrowDown'){ e.preventDefault(); setActive(idx+1); }
+            else if (e.key === 'ArrowUp'){ e.preventDefault(); setActive(idx-1); }
+            else if (e.key === 'Home'){ e.preventDefault(); setActive(0); }
+            else if (e.key === 'End'){ e.preventDefault(); setActive(items.length-1); }
+          });
+        });
+
+        box.addEventListener('mouseleave', clearAll);
+      });
+    });
+
+    let viewerImages = [];
+    let viewerIndex = 0;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const btns = Array.from(document.querySelectorAll('button.thumb'));
+      viewerImages = btns.map(b => (b.querySelector('img')?.getAttribute('src') || '').trim()).filter(Boolean);
+
+      // Improve thumbs: label + keyboard open
+      btns.forEach((b, i) => {
+        const src = viewerImages[i] || (b.querySelector('img')?.getAttribute('src') || '');
+        b.dataset.label = (src.split('/').pop() || `pic${i+1}`);
+        b.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dlOpenFullscreenByIndex(i);
+          }
+        });
+      });
+    });
+
+    function dlOpenFullscreen(imageSrc) {
+      // Backward compatible with inline onclick="dlOpenFullscreen('...')"
+      const i = viewerImages.indexOf(imageSrc);
+      if (i >= 0) dlOpenFullscreenByIndex(i);
+      else dlOpenFullscreenByIndex(0, imageSrc);
+    }
+
+    function dlOpenFullscreenByIndex(i, fallbackSrc) {
+      const overlay = document.getElementById('dlImageOverlay');
+      const dlExpandedImageContainer = document.getElementById('dlExpandedImageContainer');
+      const src = viewerImages.length ? viewerImages[(i + viewerImages.length) % viewerImages.length] : fallbackSrc;
+
+      viewerIndex = viewerImages.length ? (i + viewerImages.length) % viewerImages.length : 0;
+
+      setViewerImage(src);
+      overlay.style.display = 'block';
+      dlExpandedImageContainer.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function setViewerImage(src) {
+      const dlExpandedImage = document.getElementById('dlExpandedImage');
+      const caption = document.getElementById('expandedCaption');
+      dlExpandedImage.src = src || '';
+      const name = (src || '').split('/').pop() || '';
+      if (caption) caption.textContent = name;
+    }
+
+    function nextImage() {
+      if (!viewerImages.length) return;
+      viewerIndex = (viewerIndex + 1) % viewerImages.length;
+      setViewerImage(viewerImages[viewerIndex]);
+    }
+
+    function prevImage() {
+      if (!viewerImages.length) return;
+      viewerIndex = (viewerIndex - 1 + viewerImages.length) % viewerImages.length;
+      setViewerImage(viewerImages[viewerIndex]);
+    }
+
+    function dlCloseFullscreen() {
+      document.getElementById('dlImageOverlay').style.display = 'none';
+      document.getElementById('dlExpandedImageContainer').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const overlay = document.getElementById('dlImageOverlay');
+      if (!overlay || overlay.style.display !== 'block') return;
+
+      if (e.key === 'Escape') { e.preventDefault(); dlCloseFullscreen(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); nextImage(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); prevImage(); }
+    });
+</script>
+<script>
+// Utility card keyboard navigation (2-column aware)
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = Array.from(document.querySelectorAll('#Downloads .util-card[tabindex="0"]'));
+    if (!cards.length) return;
+
+    function colsCount(){
+      // 2 columns on this page; keep logic flexible if CSS changes later
+      return 2;
+    }
+
+    function focusCard(i){
+      const clamped = Math.max(0, Math.min(cards.length - 1, i));
+      cards[clamped].focus({ preventScroll: false });
+    }
+
+    cards.forEach((card, i) => {
+      card.addEventListener('keydown', (e) => {
+        const cols = colsCount();
+        if (e.key === 'ArrowRight'){ e.preventDefault(); focusCard(i + 1); }
+        else if (e.key === 'ArrowLeft'){ e.preventDefault(); focusCard(i - 1); }
+        else if (e.key === 'ArrowDown'){ e.preventDefault(); focusCard(i + cols); }
+        else if (e.key === 'ArrowUp'){ e.preventDefault(); focusCard(i - cols); }
+        else if (e.key === 'Enter'){
+          const link = card.querySelector('a.util-file');
+          if (link) link.click();
+        }
+      });
     });
   });
 </script>
