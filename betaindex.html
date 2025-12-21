@@ -359,6 +359,144 @@
   
 </style>
 
+
+<style id="github-lightbar-style">
+/* GitHub panel lightbar (match betawhatdone.html feel) */
+.github-lightbar{
+  margin: 0 auto 24px;
+  max-width: var(--title-width);
+  width: 100%;
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 14px 32px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05);
+}
+
+.github-lightbar .ansi-legend{
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.45);
+  font-weight: 900;
+  color: rgba(224,241,11,.95);
+  letter-spacing: .15em;
+}
+
+.github-lightbar .github-text{
+  text-align:center;
+  line-height:1.15;
+  margin: 2px 0 8px;
+  color: rgba(255,255,255,.82);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 14px;
+}
+
+.github-lightbar .ansi-divider{
+  height: 1px;
+  margin: 8px 4px 10px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg,
+      rgba(0,255,255,0) 0%,
+      rgba(0,255,255,.55) 18%,
+      rgba(54,255,51,.45) 50%,
+      rgba(0,255,255,.55) 82%,
+      rgba(0,255,255,0) 100%);
+  box-shadow: 0 0 14px rgba(0,255,255,.18);
+}
+
+/* Lightbar row */
+.github-lightbar a.item{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration:none;
+  color: rgba(255,255,255,.86);
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.35);
+  transition: background .12s ease, box-shadow .12s ease, border-color .12s ease;
+  outline:none;
+  justify-content:center; /* center label like the old button */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.github-lightbar a.item:hover,
+.github-lightbar a.item:focus-visible,
+.github-lightbar a.item.is-active{
+  background: rgba(0,255,255,.22);
+  border-color: rgba(0,255,255,.40);
+  box-shadow: 0 0 0 4px rgba(0,255,255,.18);
+  color: rgba(255,255,255,.95);
+}
+
+.github-lightbar .arrow{
+  width: 20px;
+  opacity: 0;
+  color: #36ff33;
+  transform: translateX(-4px);
+  transition: opacity .10s ease, transform .10s ease;
+  flex: 0 0 auto;
+}
+
+.github-lightbar a.item:hover .arrow,
+.github-lightbar a.item:focus-visible .arrow,
+.github-lightbar a.item.is-active .arrow{
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.github-lightbar .label{
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 520px){
+  .github-lightbar a.item{ letter-spacing: .08em; font-size: 13px; }
+}
+</style>
+
+
+<style id="github-delay-appear">
+/* Delay GitHub panel like the menu bubbles */
+.github-lightbar.initial-load{
+  opacity: 0;
+  transform: translateY(30px) scale(0.97);
+  animation: githubAppear 0.5s ease-out forwards;
+  /* delay comes from inline style or CSS var */
+}
+
+/* Use same feel as the bubbles */
+@keyframes githubAppear{
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+</style>
+
+
+<style id="github-halfwidth-override">
+/* Force GitHub box to 1/2 width and keep centered */
+.github-lightbar{
+  width: 50%;
+  max-width: none;
+}
+</style>
+
+
+<style id="github-text-spacing-override">
+/* Add vertical breathing room above/below GitHub text area */
+.github-lightbar .github-text{
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+</style>
+
 </head>
 <body>
 
@@ -381,15 +519,16 @@
 
         <!-- Menu Grid -->
         <div class="menu-grid" id="menuGrid">
-<a href="betaftelnet.html" class="menu-link">
-    <div class="menu-item initial-load">
-        <div class="menu-badge">T</div>
-        <div class="menu-title">The Titantic BBS</div>
-    </div></a>
-            <div class="menu-item initial-load" data-section="Downloads">
+<div class="menu-item initial-load" data-section="Downloads">
                 <div class="menu-badge">D</div>
                 <div class="menu-title">Renegade Updates</div>
             </div>
+<a href="betawhatdone.html" class="menu-link">
+            <div class="menu-item initial-load" data-section="Renegade BBS">
+                <div class="menu-badge">I</div>
+                <div class="menu-title">RG Info & Docs</div>
+            </div></a>
+
             <div class="menu-item initial-load" data-section="Links">
                 <div class="menu-badge">L</div>
                 <div class="menu-title">Links</div>
@@ -397,15 +536,6 @@
             <div class="menu-item initial-load" data-section="MetroNet">
                 <div class="menu-badge">M</div>
                 <div class="menu-title">MetrONet</div>
-            </div>
-<a href="betawhatdone.html" class="menu-link">
-            <div class="menu-item initial-load" data-section="Renegade BBS">
-                <div class="menu-badge">I</div>
-                <div class="menu-title">RG Info & Docs</div>
-            </div></a>
-            <div class="menu-item initial-load" data-section="Contact">
-                <div class="menu-badge">C</div>
-                <div class="menu-title">Contact</div>
             </div>
 <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" class="menu-link" target="_blank" rel="noopener">
     <div class="menu-item initial-load" style="animation-delay: 1.7s;">
@@ -918,12 +1048,29 @@
 
         
             <!-- Ftelnet Section -->
-            <div class="content-section" id="Ftelnet">
-            <div class="small-logo">
-                <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
-               </div>	</div>
 </div>             
-         <!-- Footer -->
+         
+  
+<!-- GitHub box (ported from whatdone.html) -->
+  <div class="github-lightbar initial-load" style="animation-delay: 1.8s;">
+<center>    <div class="ansi-legend">Telnet to The Titantic BBS Telnet - Online Since November 10, 1993!<br>
+</div>
+
+    <div class="github-text">
+      1200+ Local Door Games, 228 Shareware CDs, Many Archived FTP Sites/<br>
+      Fidonet, MetroNet, ZeroNet, FSXNet, and Local Messages.
+    </div>
+</center>
+
+    <div style="text-align:center">
+      <a class="item" href="https://github.com/Renegade-Exodus/Renegade" target="_blank" rel="noopener">
+        <span class="arrow">►</span>
+        <span class="label">TELNET VIA YOUR WEB BROWSER NOW!</span>
+      </a>
+    </div>
+  </div>
+
+<!-- Footer -->
         <footer class="footer" id="mainFooter">
 <p style="text-align: center"><span style="font-size: 12px;">&copy; 2003 - <script>document.write(new Date().getFullYear())</script> The Renegade BBS Development Team</p></span>
                     </footer>
