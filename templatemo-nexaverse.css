@@ -192,7 +192,7 @@ body {
 	position: relative;
 	z-index: 10;
 	padding: 0px 0px;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto;
 	min-height: 100vh;
 	display: flex;
@@ -255,11 +255,23 @@ body {
 /* Menu Grid */
 .menu-grid {
 	display: grid;
-	grid-template-columns: repeat(4, 204px);
+	grid-template-columns: repeat(6, 204px); /* 6 per row */
 	gap: 25px;
 	margin: 0 auto 40px;
-	justify-content: center;
+	justify-content: center; /* centers the grid left-to-right */
 }
+
+/* Prevent wrapped <a> tiles from collapsing to content width */
+.menu-grid > * {
+	width: 204px;
+}
+
+/* Ensure the bubble fills its grid cell */
+.menu-item {
+	width: 100%;
+}
+
+
 
 .menu-item {
 	height: 170px;
@@ -1620,8 +1632,24 @@ body {
 /* Responsive Design */
 @media (max-width: 992px) {
 	.menu-grid {
-		grid-template-columns: repeat(3, 170px);
-	}
+	display: grid;
+	grid-template-columns: repeat(6, 204px); /* 6 per row */
+	gap: 25px;
+	margin: 0 auto 40px;
+	justify-content: center; /* centers the grid left-to-right */
+}
+
+/* Prevent wrapped <a> tiles from collapsing to content width */
+.menu-grid > * {
+	width: 204px;
+}
+
+/* Ensure the bubble fills its grid cell */
+.menu-item {
+	width: 100%;
+}
+
+
 
 	.menu-item {
 		height: 145px;
@@ -1679,9 +1707,24 @@ body {
 	}
 
 	.menu-grid {
-		grid-template-columns: repeat(2, 155px);
-		gap: 15px;
-	}
+	display: grid;
+	grid-template-columns: repeat(6, 204px); /* 6 per row */
+	gap: 25px;
+	margin: 0 auto 40px;
+	justify-content: center; /* centers the grid left-to-right */
+}
+
+/* Prevent wrapped <a> tiles from collapsing to content width */
+.menu-grid > * {
+	width: 204px;
+}
+
+/* Ensure the bubble fills its grid cell */
+.menu-item {
+	width: 100%;
+}
+
+
 
 	.menu-item {
 		height: 135px;
@@ -1766,9 +1809,24 @@ body {
 	}
 
 	.menu-grid {
-		grid-template-columns: repeat(2, 130px);
-		gap: 12px;
-	}
+	display: grid;
+	grid-template-columns: repeat(6, 204px); /* 6 per row */
+	gap: 25px;
+	margin: 0 auto 40px;
+	justify-content: center; /* centers the grid left-to-right */
+}
+
+/* Prevent wrapped <a> tiles from collapsing to content width */
+.menu-grid > * {
+	width: 204px;
+}
+
+/* Ensure the bubble fills its grid cell */
+.menu-item {
+	width: 100%;
+}
+
+
 
 	.menu-item {
 		height: 120px;
