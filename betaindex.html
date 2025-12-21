@@ -497,8 +497,56 @@
 }
 </style>
 
+
+<style>
+/* Hide GitHub box everywhere by default */
+.github-lightbar { display: none; }
+/* Show only on main page */
+.page-home .github-lightbar { display: block; }
+</style>
+
+
+
+<style id="telnet-cta-highlight">
+/* Blue/Cyan standout for "TELNET VIA YOUR WEB BROWSER NOW!" button */
+.github-lightbar a.item.telnet-cta{
+  background: linear-gradient(
+    180deg,
+    rgba(40,120,255,.35),
+    rgba(0,160,255,.20)
+  );
+  border-color: rgba(80,160,255,.75);
+  box-shadow:
+    0 0 20px rgba(80,160,255,.40),
+    inset 0 1px 0 rgba(255,255,255,.28);
+  color: rgba(235,245,255,.98);
+}
+
+/* Keep ► visible even when idle */
+.github-lightbar a.item.telnet-cta .arrow{
+  opacity: 1;
+  transform: translateX(0);
+  color: rgba(180,215,255,.95);
+}
+
+/* Stronger pop on hover/focus */
+.github-lightbar a.item.telnet-cta:hover,
+.github-lightbar a.item.telnet-cta:focus-visible{
+  background: linear-gradient(
+    180deg,
+    rgba(80,160,255,.45),
+    rgba(0,120,220,.30)
+  );
+  border-color: rgba(120,190,255,.90);
+  box-shadow:
+    0 0 0 4px rgba(80,160,255,.22),
+    0 0 26px rgba(80,160,255,.35);
+}
+</style>
+
+
 </head>
-<body>
+<body class="page-home">
 
     <!-- Grid Overlay -->
     <div class="grid-overlay"></div>
@@ -1063,7 +1111,7 @@
 </center>
 
     <div style="text-align:center">
-      <a class="item" href="betaftelnet.html" target="_blank" rel="noopener">
+      <a class="item telnet-cta" href="betaftelnet.html" target="_blank" rel="noopener">
         <span class="arrow">►</span>
         <span class="label">TELNET VIA YOUR WEB BROWSER NOW!</span>
       </a>
