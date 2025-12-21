@@ -598,7 +598,28 @@
 
         </div>
 
-        <!-- Content Sections -->
+        
+
+<!-- GitHub box (ported from whatdone.html) -->
+  <div class="github-lightbar initial-load" style="animation-delay: 1.8s;">
+<center>    <div class="ansi-legend">Telnet to The Titantic BBS Telnet - Online Since November 10, 1993!<br>
+</div>
+
+    <div class="github-text">
+      1200+ Local Door Games, 228 Shareware CDs, Many Archived FTP Sites/<br>
+      Fidonet, MetroNet, ZeroNet, FSXNet, and Local Messages.
+    </div>
+</center>
+
+    <div style="text-align:center">
+      <a class="item telnet-cta" href="betaftelnet.html" target="_blank" rel="noopener">
+        <span class="arrow">►</span>
+        <span class="label">TELNET VIA YOUR WEB BROWSER NOW!</span>
+      </a>
+    </div>
+  </div>
+
+<!-- Content Sections -->
         <div id="contentArea">
             
 
@@ -1099,25 +1120,6 @@
 </div>             
          
   
-<!-- GitHub box (ported from whatdone.html) -->
-  <div class="github-lightbar initial-load" style="animation-delay: 1.8s;">
-<center>    <div class="ansi-legend">Telnet to The Titantic BBS Telnet - Online Since November 10, 1993!<br>
-</div>
-
-    <div class="github-text">
-      1200+ Local Door Games, 228 Shareware CDs, Many Archived FTP Sites/<br>
-      Fidonet, MetroNet, ZeroNet, FSXNet, and Local Messages.
-    </div>
-</center>
-
-    <div style="text-align:center">
-      <a class="item telnet-cta" href="betaftelnet.html" target="_blank" rel="noopener">
-        <span class="arrow">►</span>
-        <span class="label">TELNET VIA YOUR WEB BROWSER NOW!</span>
-      </a>
-    </div>
-  </div>
-
 <!-- Footer -->
         <footer class="footer" id="mainFooter">
 <p style="text-align: center"><span style="font-size: 12px;">&copy; 2003 - <script>document.write(new Date().getFullYear())</script> The Renegade BBS Development Team</p></span>
@@ -1310,6 +1312,49 @@
       });
     });
   });
+</script>
+
+
+<script>
+/* Ensure GitHub panel only appears on the HOME menu (not inside sections) */
+(function(){
+  const body = document.body;
+  const menuGrid = document.getElementById('menuGrid');
+  const contentArea = document.getElementById('contentArea');
+
+  function setHomeMode(isHome){
+    body.classList.toggle('page-home', !!isHome);
+  }
+
+  // Hook existing menu items (data-section) to show/hide sections.
+  document.addEventListener('click', (e) => {
+    const item = e.target.closest('.menu-item[data-section]');
+    if(!item) return;
+    const sectionId = item.getAttribute('data-section');
+    const section = document.getElementById(sectionId);
+    if(!section) return;
+
+    // Hide menu/header/footer when entering a section
+    if(menuGrid) menuGrid.style.display = 'none';
+    document.querySelectorAll('.content-section').forEach(s => s.style.display='none');
+    section.style.display = 'block';
+
+    setHomeMode(false);
+  });
+
+  // backToMenu is referenced by Back buttons; define if missing.
+  if(typeof window.backToMenu !== 'function'){
+    window.backToMenu = function(){
+      document.querySelectorAll('.content-section').forEach(s => s.style.display='none');
+      if(menuGrid) menuGrid.style.display = '';
+      setHomeMode(true);
+      window.scrollTo({top:0, behavior:'auto'});
+    };
+  }
+
+  // Initial state: home
+  setHomeMode(true);
+})();
 </script>
 
 </body>
