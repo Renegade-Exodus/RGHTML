@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetroNet – Messages and Files</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="templatemo-nexaverse.css">
+
+<style>
+  :root { --title-width: 900px; }
+
+  body{
+    background:#000;
+    color:rgba(255,255,255,.85);
+    font-family:'Outfit',system-ui,sans-serif;
+    margin:0;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;height:auto;display:block;}
+
+  .container{
+    max-width:1600px;
+    margin:0 auto;
+    padding:40px 20px 80px;
+  }
+
+  .header{ text-align:center; margin-bottom:26px; }
+  .header img{ max-width:var(--title-width); width:100%; height:auto; margin:0 auto; }
+
+  .ansi-box{
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 14px 32px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05);
+  }
+  .ansi-legend{
+    margin-bottom:12px;
+    padding:8px 12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(0,0,0,.45);
+    font-weight:900;
+    color:rgba(224,241,11,.95);
+    letter-spacing:.15em;
+    text-transform:uppercase;
+  }
+  .ansi-divider{
+    margin:10px auto 10px;
+    max-width: 92%;
+    border-top:1px solid rgba(255,255,255,.18);
+    box-shadow:0 1px 0 rgba(0,0,0,.6);
+  }
+
+  .hero{
+    margin:0 auto 18px;
+    max-width:1200px;
+  }
+  .hero img{
+    width:100%;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(0,0,0,.35);
+    box-shadow:0 10px 26px rgba(0,0,0,.6);
+  }
+
+  /* Layout: two columns like the original "history + echos" feel */
+  .main-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:24px;
+    align-items:start;
+  }
+  @media (max-width:1200px){
+    .main-grid{ grid-template-columns: 1fr; }
+  }
+
+  .right-stack{ display:grid; gap:24px; }
+
+  .download-row{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .download-text{
+    min-width:220px;
+    flex:1 1 420px;
+    font-size:15px;
+    line-height:1.25;
+  }
+
+  .cta-btn{
+    display:inline-block;
+    padding:10px 16px;
+    border-radius:12px;
+    text-align:center;
+    font-family:'Lucida Console','Lucida Sans Typewriter',Consolas,monospace;
+    font-weight:900;
+    font-size:14px;
+    letter-spacing:.12em;
+    text-decoration:none;
+    color:#000;
+    background:#36ff33;
+    border:1px solid rgba(255,255,255,.25);
+    transition: background .15s ease, box-shadow .15s ease, transform .05s ease;
+    white-space:nowrap;
+  }
+  .cta-btn:hover,
+  .cta-btn:focus-visible{
+    background:rgba(0,255,255,.95);
+    box-shadow:0 0 0 3px rgba(0,255,255,.28);
+    outline:none;
+  }
+  .cta-btn:active{ transform:translateY(1px); }
+
+  .img-card img{
+    width:100%;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(0,0,0,.35);
+  }
+
+  /* Click-to-zoom (keeps the “same look” but usable) */
+  .zoomable{ cursor: zoom-in; }
+  .overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.82);
+    display:none;
+    z-index:9990;
+  }
+  .lightbox{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9991;
+    padding:24px;
+  }
+  .lightbox img{
+    max-width:min(1600px, 96vw);
+    max-height:92vh;
+    border-radius:14px;
+    border:2px solid rgba(255,255,255,.22);
+    box-shadow:0 18px 44px rgba(0,0,0,.75);
+    cursor: zoom-out;
+  }
+
+  /* Fixed back button (matches betawhatdone) */
+  .back-wrap{
+    position:fixed;
+    top:20px;
+    right:20px;
+    margin:0;
+    z-index:1000;
+  }
+  .back-btn{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.14);
+    background:rgba(255,255,255,.05);
+    color:rgba(255,255,255,.9);
+    text-decoration:none;
+    font-weight:800;
+  }
+  .back-btn:hover{
+    background:rgba(0,255,255,.22);
+    border-color:rgba(0,255,255,.4);
+    box-shadow:0 0 0 4px rgba(0,255,255,.18);
+  }
+
+  /* Small footer line like your pages */
+  .footer{
+    margin-top:34px;
+    text-align:center;
+    font-size:11px;
+    color:rgba(255,255,255,.55);
+  }
+</style>
+</head>
+<body>
+
+<div class="back-wrap">
+<a href="betaindex.html" class="back-btn">← Back to Menu</a>
+</div>
+
+<div class="container">
+  <div class="header">
+    <img src="images/title.png" alt="Renegade BBS" onerror="this.onerror=null;this.src='resources/title.png';">
+  </div>
+
+  <!-- MetroNet banner (your original look) -->
+
+  <div class="main-grid">
+    <!-- LEFT: MetroNet History -->
+    <div class="ansi-box img-card">
+      <div class="ansi-legend">METRONET HISTORY</div>
+      <img class="zoomable" src="resources/metrohis.png" alt="MetroNet History" onerror="this.onerror=null;this.src='metrohis.png';" onclick="openZoom(this.src)">
+    </div>
+
+    <!-- RIGHT: Download + Echo list -->
+    <div class="right-stack">
+      <div class="ansi-box">
+        <div class="ansi-legend">DOWNLOAD APPLICATION PACK</div>
+        <div class="download-row">
+          <div class="download-text">
+            Download the MetroNet Application Pack and apply today!
+            <div class="ansi-divider"></div>
+            <div style="font-family:'Lucida Console','Lucida Sans Typewriter',Consolas,monospace; font-weight:700; color:rgba(255,255,255,.78);">
+              File: <span style="color:#36ff33;">METRO925.ZIP</span>
+            </div>
+          </div>
+          <a class="cta-btn" href="zip/METRO925.ZIP">CLICK!</a>
+        </div>
+      </div>
+
+      <div class="ansi-box img-card">
+        <div class="ansi-legend">METRONET ECHO LISTINGS</div>
+        <img class="zoomable" src="resources/echo.png" alt="MetroNet Echo Listings" onerror="this.onerror=null;this.src='echo.png';" onclick="openZoom(this.src)">
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2003 - 2024 The Renegade BBS Development Team
+  </div>
+</div>
+
+<div class="overlay" id="overlay" onclick="closeZoom()"></div>
+<div class="lightbox" id="lightbox" onclick="closeZoom()">
+  <img id="lightboxImg" src="" alt="Expanded view">
+</div>
+
+<script>
+  function openZoom(src){
+    const overlay = document.getElementById('overlay');
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    img.src = src;
+    overlay.style.display = 'block';
+    lightbox.style.display = 'flex';
+  }
+  function closeZoom(){
+    document.getElementById('overlay').style.display = 'none';
+    document.getElementById('lightbox').style.display = 'none';
+    document.getElementById('lightboxImg').src = '';
+  }
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeZoom();
+  });
+</script>
+
+</body>
+</html>
