@@ -263,7 +263,435 @@
     box-shadow:0 1px 0 rgba(0,0,0,.6);
   }
 
+
+/* ===== Coverflow ===== */
+.coverflow-gallery { width: 100%; }
+
+.coverflow{
+  position: relative;
+  width: 100%;
+  max-width: var(--title-width, 1100px);
+  margin: 0 auto;
+  padding: 18px 52px;
+  border-radius: 14px;
+  outline: none;
+}
+
+.cf-stage{
+  position: relative;
+  height: 280px;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.cf-item{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  height: 160px;
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+  transition: transform 260ms ease, opacity 260ms ease, filter 260ms ease;
+}
+
+.cf-item img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.cf-item:focus-visible{
+  outline: 2px solid rgba(120, 180, 255, .9);
+  outline-offset: 4px;
+}
+
+.cf-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  font-size: 28px;
+  line-height: 44px;
+  text-align: center;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+.cf-prev{ left: 6px; }
+.cf-next{ right: 6px; }
+
+.cf-nav:hover{ background: rgba(255,255,255,.14); }
+.cf-nav:active{ transform: translateY(-50%) scale(.98); }
+
+/* Smaller screens */
+@media (max-width: 720px){
+  .cf-stage{ height: 240px; }
+  .cf-item{ width: 210px; height: 140px; }
+}
+
+
+
+
+
+/* =========================
+   Modern screenshot carousel (Renegade BBS In Action)
+   ========================= */
+.gallery{
+  position: relative;
+  margin: 14px auto 0;
+  max-width: 980px;
+  width: 100%;
+  padding: 0 10px 12px;
+}
+.gallery .gallery-controls{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.gallery .gallery-nav{
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  color: rgba(255,255,255,.92);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.gallery .gallery-nav:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.10);
+  border-color: rgba(255,255,255,.22);
+}
+.gallery .gallery-nav:active{ transform: translateY(0); }
+.gallery .note{
+  text-align: center;
+  opacity: .85;
+  margin: 2px 0 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,.75);
+}
+
+.gallery .gallery-stage{
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.35);
+  box-shadow: 0 14px 40px rgba(0,0,0,.45);
+  cursor: pointer;
+}
+.gallery .gallery-stage:focus{
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(120, 200, 255, .25), 0 14px 40px rgba(0,0,0,.45);
+}
+.gallery .gallery-stage img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transform: translateZ(0);
+}
+.gallery .gallery-stage::after{
+  content: "Click to expand";
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.16);
+  color: rgba(255,255,255,.88);
+  pointer-events: none;
+}
+
+/* Thumbnail rail */
+.gallery .carousel-thumbs{
+  margin-top: 12px;
+  padding: 10px 54px;
+  position: relative;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.gallery .carousel-thumbs::-webkit-scrollbar{ display:none; }
+
+.gallery .carousel-thumbs::before,
+.gallery .carousel-thumbs::after{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  width: 54px;
+  pointer-events:none;
+}
+.gallery .carousel-thumbs::before{
+  left:0;
+  background: linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,0));
+}
+.gallery .carousel-thumbs::after{
+  right:0;
+  background: linear-gradient(270deg, rgba(0,0,0,.55), rgba(0,0,0,0));
+}
+
+.gallery .carousel-thumb{
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+  width: 92px;
+  height: 60px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.05);
+  padding: 0;
+  cursor: pointer;
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+.gallery .carousel-thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery .carousel-thumb:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.26);
+  background: rgba(255,255,255,.08);
+}
+.gallery .carousel-thumb.is-active{
+  border-color: rgba(120, 200, 255, .55);
+  box-shadow: 0 0 0 2px rgba(120, 200, 255, .16);
+}
+.gallery .carousel-thumb:focus{
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(120, 200, 255, .16);
+}
+
+/* rail nav buttons */
+.gallery .carousel-rail-nav{
+  position: absolute;
+  top: calc(100% - 44px - 14px);
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.45);
+  color: rgba(255,255,255,.9);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.gallery .carousel-rail-nav.prev{ left: 10px; }
+.gallery .carousel-rail-nav.next{ right: 10px; }
+.gallery .carousel-rail-nav:hover{
+  background: rgba(0,0,0,.6);
+  border-color: rgba(255,255,255,.22);
+}
+
 </style>
+<script>
+  // ---------- Coverflow state ----------
+  let cfIndex = 0;
+
+  function cfItems(){
+    return Array.from(document.querySelectorAll('#cfStage .cf-item'));
+  }
+
+  function cfClamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+  function cfRender(){
+    const items = cfItems();
+    if (!items.length) return;
+
+    cfIndex = cfClamp(cfIndex, 0, items.length - 1);
+
+    const spacing = 140;     // horizontal spacing between cards
+    const rotate = 50;       // Y rotation for side cards
+    const zStep  = 140;      // depth step
+    const fadeAt = 6;        // how far before fading out
+
+    items.forEach((btn, i) => {
+      const offset = i - cfIndex;
+      const abs = Math.abs(offset);
+
+      // Base transform around center
+      const x = offset * spacing;
+      const rY = offset < 0 ? rotate : (offset > 0 ? -rotate : 0);
+      const z = -abs * zStep;
+      const s = offset === 0 ? 1.12 : (abs === 1 ? 0.92 : 0.82);
+
+      // Visual falloff
+      const opacity = abs > fadeAt ? 0 : (abs === 0 ? 1 : 0.92 - abs * 0.12);
+      const blur = abs === 0 ? 0 : Math.min(2.6, abs * 0.7);
+
+      btn.style.transform =
+        `translate(-50%, -50%) translateX(${x}px) translateZ(${z}px) rotateY(${rY}deg) scale(${s})`;
+
+      btn.style.zIndex = String(1000 - abs);
+      btn.style.opacity = opacity;
+      btn.style.filter = `blur(${blur}px)`;
+
+      // Make offscreen items non-clickable (optional but nice)
+      btn.style.pointerEvents = (abs > fadeAt) ? 'none' : 'auto';
+
+      // A11y
+      btn.setAttribute('aria-hidden', abs > fadeAt ? 'true' : 'false');
+      btn.tabIndex = (i === cfIndex) ? 0 : -1;
+    });
+  }
+
+  function cfGoTo(i){
+    cfIndex = i;
+    cfRender();
+  }
+
+  function cfPrev(){ cfGoTo(cfIndex - 1); }
+  function cfNext(){ cfGoTo(cfIndex + 1); }
+
+  // ---------- Expanded viewer integration ----------
+  // Build a list for your existing prev/nextImage() to use
+  let dlImages = [];
+
+  function dlRebuildFromCoverflow(){
+    dlImages = cfItems().map(btn => ({
+      src: btn.dataset.src,
+      cap: btn.dataset.cap || ''
+    }));
+  }
+
+  // If you already have these functions elsewhere, keep them.
+  // These are safe versions that use dlImages and your existing DOM IDs.
+  let dlCurrent = 0;
+
+  function dlOpenFullscreen(src){
+    // find index
+    const idx = dlImages.findIndex(x => x.src === src);
+    if (idx >= 0) dlCurrent = idx;
+
+    const overlay = document.getElementById('dlImageOverlay');
+    const container = document.getElementById('dlExpandedImageContainer');
+    const img = document.getElementById('dlExpandedImage');
+    const cap = document.getElementById('expandedCaption');
+
+    img.src = dlImages[dlCurrent]?.src || src;
+    cap.textContent = dlImages[dlCurrent]?.cap || '';
+
+    overlay.classList.add('show');
+    container.classList.add('show');
+  }
+
+  function dlCloseFullscreen(){
+    document.getElementById('dlImageOverlay').classList.remove('show');
+    document.getElementById('dlExpandedImageContainer').classList.remove('show');
+  }
+
+  function prevImage(){
+    if (!dlImages.length) return;
+    dlCurrent = (dlCurrent - 1 + dlImages.length) % dlImages.length;
+    dlOpenFullscreen(dlImages[dlCurrent].src);
+  }
+
+  function nextImage(){
+    if (!dlImages.length) return;
+    dlCurrent = (dlCurrent + 1) % dlImages.length;
+    dlOpenFullscreen(dlImages[dlCurrent].src);
+  }
+
+  // ---------- Events ----------
+  function cfInit(){
+    const cover = document.getElementById('dlCoverflow');
+    const stage = document.getElementById('cfStage');
+    if (!cover || !stage) return;
+
+    dlRebuildFromCoverflow();
+    cfRender();
+
+    // Click behavior:
+    // - click side item centers it
+    // - click centered item opens fullscreen
+    stage.addEventListener('click', (e) => {
+      const btn = e.target.closest('.cf-item');
+      if (!btn) return;
+
+      const items = cfItems();
+      const i = items.indexOf(btn);
+      if (i < 0) return;
+
+      if (i === cfIndex) {
+        dlCurrent = i;
+        dlOpenFullscreen(btn.dataset.src);
+      } else {
+        cfGoTo(i);
+      }
+    });
+
+    // Keyboard support on coverflow
+    cover.addEventListener('keydown', (e) => {
+      // If viewer is open, let viewer keys take over
+      const viewerOpen = document.getElementById('dlExpandedImageContainer').classList.contains('show');
+
+      if (viewerOpen){
+        if (e.key === 'Escape') { dlCloseFullscreen(); e.preventDefault(); }
+        else if (e.key === 'ArrowLeft') { prevImage(); e.preventDefault(); }
+        else if (e.key === 'ArrowRight') { nextImage(); e.preventDefault(); }
+        return;
+      }
+
+      if (e.key === 'ArrowLeft') { cfPrev(); e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { cfNext(); e.preventDefault(); }
+      else if (e.key === 'Enter' || e.key === ' ') {
+        const items = cfItems();
+        const btn = items[cfIndex];
+        if (btn) {
+          dlCurrent = cfIndex;
+          dlOpenFullscreen(btn.dataset.src);
+        }
+        e.preventDefault();
+      }
+      else if (e.key === 'Home') { cfGoTo(0); e.preventDefault(); }
+      else if (e.key === 'End') { cfGoTo(cfItems().length - 1); e.preventDefault(); }
+    });
+
+    // Wheel scroll (optional nice UX)
+    cover.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return; // keep horizontal trackpads nicer
+      if (e.deltaY > 0) cfNext(); else cfPrev();
+      e.preventDefault();
+    }, { passive: false });
+
+    // Keep layout stable on resize
+    window.addEventListener('resize', () => cfRender());
+  }
+
+  document.addEventListener('DOMContentLoaded', cfInit);
+</script>
+
 </head>
 <body>
 
@@ -15685,6 +16113,255 @@ BLANK-&gt;<br/><br/>
 
   buildWhatdoneJump(whatContent, document.getElementById('whatJump'), whatPane);
   buildDocJump(docContent, document.getElementById('docJump'));
+})();
+</script>
+
+
+    <div class="section-title" style="text-align:center;">Renegade BBS In Action</div>
+    <div class="gallery">
+      <div class="gallery-controls" aria-label="Gallery controls">
+        <button type="button" class="gallery-nav prev" id="galleryPrev" aria-label="Previous screenshot">‹</button>
+        <button type="button" class="gallery-nav next" id="galleryNext" aria-label="Next screenshot">›</button>
+      </div>
+      <div class="note">Use ◀ ▶ keys, buttons, or swipe. Click the image to expand. ESC closes.</div>
+      <div class="gallery-stage" id="galleryStage" tabindex="0" role="button" aria-label="Open screenshot full size">
+        <img id="galleryMainImg" src="" alt="Renegade BBS screenshot">
+      </div>
+      <div class="carousel-thumbs">
+        <button class="carousel-thumb" type="button" data-full="resources/pic1.png" data-label="pic1.png">
+          <img src="resources/pic1.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic2.png" data-label="pic2.png">
+          <img src="resources/pic2.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic3.png" data-label="pic3.png">
+          <img src="resources/pic3.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic4.png" data-label="pic4.png">
+          <img src="resources/pic4.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic5.png" data-label="pic5.png">
+          <img src="resources/pic5.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic6.png" data-label="pic6.png">
+          <img src="resources/pic6.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic7.png" data-label="pic7.png">
+          <img src="resources/pic7.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic8.png" data-label="pic8.png">
+          <img src="resources/pic8.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic9.png" data-label="pic9.png">
+          <img src="resources/pic9.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic10.png" data-label="pic10.png">
+          <img src="resources/pic10.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic11.png" data-label="pic11.png">
+          <img src="resources/pic11.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic12.png" data-label="pic12.png">
+          <img src="resources/pic12.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic13.png" data-label="pic13.png">
+          <img src="resources/pic13.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic14.png" data-label="pic14.png">
+          <img src="resources/pic14.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic15.png" data-label="pic15.png">
+          <img src="resources/pic15.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic16.png" data-label="pic16.png">
+          <img src="resources/pic16.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic17.png" data-label="pic17.png">
+          <img src="resources/pic17.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic18.png" data-label="pic18.png">
+          <img src="resources/pic18.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic19.png" data-label="pic19.png">
+          <img src="resources/pic19.png" alt="Screenshot thumbnail">
+        </button>
+
+        <button class="carousel-thumb" type="button" data-full="resources/pic20.png" data-label="pic20.png">
+          <img src="resources/pic20.png" alt="Screenshot thumbnail">
+        </button>
+      </div>
+      <div class="note">Click a screenshot to expand.</div>
+    </div>
+
+<div class="overlay" id="dlImageOverlay" onclick="dlCloseFullscreen()" style="display:none"></div>
+<div class="expanded" id="dlExpandedImageContainer" role="dialog" aria-modal="true" aria-label="Image viewer" style="display:none">
+  <button class="viewer-close" type="button" aria-label="Close" onclick="dlCloseFullscreen()">×</button>
+  <button class="viewer-nav prev" type="button" aria-label="Previous image" onclick="prevImage()">‹</button>
+  <img id="dlExpandedImage" src="" alt="Expanded View">
+  <button class="viewer-nav next" type="button" aria-label="Next image" onclick="nextImage()">›</button>
+  <div class="viewer-caption" id="expandedCaption"></div>
+</div>
+
+
+
+<script id="modern-carousel-init">
+(function(){
+  let viewerImages = [];
+  let viewerIndex = 0;
+
+  function syncViewerImages(){
+    const btns = Array.from(document.querySelectorAll('.gallery .carousel-thumb'));
+    viewerImages = btns.map(btn => (btn.getAttribute('data-full') || btn.querySelector('img')?.getAttribute('src') || '').trim()).filter(Boolean);
+    return btns;
+  }
+
+  // Fullscreen overlay viewer (uses existing markup ids in your page)
+  window.dlOpenFullscreen = function(src){
+    if (!viewerImages.length) syncViewerImages();
+    const i = viewerImages.indexOf(src);
+    viewerIndex = i >= 0 ? i : 0;
+    window.dlOpenFullscreenByIndex(viewerIndex);
+  };
+
+  window.dlOpenFullscreenByIndex = function(i){
+    if (!viewerImages.length) syncViewerImages();
+    if (!viewerImages.length) return;
+
+    viewerIndex = (i + viewerImages.length) % viewerImages.length;
+
+    const overlay = document.getElementById('dlImageOverlay');
+    const box = document.getElementById('dlExpandedImageContainer');
+    const img = document.getElementById('dlExpandedImage');
+    const caption = document.getElementById('expandedCaption');
+    if (!overlay || !box || !img) return;
+
+    img.src = viewerImages[viewerIndex];
+    if (caption) caption.textContent = viewerImages[viewerIndex].split('/').pop();
+
+    overlay.style.display = 'block';
+    box.style.display = 'block';
+    box.classList.add('show-controls');
+  };
+
+  window.dlCloseFullscreen = function(){
+    const overlay = document.getElementById('dlImageOverlay');
+    const box = document.getElementById('dlExpandedImageContainer');
+    if (overlay) overlay.style.display = 'none';
+    if (box) box.style.display = 'none';
+  };
+
+  window.nextImage = function(){ window.dlOpenFullscreenByIndex(viewerIndex + 1); };
+  window.prevImage = function(){ window.dlOpenFullscreenByIndex(viewerIndex - 1); };
+
+  function initGallery(){
+    const root = document.querySelector('.gallery');
+    if (!root) return;
+
+    const btns = Array.from(root.querySelectorAll('.carousel-thumb'));
+    const mainImg = root.querySelector('#galleryMainImg');
+    const stage = root.querySelector('#galleryStage');
+    const prevBtn = root.querySelector('#galleryPrev');
+    const nextBtn = root.querySelector('#galleryNext');
+
+    if (!btns.length || !mainImg || !stage) return;
+
+    viewerImages = btns.map(b => (b.getAttribute('data-full') || b.querySelector('img')?.getAttribute('src') || '').trim()).filter(Boolean);
+    let idx = 0;
+
+    function setActive(i, scrollIntoView=true){
+      idx = (i + viewerImages.length) % viewerImages.length;
+      mainImg.src = viewerImages[idx];
+      btns.forEach((b, bi) => b.classList.toggle('is-active', bi===idx));
+      if (scrollIntoView) btns[idx].scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+      viewerIndex = idx;
+    }
+
+    function go(step){ setActive(idx + step); }
+
+    btns.forEach((b, bi) => {
+      b.addEventListener('click', (e) => { e.preventDefault(); setActive(bi); });
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', (e)=>{ e.preventDefault(); go(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', (e)=>{ e.preventDefault(); go(1); });
+
+    // stage click -> open fullscreen
+    stage.addEventListener('click', () => window.dlOpenFullscreenByIndex(idx));
+
+    // keyboard
+    root.addEventListener('keydown', (e)=>{
+      if (e.key === 'ArrowLeft') { go(-1); e.preventDefault(); }
+      else if (e.key === 'ArrowRight') { go(1); e.preventDefault(); }
+      else if (e.key === 'Enter' || e.key === ' ') { window.dlOpenFullscreenByIndex(idx); e.preventDefault(); }
+      else if (e.key === 'Escape') { window.dlCloseFullscreen(); e.preventDefault(); }
+    });
+
+    // stage keyboard
+    stage.addEventListener('keydown', (e)=>{
+      if (e.key === 'Enter' || e.key === ' ') { window.dlOpenFullscreenByIndex(idx); e.preventDefault(); }
+    });
+
+    // swipe (pointer drag) on thumb rail
+    const rail = root.querySelector('.carousel-thumbs');
+    if (rail){
+      let down=false, startX=0, scrollLeft=0;
+      rail.addEventListener('pointerdown', (e)=>{ down=true; rail.setPointerCapture(e.pointerId); startX=e.clientX; scrollLeft=rail.scrollLeft; });
+      rail.addEventListener('pointermove', (e)=>{ if(!down) return; rail.scrollLeft = scrollLeft - (e.clientX - startX); });
+      rail.addEventListener('pointerup', ()=>{ down=false; });
+      rail.addEventListener('pointercancel', ()=>{ down=false; });
+    }
+
+    // add thumb rail nav buttons once
+    if (root && !root.querySelector('.carousel-rail-nav.prev')) {
+      const rail = root.querySelector('.carousel-thumbs');
+      if (rail){
+        const railPrev = document.createElement('button');
+        railPrev.type='button';
+        railPrev.className='carousel-rail-nav prev';
+        railPrev.setAttribute('aria-label','Scroll thumbnails left');
+        railPrev.textContent='‹';
+
+        const railNext = document.createElement('button');
+        railNext.type='button';
+        railNext.className='carousel-rail-nav next';
+        railNext.setAttribute('aria-label','Scroll thumbnails right');
+        railNext.textContent='›';
+
+        root.appendChild(railPrev);
+        root.appendChild(railNext);
+
+        function railScroll(dir){
+          const amount = Math.max(260, rail.clientWidth * 0.75);
+          rail.scrollBy({ left: dir * amount, behavior:'smooth' });
+        }
+        railPrev.addEventListener('click', (e)=>{ e.preventDefault(); railScroll(-1); });
+        railNext.addEventListener('click', (e)=>{ e.preventDefault(); railScroll(1); });
+      }
+    }
+
+    // init to first image
+    setActive(0, false);
+  }
+
+  document.addEventListener('DOMContentLoaded', initGallery);
 })();
 </script>
 
