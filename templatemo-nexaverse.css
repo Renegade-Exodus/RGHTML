@@ -2032,3 +2032,22 @@ body {
 .menu-grid > *:nth-child(7) { --menuDelay: 1.7s; }
 .menu-grid > *:nth-child(8) { --menuDelay: 1.8s; }
 .menu-grid > * .menu-item.initial-load { animation-delay: var(--menuDelay, 1.1s); }
+
+/* Menu badge — idle (not hovered / not active) */
+.menu-badge{
+  background: linear-gradient(
+    180deg,
+    rgba(40,120,255,.35),
+    rgba(0,160,255,.20)
+  );
+  border: 1px solid rgba(80,160,255,.75);
+  color: #ffffff;
+  box-shadow:
+    0 0 18px rgba(80,160,255,.35),
+    inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+/* Ensure text stays white */
+.menu-badge *{
+  color: #ffffff;
+}
