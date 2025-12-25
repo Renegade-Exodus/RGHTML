@@ -553,10 +553,106 @@
 </style>
 
 
+<style id="back-button-unify">
+/* Back button matches betametronet.html, but only shows inside opened sections */
+.content-section .small-logo{
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  left: auto !important;
+  bottom: auto !important;
+
+  /* fight existing layout rules from base CSS */
+  width: auto !important;
+  max-width: none !important;
+  display: block !important;
+  text-align: right !important;
+  padding: 0 !important;
+  margin: 0 !important;
+
+  z-index: 2147483647 !important;
+}
+
+.content-section .back-btn{
+  display: inline-block !important;
+  padding: 10px 18px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  background: rgba(255,255,255,.05) !important;
+  color: rgba(255,255,255,.9) !important;
+  text-decoration: none !important; /* no underline */
+  font-family: 'Lucida Console','Lucida Sans Typewriter',Consolas,monospace !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  letter-spacing: .12em !important;
+  white-space: nowrap !important;
+  transition: background .15s ease, box-shadow .15s ease, border-color .15s ease, transform .05s ease;
+}
+
+.content-section .back-btn:hover,
+.content-section .back-btn:focus-visible{
+  background: rgba(0,255,255,.22) !important;
+  border-color: rgba(0,255,255,.4) !important;
+  box-shadow: 0 0 0 4px rgba(0,255,255,.18) !important;
+  outline: none !important;
+}
+
+.content-section .back-btn:active{
+  transform: translateY(1px);
+}
+</style>
+
+<style id="global-floating-back">
+/* Global floating back button (immune to section transforms) */
+.global-back-wrap{
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2147483647;
+}
+.global-back-wrap .back-btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.05);
+  color:rgba(255,255,255,.9);
+  text-decoration:none !important;
+  font-family:'Lucida Console','Lucida Sans Typewriter',Consolas,monospace;
+  font-weight:800;
+  font-size:14px;
+  letter-spacing:.12em;
+  white-space:nowrap;
+  transition: background .15s ease, box-shadow .15s ease, border-color .15s ease, transform .05s ease;
+}
+.global-back-wrap .back-btn:hover,
+.global-back-wrap .back-btn:focus-visible{
+  background:rgba(0,255,255,.22);
+  border-color:rgba(0,255,255,.4);
+  box-shadow:0 0 0 4px rgba(0,255,255,.18);
+  outline:none;
+}
+.global-back-wrap .back-btn:active{ transform:translateY(1px); }
+</style>
+
+<style id="hide-section-back">
+/* Hide per-section back buttons; use the single global fixed button instead */
+.content-section .small-logo{ display:none !important; }
+</style>
+
+<style id="hide-back-on-home">
+/* Hide floating back button on main menu only */
+body.page-home .global-back-wrap{
+  display: none !important;
+}
+</style>
+
 </head>
 <body class="page-home">
 
-    <!-- Grid Overlay -->
+    
+<div class="global-back-wrap" id="globalBackWrap"><a href="betaindex.html" class="back-btn" id="globalBackBtn">← Back to Menu</a></div>
+<!-- Grid Overlay -->
     <div class="grid-overlay"></div>
 
     <!-- Main Container -->
@@ -1254,6 +1350,5 @@
   setHomeMode(true);
 })();
 </script>
-
 </body>
 </html>
