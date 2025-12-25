@@ -647,6 +647,16 @@ body.page-home .global-back-wrap{
 }
 </style>
 
+<style id="util-card-clickable">
+/* Make utility download cards clickable as a whole */
+.downloads-pane .util-card{
+  cursor: pointer;
+}
+.downloads-pane .util-card:active{
+  transform: translateY(1px);
+}
+</style>
+
 </head>
 <body class="page-home">
 
@@ -1350,5 +1360,40 @@ body.page-home .global-back-wrap{
   setHomeMode(true);
 })();
 </script>
+<script id="util-card-click-js">
+(function(){
+  function onCardActivate(card){
+    const link = card.querySelector('a.util-file[href]');
+    if(link && link.href){
+      window.location.href = link.href;
+    }
+  }
+
+  // Click anywhere on card (except clicking on actual link keeps default)
+  document.addEventListener('click', function(e){
+    const card = e.target.closest && e.target.closest('.downloads-pane .util-card');
+    if(!card) return;
+
+    // If user clicked the actual anchor, let it behave normally
+    if(e.target.closest('a')) return;
+
+    onCardActivate(card);
+  });
+
+  // Keyboard: Enter/Space on focused card
+  document.addEventListener('keydown', function(e){
+    const card = document.activeElement && document.activeElement.classList && document.activeElement.classList.contains('util-card')
+      ? document.activeElement
+      : null;
+    if(!card) return;
+
+    if(e.key === 'Enter' || e.key === ' '){
+      e.preventDefault();
+      onCardActivate(card);
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
