@@ -16364,6 +16364,11 @@ BLANK-&gt;<br/><br/>
   document.addEventListener('DOMContentLoaded', initGallery);
 })();
 </script>
+<script>
+  // Force page to start at top when opened from the menu
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.addEventListener('load', () => window.scrollTo(0, 0));
+</script>
 
 </body>
 </html>
