@@ -225,7 +225,7 @@
     text-align:center;
     font-family:'Lucida Console','Lucida Sans Typewriter',Consolas,monospace;
     font-weight:900;
-    font-size:14px;
+    font-size:16px;
     letter-spacing:.12em;
     text-decoration:none;
     color:#000;
@@ -262,6 +262,12 @@
     border-top:1px solid rgba(255,255,255,.18);
     box-shadow:0 1px 0 rgba(0,0,0,.6);
   }
+
+/* GitHub box text size */
+.github-box .github-text,
+.github-box .github-sub{
+  font-size: 24px !important;
+}
 
 
 /* ===== Coverflow ===== */
@@ -514,6 +520,29 @@
   border-color: rgba(255,255,255,.22);
 }
 
+
+/* The Background Grid Pattern Overlay (matched) */
+.grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* GitHub box full-width override */
+.github-box{
+  width:100% !important;
+  max-width:none !important;
+}
+
 </style>
 <script>
   // ---------- Coverflow state ----------
@@ -695,6 +724,10 @@
 </head>
 <body>
 
+<!-- Grid Overlay -->
+<div class="grid-overlay"></div>
+
+
 <div class="container">
   <div class="header">
     <img src="images/title.png" alt="Renegade BBS">
@@ -703,10 +736,10 @@
   </div>
 
   <!-- GitHub box (ported from whatdone.html) -->
-  <div class="ansi-box github-box" style="margin:0 auto 24px; max-width:var(--title-width); width:100%;">
+  <div class="ansi-box github-box" style="width:100%; max-width:none; margin:0 0 32px 0;">
     <div class="ansi-legend">CURRENT SOURCE CODE</div>
     <div class="github-text" style="text-align:center;"><br>
-     <span class="github-sub">Help develop the future of The Renegade BBS!<pre>   </pre>Interested?<pre>  </pre>Click below!! </span><br>
+     <span class="github-sub">Help develop the future of The Renegade BBS!</span><br>
     </div>
     <div class="ansi-divider"></div>
     <div style="text-align:center">
