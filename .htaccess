@@ -1,7 +1,0 @@
-# Use betaindex.html as the default page
-DirectoryIndex betaindex.html
-
-# Optional: hide explicit betaindex.html requests
-RewriteEngine On
-RewriteCond %{THE_REQUEST} \s/betaindex\.html[\s?] [NC]
-RewriteRule ^betaindex\.html$ / [R=301,L]
