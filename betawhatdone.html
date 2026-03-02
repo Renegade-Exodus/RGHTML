@@ -783,8 +783,117 @@
 
 ────────────────────────────────────────────────────────────────
 </center>
-<h1 id="1.35"><b style="color:#FFFFFF">----[ Changes in v1.35/DOS ]----</b></h1>
+<h1 id="1.40"><b style="color:#FFFFFF">----[ Changes in v1.40/DOS ]----</b></h1>
 <br/>
+<br/>
+
+     F.  Renegade correctly swaps to XMS instead of DISK once again and
+<br/>
+         will use EMS if an OS supports it via driver such as straight DOS.
+<br/>
+<br/>
+
+     U.  Added error detection to RGLNG.EXE.  If you are missing a string
+<br/>
+         RGLNG will exit and tell you which string you are missing
+<br/>
+<br/>
+
+     A.  2 New Strings.   Batch Upload and Download Empty prompts.
+<br/>
+         BATCH_UP_EMPTY, and BATCH_DL_EMPTY are the new tags.  A new RGLNG
+<br/>
+         and RGLNG.TXT string file will be included in the next release.
+<br/>
+<br/>
+
+     F.  Fixed colors on the front end of some prompts and in the User
+<br/>
+         Editor.
+<br/>
+
+     U.  Updated copyright notice to reflect Renegade Home Page as well as
+<br/>
+         added some color to it.
+<br/>
+<br/>
+
+     U.  Renemail has been updated to release better time slices under
+<br/>
+         Windows OS and removal of tempfile RENEMAIL.NET that was left over
+<br/>
+         after mail processing was completed.
+<br/>
+<br/>
+
+     F.  Corrected Stats Menu to allow USERNAME color to now be changed
+<br/>
+         when the color is changed in RGLNG.TXT or in the ASCII/ANSI file.
+<br/>
+<br/>
+
+     F.  Fixed & Updated the MultiNode Chat room.  It now runs & looks
+<br/>
+         like an IRC/MRC Chat room.  Not great, but atleast it works again!
+<br/>
+<br/>
+         
+     A.  View archives will not let you scroll via a Lightbar and view
+<br/>
+         text and ANSI files within the archive.
+<br/>
+<br/>
+
+     F.  Fixed MENUCMD "VI" now will scroll by page to view ansi and scroll
+<br/>
+         line by line on text.  The system will automatically select which is
+<br/>
+         which based on file extenstion.  The same code is used for the File
+<br/>
+         archive viewer.
+<br/>
+<br/>
+
+     A.  Message Reader/Lister Lightbar is now added.  Now you can scroll
+<br/>
+         through the message list for each base via your arrow keys and
+<br/>
+         select which message you'd like with your enter key.
+<br/>
+<br/>
+
+     A.  File Listing Lightbar is now added.  Now you can scroll through
+<br/>
+         the file listings with your arrow keys.  Tag files into a batch
+<br/>
+         queue with the spacebar, view the archive with the internal
+<br/>
+         text and ANSI scroller.
+<br/>
+<br/>
+
+     A.  5 New Language Strings have been added for the Message Lightbar and
+<br/>
+         File Lightbar Footers.  You can customize these however you like,
+<br/>
+         but no longer than 79 characters wide.
+<br/>
+<br/>
+
+     A.  Added new ANSI/ASCII file.   BATCHEMP.ANS/.ASC  This is displayed
+<br/>
+         during file tagging on the file menu when you have no files tagged
+<br/>
+         to download.  Make sure the ANSI clears screen it or else the user
+<br/>
+         will still be able to use the menu behind the ANSI without it
+<br/>
+         refreshing.
+<br/>
+
+<br/>
+<h1 id="1.35"><b style="color:#FFFFFF">----[ Changes in v1.35/DOS ]----</b></h1>
+<br>
 
 Miscellaneous Code clean up.<br/>
 <br/>
