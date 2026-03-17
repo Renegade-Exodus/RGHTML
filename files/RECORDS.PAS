@@ -1,5 +1,5 @@
 CONST
-  Build = '1.33';
+  Build = '1.40';
 
 {$IFDEF MSDOS}
   OS = '/DOS';
