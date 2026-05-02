@@ -37,13 +37,34 @@
     font-weight:800;
   }
 
+  /* === UNIFORM BUTTONS === */
   .button-row {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
     margin: 25px 0 12px;
+  }
+
+  .button-row a {
+    display: block;
+    width: 200px;
+    height: 82px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .button-row a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;           /* Changed to cover for email button */
+    display: block;
+    transition: transform 0.2s ease;
+  }
+
+  .button-row a:hover img {
+    transform: scale(1.06);
   }
 
   .yellow-text {
@@ -57,11 +78,11 @@
 
   .main-content {
     display: grid;
-    grid-template-columns: 1fr 320px;     /* Narrower green box */
-    gap: 70px;                            /* More space between gallery and green box */
+    grid-template-columns: 1fr 320px;
+    gap: 70px;
     max-width: 1420px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
     align-items: start;
   }
 
@@ -129,9 +150,9 @@
     display: block;
   }
 
-  /* Narrow Green ASCII Box */
+  /* Green ASCII Box */
   .ansi-box {
-    background: #000000;
+    background: #001100;
     border: 1px solid #00dd00;
     border-radius: 8px;
     padding: 22px 24px;
@@ -153,20 +174,20 @@
 
 <div class="button-row">
   <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
-    <img src="images/donate.png" alt="Donate" width="200" height="90">
+    <img src="images/donate.png" alt="Donate with PayPal">
   </a>
   <a href="zip/SYSOPV01.ZIP" download>
-    <img src="images/download.png" alt="Download" width="200" height="90">
+    <img src="images/download.png" alt="Download">
   </a>
   <a href="mailto:e@rgbbs.info">
-    <img src="images/email.png" alt="Email" width="200" height="90">
+    <img src="images/email.png" alt="E-mail">
   </a>
 </div>
 
 <p class="yellow-text">
   If you donate, please click the email link above and let me know how to reach you.
 </p>
-<br>
+
 <div class="main-content">
   <!-- LEFT: Gallery -->
   <div>
@@ -189,7 +210,7 @@
   <div>
     <div class="ansi-box">
            SysOp Smashin' v0.01Σ
-        (c) 2026 - NewWave Software
+       (c) 2026 - NewWave Software
 
 The local SysOp's in your town are tired of
 your file leeching and hogging up their
@@ -204,6 +225,8 @@ do this, you can fight the SysOp that wanted
 you out, Exodus!
 
 Pure Stick-Man 1 on 1 fighting fun!
+
+        - 16-Bit DOS BBS Door Game -
     </div>
   </div>
 </div>
@@ -246,8 +269,10 @@ document.addEventListener('keydown', e => {
 
 updateImage();
 </script>
-<p style="text-align: center"><span style="font-size: 12px;">&copy; 1995 - <script>document.write(new Date().getFullYear())</script> NewWave Software</p></span>
 
+<p style="text-align: center; margin-top: 40px;">
+  <span style="font-size: 12px;">&copy; 1995 - <script>document.write(new Date().getFullYear())</script> NewWave Software</span>
+</p>
 
 </body>
 </html>
