@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SINCE 2003: THE OFFICIAL HOME OF RENEGADE BBS</title>
+<title>SINCE 2003: THE OFFICIAL HOME OF RENEGADE BBS</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,84 +42,68 @@
   }
 
   @media (max-width: 1150px) {
-    .main-content { 
-      grid-template-columns: 1fr; 
-      gap: 40px; 
-    }
+    .main-content { grid-template-columns: 1fr; gap: 40px; }
   }
 
-  .main-grid {
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap:24px;
-    align-items:start;
-    margin-top: 60px;
+  /* Major Collapsible Boxes - Left aligned when collapsed */
+  .major-box {
+    max-width: 1420px;
+    margin: 28px 0 28px 0;        /* Left aligned */
+    background: rgba(255,255,255,.03);
+    border: 2px solid rgba(224,241,11,.25);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: max-width 0.4s ease;
   }
-  @media(max-width:1200px){.main-grid{grid-template-columns:1fr;}}
+
+  .major-box.open {
+    max-width: 850px;             /* Half width when expanded */
+    margin: 28px auto;            /* Center when open */
+  }
+
+  .major-header {
+    padding: 18px 24px;
+    background: rgba(0,0,0,.85);
+    font-size: 21px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .major-header::before {
+    content: "▶ ";
+    margin-right: 8px;
+  }
+
+  .major-box.open .major-header::before {
+    content: "▼ ";
+  }
+
+  .major-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .major-box.open .major-content {
+    max-height: 8000px;
+  }
 
   .ansi-box {
     background:rgba(255,255,255,.03);
     border:1px solid rgba(255,255,255,.12);
     border-radius:16px;
     padding:16px;
-    box-shadow:0 14px 32px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.05);
-  }
-
-  .ansi-legend {
-    margin-bottom:12px;
-    padding:8px 12px;
-    border-radius:12px;
-    border:1px solid rgba(255,255,255,.10);
-    background:rgba(0,0,0,.45);
-    font-weight:900;
-    color:rgba(224,241,11,.95);
-    letter-spacing:.15em;
   }
 
   .scroll{
-    height:1260px;
+    height:1100px;
     overflow-y:auto;
     overflow-x:hidden;
     padding:12px 14px;
     border-radius:12px;
     border:1px solid rgba(255,255,255,.10);
     background:rgba(0,0,0,.38);
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
-  }
-
-  .pane-head {
-    position:sticky;
-    top:0;
-    z-index:5;
-    display:flex;
-    gap:10px;
-    align-items:center;
-    justify-content:space-between;
-    padding:10px 12px;
-    margin:-10px -12px 12px -12px;
-    background:rgba(0,0,0,.78);
-    border-bottom:1px solid rgba(255,255,255,.12);
-    backdrop-filter: blur(8px);
-  }
-
-  .pane-label {
-    font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size:12px;
-    letter-spacing:.12em;
-    color:rgba(224,241,11,.95);
-    font-weight:900;
-    white-space:nowrap;
-  }
-
-  .jump-select, .search-box {
-    padding:6px 8px;
-    border-radius:10px;
-    border:1px solid rgba(255,255,255,.2);
-    background:#000;
-    color:#36ff33;
-    font-family:'Lucida Console','Lucida Sans Typewriter',Consolas,monospace;
-    font-size:14px;
-    outline:none;
   }
 
   .doc-content{
@@ -171,9 +155,6 @@
   .github-btn:hover{ background:rgba(0,255,255,.95); }
 
   /* Gallery */
-  .gallery {
-    position: relative;
-  }
   .gallery-header {
     display: flex;
     justify-content: center;
@@ -231,9 +212,8 @@
     <img src="images/title.png" alt="Renegade BBS">
   </div>
 
-  <!-- Gallery + GitHub Side-by-Side -->
+  <!-- Gallery + GitHub -->
   <div class="main-content">
-    <!-- LEFT: Gallery -->
     <div>
       <div class="gallery">
         <div class="gallery-header">
@@ -249,7 +229,6 @@
       </div>
     </div>
 
-    <!-- RIGHT: Current Source Code -->
     <div>
       <div class="ansi-box github-box" style="height: 540px;">
         <div class="ansi-legend">CURRENT SOURCE CODE</div>
@@ -268,33 +247,26 @@
     </div>
   </div>
 
-  <!-- History + WhatDone Side by Side -->
-  <div class="main-grid">
-    <!-- LEFT: HISTORY -->
-    <div class="ansi-box">
-      <div class="ansi-legend">RENEGADE HISTORY</div>
-      <img src="resources/history.png" alt="Renegade History" style="width:100%;border-radius:12px;margin-bottom:14px">
-      <pre class="doc-content"></pre>
+  <!-- Collapsible Boxes (Left-aligned when collapsed) -->
+  <div class="major-box">
+    <div class="major-header" onclick="this.parentElement.classList.toggle('open')">RENEGADE HISTORY</div>
+    <div class="major-content">
+      <div class="ansi-box">
+        <img src="resources/history.png" alt="Renegade History" style="width:100%;border-radius:12px;margin-bottom:14px">
+      </div>
     </div>
+  </div>
 
-    <!-- RIGHT: WHATDONE.TXT -->
-    <div class="ansi-box">
-      <div class="ansi-legend">WHATDONE.TXT</div>
-      <div class="scroll" id="whatPane" tabindex="0">
-        <div class="pane-head">
-          <div class="left">
-            <div class="pane-label">JUMP</div>
-            <select class="jump-select" id="whatJump">
-              <option value="">Jump to version…</option>
-            </select>
-          </div>
-          <input class="search-box" id="whatFind" type="search" placeholder="Search (Enter=next)">
-        </div>
-        <div class="doc-content" id="whatContent">
-          <center>
-            <img height="30" src="resources/alldone.png" width="600"/>
-            ────────────────────────────────────────────────────────────────
-          </center>
+  <div class="major-box">
+    <div class="major-header" onclick="this.parentElement.classList.toggle('open')">WHATDONE.TXT</div>
+    <div class="major-content">
+      <div class="ansi-box">
+        <div class="scroll" id="whatPane" tabindex="0">
+          <div class="doc-content" id="whatContent">
+            <center>
+              <img height="30" src="resources/alldone.png" width="600"/>
+              ────────────────────────────────────────────────────────────────
+            </center>
 <h1 id="1.40"><b style="color:#FFFFFF">----[ Changes in v1.40/DOS ]----</b></h1>
 <br/>
 <br/>
@@ -5321,32 +5293,26 @@ File download bug fixes/enhancements:
 															<br/>
 ---<br/>
 [EOF]
-<br/>
-</enter></g></node></cr></password;level></cr></cr></cr></cr></cr></cr></cr></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
+  <div class="major-box">
+    <div class="major-header" onclick="this.parentElement.classList.toggle('open')">RENEGADE.DOC</div>
+    <div class="major-content">
       <div class="ansi-box">
-        <div class="ansi-legend">RENEGADE.DOC</div>
-        <div class="scroll" id="docPane" tabindex="0">
-          <div class="pane-head">
-            <div class="left">
-              <div class="pane-label"></div>
-              <select class="jump-select" id="docJump">
-                <option value="">Jump to chapter…</option>
-              </select>
-            </div>
-            <input class="search-box" id="docFind" type="search" placeholder="Search (Enter=next)">
-          </div>
-          <div class="doc-content" id="docContent">
+        <div class="scroll" id="whatPane" tabindex="0">
+          <div class="doc-content" id="whatContent">
             <center>
-<img height="30" src="resources/rgdoc.png" width="600"/>
+              <img height="30" src="resources/rgdoc.png" width="600"/>
+              ────────────────────────────────────────────────────────────────
+            </center>
+<br/>
+<br/>
 
-────────────────────────────────────────────────────────────────
-</center>
-<br>
-<b style="color:#F0FF00">		                   ----[ Renegade BBS v1.3x/DOS Manual ]----</b>
+<b style="color:#F0FF00">		                   ----[ Renegade BBS v1.4x/DOS Manual ]----</b>
 <br>
 <br/>
 Table of Contents:
@@ -15567,56 +15533,38 @@ BLANK-&gt;<br/><br/>
 
 ---<br/>
 [EOF]
-<br/>
 
-  <div class="back-wrap">
-    <a class="back-btn" href="betaindex.html">← Back to Menu</a>
-  </div>
-</div>
 
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="back-wrap">
-    <a class="back-btn" href="betaindex.html">← Back to Menu</a>
-  </div>
+<div class="back-wrap">
+  <a class="back-btn" href="betaindex.html">← Back to Menu</a>
 </div>
 
 <script>
 // Gallery navigation
-const galleryImages = [
-  "resources/1.png","resources/2.png","resources/3.png","resources/4.png",
-  "resources/5.png","resources/6.png","resources/7.png","resources/8.png",
-  "resources/9.png","resources/10.png","resources/11.png","resources/12.png",
-  "resources/13.png","resources/14.png","resources/15.png","resources/16.png",
-  "resources/17.png","resources/18.png","resources/19.png","resources/20.png"
-];
-
+const galleryImages = ["resources/1.png","resources/2.png","resources/3.png","resources/4.png","resources/5.png","resources/6.png","resources/7.png","resources/8.png","resources/9.png","resources/10.png","resources/11.png","resources/12.png","resources/13.png","resources/14.png","resources/15.png","resources/16.png","resources/17.png","resources/18.png","resources/19.png","resources/20.png"];
 let currentIndex = 0;
 const mainImg = document.getElementById('galleryMainImg');
-const prevBtn = document.getElementById('galleryPrev');
-const nextBtn = document.getElementById('galleryNext');
 
-function updateImage() {
-  mainImg.src = galleryImages[currentIndex];
-}
-function goPrev() {
+function updateImage() { mainImg.src = galleryImages[currentIndex]; }
+
+document.getElementById('galleryPrev').addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
   updateImage();
-}
-function goNext() {
+});
+document.getElementById('galleryNext').addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % galleryImages.length;
   updateImage();
-}
-
-prevBtn.addEventListener('click', goPrev);
-nextBtn.addEventListener('click', goNext);
+});
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowLeft') goPrev();
-  if (e.key === 'ArrowRight') goNext();
+  if (e.key === 'ArrowLeft') document.getElementById('galleryPrev').click();
+  if (e.key === 'ArrowRight') document.getElementById('galleryNext').click();
 });
 
 updateImage();
