@@ -17,6 +17,7 @@
     font-family:'Outfit',system-ui,sans-serif;
     margin:0;
     overflow-x:hidden;
+    padding-top: 20px;
   }
 
   .back-wrap{
@@ -37,13 +38,14 @@
     font-weight:800;
   }
 
-  /* Game jump nav buttons */
+  /* Game tab nav buttons */
   .game-nav {
     display: flex;
     justify-content: center;
     gap: 24px;
     flex-wrap: wrap;
-    margin: 0 0 18px;
+    margin: 0 0 8px;
+    padding: 20px 0 20px;
   }
 
   .game-nav a {
@@ -58,6 +60,7 @@
     font-weight: 600;
     letter-spacing: .03em;
     transition: background .2s, color .2s, border-color .2s;
+    cursor: pointer;
   }
 
   .game-nav a:hover {
@@ -66,17 +69,35 @@
     color: #fff;
   }
 
-  /* Section anchors need offset so the fixed back button doesn't cover them */
-  .game-section {
-    scroll-margin-top: 20px;
+  .game-nav a.active {
+    background: rgba(0,191,255,.28);
+    border-color: #00BFFF;
+    color: #fff;
+    box-shadow: 0 0 16px rgba(0,191,255,.25);
   }
 
-  /* Divider between game sections */
+  /* Game panels */
+  .game-panel {
+    display: none;
+  }
+
+  .game-panel.active {
+    display: block;
+    animation: fadeIn .2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* Divider line below tab nav */
   .section-divider {
     border: none;
     border-top: 1px solid rgba(0,191,255,.2);
-    margin: 50px auto;
+    margin: 0 auto 36px;
     max-width: 1420px;
+    width: calc(100% - 60px);
   }
 
   /* Uniform Donation Buttons - No hover pop */
@@ -186,6 +207,50 @@
     display: block;
   }
 
+  /* Splash screen */
+  #splash {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  #splash img.nw-logo {
+    max-width: 980px;
+    width: 90%;
+    margin-bottom: 50px;
+  }
+
+  .splash-nav {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .splash-nav a {
+    display: inline-block;
+    padding: 14px 36px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,191,255,.45);
+    background: rgba(0,191,255,.08);
+    color: #00BFFF;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .03em;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+
+  .splash-nav a:hover {
+    background: rgba(0,191,255,.22);
+    border-color: #00BFFF;
+    color: #fff;
+  }
+
   /* Blue ASCII Box */
   .ansi-box {
     background: #000000;
@@ -204,22 +269,34 @@
 
 </head>
 <body>
-<br>
 <div class="back-wrap">
   <a href="betaindex.html" class="back-btn">← Back to Menu</a>
 </div>
 
-<!-- Jump nav -->
-<nav class="game-nav">
-  <a href="#sysop-smashin">⚔ SysOp Smashin'</a>
-  <a href="#shadow-stalker">🌑 Shadow Stalker</a>
+<!-- ═══════════════════════════════════════ -->
+<!--  SPLASH / LANDING                      -->
+<!-- ═══════════════════════════════════════ -->
+<div id="splash">
+  <img class="nw-logo" src="images/newwave.png" alt="NewWave Software">
+  <nav class="splash-nav">
+    <a href="#" data-tab="sysop">⚔ SysOp Smashin'</a>
+    <a href="#" data-tab="shadow">🌑 Shadow Stalker</a>
+    <a href="#" data-tab="frantic">💥 FRANTIC!</a>
+  </nav>
+</div>
+
+<!-- Tab nav (hidden until a game is chosen) -->
+<nav class="game-nav" id="gameNav" style="display:none">
+  <a href="#" class="active" data-tab="sysop">⚔ SysOp Smashin'</a>
+  <a href="#" data-tab="shadow">🌑 Shadow Stalker</a>
+  <a href="#" data-tab="frantic">💥 FRANTIC!</a>
 </nav>
-<hr class="section-divider">
+<hr id="gameNavDivider" class="section-divider" style="display:none; margin-top:12px; margin-bottom:18px;">
 
 <!-- ═══════════════════════════════════════ -->
 <!--  GAME 1: SYSOP SMASHIN'                -->
 <!-- ═══════════════════════════════════════ -->
-<div id="sysop-smashin" class="game-section">
+<div id="tab-sysop" class="game-panel">
 
   <div class="button-row">
     <a href="zip/SYSOP022.ZIP" Download>
@@ -284,14 +361,12 @@ Pure Stick-Man 1 on 1 fighting fun!  Download it now!!!
     </div>
   </div>
 
-</div><!-- end #sysop-smashin -->
-
-<hr class="section-divider">
+</div><!-- end #tab-sysop -->
 
 <!-- ═══════════════════════════════════════ -->
 <!--  GAME 2: SHADOW STALKER                -->
 <!-- ═══════════════════════════════════════ -->
-<div id="shadow-stalker" class="game-section">
+<div id="tab-shadow" class="game-panel">
 
   <div class="button-row">
     <a href="zip/SHADOWV1.ZIP" Download>
@@ -353,7 +428,76 @@ score?!?
     </div>
   </div>
 
-</div><!-- end #shadow-stalker -->
+</div><!-- end #tab-shadow -->
+
+<!-- ═══════════════════════════════════════ -->
+<!--  GAME 3: FRANTIC!                      -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-frantic" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/FRANV10.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which game(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="franticPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the game images.
+          </div>
+          <button class="gallery-nav" id="franticNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="franticMainImg" src="images/frantic0.png" alt="Frantic!">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+                  FRANTIC!  v1.00
+  (c) 2026 - NewWave Software
+
+You are under attack and
+time is running out! Waves of
+relentless enemies are closing
+in from every direction.
+
+Move fast, shoot faster, and
+survive as long as you can as
+the chaos gets more frantic
+with every passing second!
+
+How long can you last before
+the madness overwhelms you?
+
+Go for the high score and prove
+you are the fastest gun on the
+board!
+
+
+  - 16-Bit DOS BBS Door Game -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-frantic -->
 
 <br>
 <p style="text-align: center; margin-top: 0px;">
@@ -361,6 +505,59 @@ score?!?
 </p>
 
 <script>
+// ── Splash + tab switching ────────────────────────────────
+const splash  = document.getElementById('splash');
+const gameNav = document.getElementById('gameNav');
+let activeTab = 'sysop';
+
+function switchTab(key) {
+  const validKeys = ['sysop', 'shadow', 'frantic'];
+  if (!validKeys.includes(key)) return;
+
+  // Hide splash, show tab nav + divider
+  splash.style.display  = 'none';
+  gameNav.style.display = '';
+  document.getElementById('gameNavDivider').style.display = '';
+
+  document.querySelectorAll('.game-nav a').forEach(a => a.classList.remove('active'));
+  document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('.game-nav a[data-tab="' + key + '"]').classList.add('active');
+  document.getElementById('tab-' + key).classList.add('active');
+  activeTab = key;
+}
+
+// Tab nav clicks
+document.querySelectorAll('.game-nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    switchTab(link.dataset.tab);
+    history.replaceState(null, '', '#' + link.dataset.tab);
+  });
+});
+
+// Splash game button clicks
+document.querySelectorAll('.splash-nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const key = link.dataset.tab;
+    switchTab(key);
+    history.replaceState(null, '', '#' + key);
+  });
+});
+
+// Deep-link: if a hash is present on load, skip splash and open that game.
+// Supports #sysop, #shadow, #frantic and old anchors #sysop-smashin, #shadow-stalker.
+const hashMap = {
+  'sysop': 'sysop', 'sysop-smashin': 'sysop',
+  'shadow': 'shadow', 'shadow-stalker': 'shadow',
+  'frantic': 'frantic'
+};
+const initialKey = hashMap[location.hash.replace('#', '')];
+if (initialKey) {
+  switchTab(initialKey);
+}
+// (if no hash, splash stays visible and no game panel is shown)
+
 // ── SysOp Smashin' gallery ──────────────────────────────
 const sysopImages = [
   "images/sysopsm.png","images/sysopsm1.png","images/sysopsm2.png",
@@ -369,7 +566,7 @@ const sysopImages = [
   "images/sysopsm9.png","images/sysopsm0.png"
 ];
 let sysopIndex = 0;
-const sysopImg  = document.getElementById('sysopMainImg');
+const sysopImg = document.getElementById('sysopMainImg');
 document.getElementById('sysopPrev').addEventListener('click', () => {
   sysopIndex = (sysopIndex - 1 + sysopImages.length) % sysopImages.length;
   sysopImg.src = sysopImages[sysopIndex];
@@ -385,7 +582,7 @@ const shadowImages = [
   "images/shadow4.png","images/shadow5.png"
 ];
 let shadowIndex = 0;
-const shadowImg  = document.getElementById('shadowMainImg');
+const shadowImg = document.getElementById('shadowMainImg');
 document.getElementById('shadowPrev').addEventListener('click', () => {
   shadowIndex = (shadowIndex - 1 + shadowImages.length) % shadowImages.length;
   shadowImg.src = shadowImages[shadowIndex];
@@ -395,14 +592,34 @@ document.getElementById('shadowNext').addEventListener('click', () => {
   shadowImg.src = shadowImages[shadowIndex];
 });
 
-// ── Arrow key support (targets whichever gallery is in view) ──
-document.addEventListener('keydown', e => {
-  const sysopTop  = document.getElementById('sysop-smashin').getBoundingClientRect().top;
-  const shadowTop = document.getElementById('shadow-stalker').getBoundingClientRect().top;
-  const inSysop   = sysopTop <= window.innerHeight / 2 && shadowTop > window.innerHeight / 2;
+// ── Frantic! gallery ────────────────────────────────────
+const franticImages = [
+  "images/frantic0.png","images/frantic1.png","images/frantic2.png",
+  "images/frantic3.png","images/frantic4.png","images/frantic5.png"
+];
+let franticIndex = 0;
+const franticImg = document.getElementById('franticMainImg');
+document.getElementById('franticPrev').addEventListener('click', () => {
+  franticIndex = (franticIndex - 1 + franticImages.length) % franticImages.length;
+  franticImg.src = franticImages[franticIndex];
+});
+document.getElementById('franticNext').addEventListener('click', () => {
+  franticIndex = (franticIndex + 1) % franticImages.length;
+  franticImg.src = franticImages[franticIndex];
+});
 
-  if (e.key === 'ArrowLeft')  inSysop ? document.getElementById('sysopPrev').click()  : document.getElementById('shadowPrev').click();
-  if (e.key === 'ArrowRight') inSysop ? document.getElementById('sysopNext').click() : document.getElementById('shadowNext').click();
+// ── Arrow key support (targets active tab's gallery) ────
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') {
+    if (activeTab === 'sysop')   document.getElementById('sysopPrev').click();
+    else if (activeTab === 'shadow')  document.getElementById('shadowPrev').click();
+    else document.getElementById('franticPrev').click();
+  }
+  if (e.key === 'ArrowRight') {
+    if (activeTab === 'sysop')   document.getElementById('sysopNext').click();
+    else if (activeTab === 'shadow')  document.getElementById('shadowNext').click();
+    else document.getElementById('franticNext').click();
+  }
 });
 </script>
 
