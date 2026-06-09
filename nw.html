@@ -279,17 +279,65 @@
 <div id="splash">
   <img class="nw-logo" src="images/newwave.png" alt="NewWave Software">
   <nav class="splash-nav">
-    <a href="#" data-tab="sysop">⚔ SysOp Smashin'</a>
+    <a href="#" data-tab="sysop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17" style="vertical-align:-3px;margin-right:5px">
+  <!-- blade -->
+  <polygon points="10,1 11.3,14 10,15.5 8.7,14" fill="#c8d0d8" stroke="#a0a8b0" stroke-width=".4"/>
+  <!-- tip shine -->
+  <polygon points="10,1 10.6,6 10,7 9.4,6" fill="#eef2f5"/>
+  <!-- crossguard -->
+  <rect x="5.5" y="13.2" width="9" height="2" rx=".8" fill="#d4a820" stroke="#b08a10" stroke-width=".4"/>
+  <!-- grip -->
+  <rect x="9.1" y="15.2" width="1.8" height="3" rx=".5" fill="#8B4513"/>
+  <!-- pommel -->
+  <ellipse cx="10" cy="18.8" rx="1.6" ry="1" fill="#d4a820" stroke="#b08a10" stroke-width=".4"/>
+</svg>SysOp Smashin'</a>
     <a href="#" data-tab="shadow">🌑 Shadow Stalker</a>
     <a href="#" data-tab="frantic">💥 FRANTIC!</a>
+    <a href="#" data-tab="foggy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 18" width="18" height="18" style="vertical-align:-3px;margin-right:5px">
+  <!-- mountain body -->
+  <polygon points="11,2 3,14 19,14" fill="#5a6370" stroke="#4a5260" stroke-width=".8" stroke-linejoin="round"/>
+  <!-- snow cap -->
+  <polygon points="11,2 8.2,7.5 13.8,7.5" fill="#e8eef2" stroke="#cdd6dc" stroke-width=".4"/>
+  <!-- cloud/fog layers -->
+  <ellipse cx="8.5" cy="9.5" rx="3.4" ry="1.8" fill="#8faaba" opacity=".7"/>
+  <ellipse cx="13" cy="8.8" rx="3.6" ry="1.9" fill="#8faaba" opacity=".7"/>
+  <ellipse cx="10.5" cy="8.2" rx="2.8" ry="1.7" fill="#b0c4d0" opacity=".75"/>
+  <!-- fog bands -->
+  <rect x="3" y="14.5" width="16" height="1.1" rx=".5" fill="#8faaba" opacity=".5"/>
+  <rect x="5" y="16.2" width="12" height="1.1" rx=".5" fill="#8faaba" opacity=".35"/>
+</svg>Foggy Summit</a>
   </nav>
 </div>
 
 <!-- Tab nav (hidden until a game is chosen) -->
 <nav class="game-nav" id="gameNav" style="display:none">
-  <a href="#" class="active" data-tab="sysop">⚔ SysOp Smashin'</a>
+  <a href="#" class="active" data-tab="sysop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17" style="vertical-align:-3px;margin-right:5px">
+  <!-- blade -->
+  <polygon points="10,1 11.3,14 10,15.5 8.7,14" fill="#c8d0d8" stroke="#a0a8b0" stroke-width=".4"/>
+  <!-- tip shine -->
+  <polygon points="10,1 10.6,6 10,7 9.4,6" fill="#eef2f5"/>
+  <!-- crossguard -->
+  <rect x="5.5" y="13.2" width="9" height="2" rx=".8" fill="#d4a820" stroke="#b08a10" stroke-width=".4"/>
+  <!-- grip -->
+  <rect x="9.1" y="15.2" width="1.8" height="3" rx=".5" fill="#8B4513"/>
+  <!-- pommel -->
+  <ellipse cx="10" cy="18.8" rx="1.6" ry="1" fill="#d4a820" stroke="#b08a10" stroke-width=".4"/>
+</svg>SysOp Smashin'</a>
   <a href="#" data-tab="shadow">🌑 Shadow Stalker</a>
   <a href="#" data-tab="frantic">💥 FRANTIC!</a>
+  <a href="#" data-tab="foggy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 18" width="18" height="18" style="vertical-align:-3px;margin-right:5px">
+  <!-- mountain body -->
+  <polygon points="11,2 3,14 19,14" fill="#5a6370" stroke="#4a5260" stroke-width=".8" stroke-linejoin="round"/>
+  <!-- snow cap -->
+  <polygon points="11,2 8.2,7.5 13.8,7.5" fill="#e8eef2" stroke="#cdd6dc" stroke-width=".4"/>
+  <!-- cloud/fog layers -->
+  <ellipse cx="8.5" cy="9.5" rx="3.4" ry="1.8" fill="#8faaba" opacity=".7"/>
+  <ellipse cx="13" cy="8.8" rx="3.6" ry="1.9" fill="#8faaba" opacity=".7"/>
+  <ellipse cx="10.5" cy="8.2" rx="2.8" ry="1.7" fill="#b0c4d0" opacity=".75"/>
+  <!-- fog bands -->
+  <rect x="3" y="14.5" width="16" height="1.1" rx=".5" fill="#8faaba" opacity=".5"/>
+  <rect x="5" y="16.2" width="12" height="1.1" rx=".5" fill="#8faaba" opacity=".35"/>
+</svg>Foggy Summit</a>
 </nav>
 <hr id="gameNavDivider" class="section-divider" style="display:none; margin-top:12px; margin-bottom:18px;">
 
@@ -499,6 +547,74 @@ board!
 
 </div><!-- end #tab-frantic -->
 
+<!-- ═══════════════════════════════════════ -->
+<!--  GAME 4: FOGGY SUMMIT                  -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-foggy" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/FOGGYV10.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which game(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="foggyPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the game images.
+          </div>
+          <button class="gallery-nav" id="foggyNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="foggyMainImg" src="images/foggy0.png" alt="Foggy Summit">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+        Foggy Summit v1.00
+  (c) 2026 - NewWave Software
+
+The mountain calls to those
+brave enough to answer it.
+
+Ascend through treacherous 
+fog-shrouded caves, navigate
+deadly paths and brave the
+darkness to find the cave
+jewels.
+
+Collect all 4 pieces to restore
+the Great Arrow to its true
+power and free the land!
+
+Conquer the summit and claim
+the highest score!
+
+
+  - 16-Bit DOS BBS Door Game -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-foggy -->
+
 <br>
 <p style="text-align: center; margin-top: 0px;">
   <span style="font-size: 14px;">&copy; 1995 - <script>document.write(new Date().getFullYear())</script> NewWave Software</span>
@@ -511,7 +627,7 @@ const gameNav = document.getElementById('gameNav');
 let activeTab = 'sysop';
 
 function switchTab(key) {
-  const validKeys = ['sysop', 'shadow', 'frantic'];
+  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy'];
   if (!validKeys.includes(key)) return;
 
   // Hide splash, show tab nav + divider
@@ -550,7 +666,8 @@ document.querySelectorAll('.splash-nav a').forEach(link => {
 const hashMap = {
   'sysop': 'sysop', 'sysop-smashin': 'sysop',
   'shadow': 'shadow', 'shadow-stalker': 'shadow',
-  'frantic': 'frantic'
+  'frantic': 'frantic',
+  'foggy': 'foggy', 'foggy-summit': 'foggy'
 };
 const initialKey = hashMap[location.hash.replace('#', '')];
 if (initialKey) {
@@ -608,17 +725,35 @@ document.getElementById('franticNext').addEventListener('click', () => {
   franticImg.src = franticImages[franticIndex];
 });
 
+// ── Foggy Summit gallery ─────────────────────────────────
+const foggyImages = [
+  "images/foggy0.png","images/foggy1.png","images/foggy2.png",
+  "images/foggy3.png","images/foggy4.png"
+];
+let foggyIndex = 0;
+const foggyImg = document.getElementById('foggyMainImg');
+document.getElementById('foggyPrev').addEventListener('click', () => {
+  foggyIndex = (foggyIndex - 1 + foggyImages.length) % foggyImages.length;
+  foggyImg.src = foggyImages[foggyIndex];
+});
+document.getElementById('foggyNext').addEventListener('click', () => {
+  foggyIndex = (foggyIndex + 1) % foggyImages.length;
+  foggyImg.src = foggyImages[foggyIndex];
+});
+
 // ── Arrow key support (targets active tab's gallery) ────
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') {
-    if (activeTab === 'sysop')   document.getElementById('sysopPrev').click();
+    if (activeTab === 'sysop')        document.getElementById('sysopPrev').click();
     else if (activeTab === 'shadow')  document.getElementById('shadowPrev').click();
-    else document.getElementById('franticPrev').click();
+    else if (activeTab === 'frantic') document.getElementById('franticPrev').click();
+    else if (activeTab === 'foggy')   document.getElementById('foggyPrev').click();
   }
   if (e.key === 'ArrowRight') {
-    if (activeTab === 'sysop')   document.getElementById('sysopNext').click();
+    if (activeTab === 'sysop')        document.getElementById('sysopNext').click();
     else if (activeTab === 'shadow')  document.getElementById('shadowNext').click();
-    else document.getElementById('franticNext').click();
+    else if (activeTab === 'frantic') document.getElementById('franticNext').click();
+    else if (activeTab === 'foggy')   document.getElementById('foggyNext').click();
   }
 });
 </script>
