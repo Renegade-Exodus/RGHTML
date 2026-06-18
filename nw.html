@@ -225,10 +225,10 @@
   }
 
   .splash-nav {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
     justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
+    gap: 20px 24px;
   }
 
   .splash-nav a {
@@ -243,6 +243,8 @@
     font-weight: 600;
     letter-spacing: .03em;
     transition: background .2s, color .2s, border-color .2s;
+    text-align: center;
+    white-space: nowrap;
   }
 
   .splash-nav a:hover {
@@ -306,6 +308,31 @@
   <rect x="3" y="14.5" width="16" height="1.1" rx=".5" fill="#8faaba" opacity=".5"/>
   <rect x="5" y="16.2" width="12" height="1.1" rx=".5" fill="#8faaba" opacity=".35"/>
 </svg>Foggy Summit</a>
+    <a href="#" data-tab="pack"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17" style="vertical-align:-3px;margin-right:5px">
+  <!-- Pac-Man body -->
+  <path d="M10,10 L18.5,5.5 A9,9 0 1,0 18.5,14.5 Z" fill="#FFD700"/>
+  <!-- Eye -->
+  <circle cx="10" cy="4.5" r="1.2" fill="#000"/>
+</svg>BBS-PACK</a>
+    <a href="#" data-tab="toad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" width="18" height="18" style="vertical-align:-3px;margin-right:5px">
+  <!-- body -->
+  <ellipse cx="11" cy="13" rx="7" ry="5.5" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
+  <!-- head -->
+  <ellipse cx="11" cy="8.5" rx="5.5" ry="4" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
+  <!-- left eye bump -->
+  <circle cx="7.5" cy="6" r="2.2" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
+  <circle cx="7.5" cy="6" r="1.2" fill="#111"/>
+  <circle cx="7.9" cy="5.6" r=".4" fill="#fff"/>
+  <!-- right eye bump -->
+  <circle cx="14.5" cy="6" r="2.2" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
+  <circle cx="14.5" cy="6" r="1.2" fill="#111"/>
+  <circle cx="14.9" cy="5.6" r=".4" fill="#fff"/>
+  <!-- mouth -->
+  <path d="M8.5,11 Q11,13 13.5,11" fill="none" stroke="#1a8a3a" stroke-width=".7"/>
+  <!-- front legs -->
+  <path d="M4,14 Q2,16 3,18" fill="none" stroke="#1a8a3a" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M18,14 Q20,16 19,18" fill="none" stroke="#1a8a3a" stroke-width="1.2" stroke-linecap="round"/>
+</svg>Toadster</a>
   </nav>
 </div>
 
@@ -338,6 +365,31 @@
   <rect x="3" y="14.5" width="16" height="1.1" rx=".5" fill="#8faaba" opacity=".5"/>
   <rect x="5" y="16.2" width="12" height="1.1" rx=".5" fill="#8faaba" opacity=".35"/>
 </svg>Foggy Summit</a>
+  <a href="#" data-tab="pack"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17" style="vertical-align:-3px;margin-right:5px">
+  <!-- Pac-Man body -->
+  <path d="M10,10 L18.5,5.5 A9,9 0 1,0 18.5,14.5 Z" fill="#FFD700"/>
+  <!-- Eye -->
+  <circle cx="10" cy="4.5" r="1.2" fill="#000"/>
+</svg>BBS-PACK</a>
+  <a href="#" data-tab="toad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" width="18" height="18" style="vertical-align:-3px;margin-right:5px">
+  <!-- body -->
+  <ellipse cx="11" cy="13" rx="7" ry="5.5" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
+  <!-- head -->
+  <ellipse cx="11" cy="8.5" rx="5.5" ry="4" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
+  <!-- left eye bump -->
+  <circle cx="7.5" cy="6" r="2.2" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
+  <circle cx="7.5" cy="6" r="1.2" fill="#111"/>
+  <circle cx="7.9" cy="5.6" r=".4" fill="#fff"/>
+  <!-- right eye bump -->
+  <circle cx="14.5" cy="6" r="2.2" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
+  <circle cx="14.5" cy="6" r="1.2" fill="#111"/>
+  <circle cx="14.9" cy="5.6" r=".4" fill="#fff"/>
+  <!-- mouth -->
+  <path d="M8.5,11 Q11,13 13.5,11" fill="none" stroke="#1a8a3a" stroke-width=".7"/>
+  <!-- front legs -->
+  <path d="M4,14 Q2,16 3,18" fill="none" stroke="#1a8a3a" stroke-width="1.2" stroke-linecap="round"/>
+  <path d="M18,14 Q20,16 19,18" fill="none" stroke="#1a8a3a" stroke-width="1.2" stroke-linecap="round"/>
+</svg>Toadster</a>
 </nav>
 <hr id="gameNavDivider" class="section-divider" style="display:none; margin-top:12px; margin-bottom:18px;">
 
@@ -615,6 +667,141 @@ the highest score!
 
 </div><!-- end #tab-foggy -->
 
+<!-- ═══════════════════════════════════════ -->
+<!--  GAME 5: BBS-PACK                      -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-pack" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/PACKV10.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which game(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="packPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the game images.
+          </div>
+          <button class="gallery-nav" id="packNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="packMainImg" src="images/pack0.png" alt="BBS-PACK">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+              BBS-PACK v1.00
+  (c) 2026 - NewWave Software
+
+A clone of everyones favorite
+yellow dot eater!  Now for your
+BBS!
+
+Easy mode with larger graphics
+and Hard mode with larger mazes!
+
+Challenge your friends, climb
+the high score boards, and
+experience the nostalgia of
+dial-up gaming at its finest!
+
+Ready to plug back in?
+
+
+  - 16-Bit DOS BBS Door Games -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-pack -->
+
+
+<!-- ═══════════════════════════════════════ -->
+<!--  GAME 6: Toadster                  -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-toad" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/TOADV10.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which game(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="toadPrev">&#x2039;</button>
+          <div class="gallery-instruction">
+            Click the &#x25C4; or &#x25BA; buttons to scroll through the game images.
+          </div>
+          <button class="gallery-nav" id="toadNext">&#x203A;</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="toadMainImg" src="images/toad0.png" alt="Toadster">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+           Toadster v1.00
+  (c) 2026 - NewWave Software
+
+Guide your toad safely across
+10 lanes of speeding traffic,
+then ride logs and turtles
+across 8 treacherous river
+lanes!
+
+Land all 5 toads on their
+lily pad homes to clear the
+level and earn bonus points!
+
+How many levels can you
+conquer before the road
+claims your last toad?
+
+Climb the BBS high score
+board and prove your worth!
+
+  - 16-Bit DOS BBS Door Game -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-toad -->
+
 <br>
 <p style="text-align: center; margin-top: 0px;">
   <span style="font-size: 14px;">&copy; 1995 - <script>document.write(new Date().getFullYear())</script> NewWave Software</span>
@@ -627,7 +814,7 @@ const gameNav = document.getElementById('gameNav');
 let activeTab = 'sysop';
 
 function switchTab(key) {
-  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy'];
+  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad'];
   if (!validKeys.includes(key)) return;
 
   // Hide splash, show tab nav + divider
@@ -667,7 +854,9 @@ const hashMap = {
   'sysop': 'sysop', 'sysop-smashin': 'sysop',
   'shadow': 'shadow', 'shadow-stalker': 'shadow',
   'frantic': 'frantic',
-  'foggy': 'foggy', 'foggy-summit': 'foggy'
+  'foggy': 'foggy', 'foggy-summit': 'foggy',
+  'pack': 'pack', 'bbs-pack': 'pack',
+  'toad': 'toad', 'bbs-toadster': 'toad'
 };
 const initialKey = hashMap[location.hash.replace('#', '')];
 if (initialKey) {
@@ -741,6 +930,38 @@ document.getElementById('foggyNext').addEventListener('click', () => {
   foggyImg.src = foggyImages[foggyIndex];
 });
 
+// ── BBS-PACK gallery ─────────────────────────────────────
+const packImages = [
+  "images/pack0.png","images/pack1.png","images/pack2.png",
+  "images/pack3.png","images/pack4.png"
+];
+let packIndex = 0;
+const packImg = document.getElementById('packMainImg');
+document.getElementById('packPrev').addEventListener('click', () => {
+  packIndex = (packIndex - 1 + packImages.length) % packImages.length;
+  packImg.src = packImages[packIndex];
+});
+document.getElementById('packNext').addEventListener('click', () => {
+  packIndex = (packIndex + 1) % packImages.length;
+  packImg.src = packImages[packIndex];
+});
+
+// ── Toadster gallery ─────────────────────────────────
+const toadImages = [
+  "images/toad0.png","images/toad1.png","images/toad2.png",
+  "images/toad3.png","images/toad4.png"
+];
+let toadIndex = 0;
+const toadImg = document.getElementById('toadMainImg');
+document.getElementById('toadPrev').addEventListener('click', () => {
+  toadIndex = (toadIndex - 1 + toadImages.length) % toadImages.length;
+  toadImg.src = toadImages[toadIndex];
+});
+document.getElementById('toadNext').addEventListener('click', () => {
+  toadIndex = (toadIndex + 1) % toadImages.length;
+  toadImg.src = toadImages[toadIndex];
+});
+
 // ── Arrow key support (targets active tab's gallery) ────
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') {
@@ -748,12 +969,16 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'shadow')  document.getElementById('shadowPrev').click();
     else if (activeTab === 'frantic') document.getElementById('franticPrev').click();
     else if (activeTab === 'foggy')   document.getElementById('foggyPrev').click();
+    else if (activeTab === 'pack')     document.getElementById('packPrev').click();
+    else if (activeTab === 'toad')     document.getElementById('toadPrev').click();
   }
   if (e.key === 'ArrowRight') {
     if (activeTab === 'sysop')        document.getElementById('sysopNext').click();
     else if (activeTab === 'shadow')  document.getElementById('shadowNext').click();
     else if (activeTab === 'frantic') document.getElementById('franticNext').click();
     else if (activeTab === 'foggy')   document.getElementById('foggyNext').click();
+    else if (activeTab === 'pack')     document.getElementById('packNext').click();
+    else if (activeTab === 'toad')     document.getElementById('toadNext').click();
   }
 });
 </script>
