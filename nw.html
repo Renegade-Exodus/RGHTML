@@ -38,42 +38,146 @@
     font-weight:800;
   }
 
-  /* Game tab nav buttons */
+  /* Game switcher dropdown */
   .game-nav {
     display: flex;
-    justify-content: center;
-    gap: 24px;
-    flex-wrap: wrap;
+    justify-content: flex-start;
     margin: 0 0 8px;
-    padding: 20px 0 20px;
+    padding: 22px 0 18px;
+    padding-left: max(30px, calc((100% - 1420px) / 2 + 30px));
   }
 
-  .game-nav a {
-    display: inline-block;
-    padding: 12px 28px;
+  .game-switcher {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .game-switcher-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.45);
+  }
+
+  .custom-select {
+    position: relative;
+    min-width: 220px;
+  }
+
+  .custom-select-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 11px 42px 11px 16px;
     border-radius: 10px;
     border: 1px solid rgba(0,191,255,.45);
-    background: rgba(0,191,255,.08);
+    background-color: #000;
     color: #00BFFF;
-    text-decoration: none;
-    font-size: 16px;
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: 15px;
     font-weight: 600;
-    letter-spacing: .03em;
-    transition: background .2s, color .2s, border-color .2s;
+    letter-spacing: .02em;
     cursor: pointer;
+    transition: background-color .2s, border-color .2s, color .2s;
+    position: relative;
+    text-align: left;
   }
 
-  .game-nav a:hover {
-    background: rgba(0,191,255,.22);
+  .custom-select-btn:hover,
+  .custom-select-btn[aria-expanded="true"] {
+    background-color: #0a0a0a;
     border-color: #00BFFF;
     color: #fff;
   }
 
-  .game-nav a.active {
-    background: rgba(0,191,255,.28);
-    border-color: #00BFFF;
+  .custom-select-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0,191,255,.22);
+  }
+
+  .custom-select-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    font-size: 15px;
+    line-height: 1;
+  }
+
+  .custom-select-icon svg {
+    display: block;
+  }
+
+  .custom-select-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .custom-select-chevron {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+
+  .custom-select-btn[aria-expanded="true"] .custom-select-chevron {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  .custom-select-list {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 6px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #000;
+    border: 1px solid rgba(0,191,255,.45);
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.6);
+    z-index: 50;
+    max-height: 360px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .custom-select-list.open {
+    display: block;
+  }
+
+  .custom-select-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 7px;
+    color: #00BFFF;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    cursor: pointer;
+    transition: background-color .15s, color .15s;
+  }
+
+  .custom-select-list li:hover,
+  .custom-select-list li.highlighted {
+    background-color: rgba(0,191,255,.15);
     color: #fff;
-    box-shadow: 0 0 16px rgba(0,191,255,.25);
+  }
+
+  .custom-select-list li[aria-selected="true"] {
+    background-color: rgba(0,191,255,.25);
+    color: #fff;
   }
 
   /* Game panels */
@@ -225,8 +329,15 @@
   }
 
   .splash-nav {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .splash-nav-row {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px 24px;
   }
@@ -272,7 +383,7 @@
 </head>
 <body>
 <div class="back-wrap">
-  <a href="betaindex.html" class="back-btn">← Back to Menu</a>
+  <a href="https://rgbbs.info/betaindex.html" class="back-btn" id="backBtn">← Back to Menu</a>
 </div>
 
 <!-- ═══════════════════════════════════════ -->
@@ -281,115 +392,61 @@
 <div id="splash">
   <img class="nw-logo" src="images/newwave.png" alt="NewWave Software">
   <nav class="splash-nav">
-    <a href="#" data-tab="sysop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17" style="vertical-align:-3px;margin-right:5px">
-  <!-- blade -->
-  <polygon points="10,1 11.3,14 10,15.5 8.7,14" fill="#c8d0d8" stroke="#a0a8b0" stroke-width=".4"/>
-  <!-- tip shine -->
-  <polygon points="10,1 10.6,6 10,7 9.4,6" fill="#eef2f5"/>
-  <!-- crossguard -->
-  <rect x="5.5" y="13.2" width="9" height="2" rx=".8" fill="#d4a820" stroke="#b08a10" stroke-width=".4"/>
-  <!-- grip -->
-  <rect x="9.1" y="15.2" width="1.8" height="3" rx=".5" fill="#8B4513"/>
-  <!-- pommel -->
-  <ellipse cx="10" cy="18.8" rx="1.6" ry="1" fill="#d4a820" stroke="#b08a10" stroke-width=".4"/>
-</svg>SysOp Smashin'</a>
-    <a href="#" data-tab="shadow">🌑 Shadow Stalker</a>
+    <div class="splash-nav-row">
+    <a href="#" data-tab="sysop">💪 SysOp Smashin'</a>
+    <a href="#" data-tab="shadow">🔫 Shadow Stalker</a>
     <a href="#" data-tab="frantic">💥 FRANTIC!</a>
-    <a href="#" data-tab="foggy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 18" width="18" height="18" style="vertical-align:-3px;margin-right:5px">
-  <!-- mountain body -->
-  <polygon points="11,2 3,14 19,14" fill="#5a6370" stroke="#4a5260" stroke-width=".8" stroke-linejoin="round"/>
-  <!-- snow cap -->
-  <polygon points="11,2 8.2,7.5 13.8,7.5" fill="#e8eef2" stroke="#cdd6dc" stroke-width=".4"/>
-  <!-- cloud/fog layers -->
-  <ellipse cx="8.5" cy="9.5" rx="3.4" ry="1.8" fill="#8faaba" opacity=".7"/>
-  <ellipse cx="13" cy="8.8" rx="3.6" ry="1.9" fill="#8faaba" opacity=".7"/>
-  <ellipse cx="10.5" cy="8.2" rx="2.8" ry="1.7" fill="#b0c4d0" opacity=".75"/>
-  <!-- fog bands -->
-  <rect x="3" y="14.5" width="16" height="1.1" rx=".5" fill="#8faaba" opacity=".5"/>
-  <rect x="5" y="16.2" width="12" height="1.1" rx=".5" fill="#8faaba" opacity=".35"/>
-</svg>Foggy Summit</a>
+    <a href="#" data-tab="foggy">🏔️ Foggy Summit</a>
+    </div>
+    <div class="splash-nav-row">
     <a href="#" data-tab="pack"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17" style="vertical-align:-3px;margin-right:5px">
-  <!-- Pac-Man body -->
-  <path d="M10,10 L18.5,5.5 A9,9 0 1,0 18.5,14.5 Z" fill="#FFD700"/>
-  <!-- Eye -->
-  <circle cx="10" cy="4.5" r="1.2" fill="#000"/>
+  <!-- ghost body -->
+  <path d="M3,17 L3,9 Q3,3 10,3 Q17,3 17,9 L17,17 L14.7,15 L12.3,17 L10,15 L7.7,17 L5.3,15 Z" fill="#3da5ff" stroke="#1f7fd6" stroke-width=".4"/>
+  <!-- eyes -->
+  <ellipse cx="7" cy="9.5" rx="1.7" ry="2.1" fill="#fff"/>
+  <ellipse cx="13" cy="9.5" rx="1.7" ry="2.1" fill="#fff"/>
+  <circle cx="7.6" cy="9.8" r=".8" fill="#1a3a6b"/>
+  <circle cx="13.6" cy="9.8" r=".8" fill="#1a3a6b"/>
 </svg>BBS-PACK</a>
-    <a href="#" data-tab="toad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" width="18" height="18" style="vertical-align:-3px;margin-right:5px">
-  <!-- body -->
-  <ellipse cx="11" cy="13" rx="7" ry="5.5" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
-  <!-- head -->
-  <ellipse cx="11" cy="8.5" rx="5.5" ry="4" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
-  <!-- left eye bump -->
-  <circle cx="7.5" cy="6" r="2.2" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
-  <circle cx="7.5" cy="6" r="1.2" fill="#111"/>
-  <circle cx="7.9" cy="5.6" r=".4" fill="#fff"/>
-  <!-- right eye bump -->
-  <circle cx="14.5" cy="6" r="2.2" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
-  <circle cx="14.5" cy="6" r="1.2" fill="#111"/>
-  <circle cx="14.9" cy="5.6" r=".4" fill="#fff"/>
-  <!-- mouth -->
-  <path d="M8.5,11 Q11,13 13.5,11" fill="none" stroke="#1a8a3a" stroke-width=".7"/>
-  <!-- front legs -->
-  <path d="M4,14 Q2,16 3,18" fill="none" stroke="#1a8a3a" stroke-width="1.2" stroke-linecap="round"/>
-  <path d="M18,14 Q20,16 19,18" fill="none" stroke="#1a8a3a" stroke-width="1.2" stroke-linecap="round"/>
-</svg>Toadster</a>
+    <a href="#" data-tab="toad">🐸 Toadster</a>
+    <a href="#" data-tab="snakes">🐍 Snakes!</a>
+    <a href="#" data-tab="bog">🪰 The Bog</a>
+    <a href="#" data-tab="worms">🪱 We Got Worms!</a>
+    </div>
   </nav>
 </div>
 
-<!-- Tab nav (hidden until a game is chosen) -->
+<!-- Game switcher dropdown (hidden until a game is chosen) -->
 <nav class="game-nav" id="gameNav" style="display:none">
-  <a href="#" class="active" data-tab="sysop"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17" style="vertical-align:-3px;margin-right:5px">
-  <!-- blade -->
-  <polygon points="10,1 11.3,14 10,15.5 8.7,14" fill="#c8d0d8" stroke="#a0a8b0" stroke-width=".4"/>
-  <!-- tip shine -->
-  <polygon points="10,1 10.6,6 10,7 9.4,6" fill="#eef2f5"/>
-  <!-- crossguard -->
-  <rect x="5.5" y="13.2" width="9" height="2" rx=".8" fill="#d4a820" stroke="#b08a10" stroke-width=".4"/>
-  <!-- grip -->
-  <rect x="9.1" y="15.2" width="1.8" height="3" rx=".5" fill="#8B4513"/>
-  <!-- pommel -->
-  <ellipse cx="10" cy="18.8" rx="1.6" ry="1" fill="#d4a820" stroke="#b08a10" stroke-width=".4"/>
-</svg>SysOp Smashin'</a>
-  <a href="#" data-tab="shadow">🌑 Shadow Stalker</a>
-  <a href="#" data-tab="frantic">💥 FRANTIC!</a>
-  <a href="#" data-tab="foggy"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 18" width="18" height="18" style="vertical-align:-3px;margin-right:5px">
-  <!-- mountain body -->
-  <polygon points="11,2 3,14 19,14" fill="#5a6370" stroke="#4a5260" stroke-width=".8" stroke-linejoin="round"/>
-  <!-- snow cap -->
-  <polygon points="11,2 8.2,7.5 13.8,7.5" fill="#e8eef2" stroke="#cdd6dc" stroke-width=".4"/>
-  <!-- cloud/fog layers -->
-  <ellipse cx="8.5" cy="9.5" rx="3.4" ry="1.8" fill="#8faaba" opacity=".7"/>
-  <ellipse cx="13" cy="8.8" rx="3.6" ry="1.9" fill="#8faaba" opacity=".7"/>
-  <ellipse cx="10.5" cy="8.2" rx="2.8" ry="1.7" fill="#b0c4d0" opacity=".75"/>
-  <!-- fog bands -->
-  <rect x="3" y="14.5" width="16" height="1.1" rx=".5" fill="#8faaba" opacity=".5"/>
-  <rect x="5" y="16.2" width="12" height="1.1" rx=".5" fill="#8faaba" opacity=".35"/>
-</svg>Foggy Summit</a>
-  <a href="#" data-tab="pack"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17" style="vertical-align:-3px;margin-right:5px">
-  <!-- Pac-Man body -->
-  <path d="M10,10 L18.5,5.5 A9,9 0 1,0 18.5,14.5 Z" fill="#FFD700"/>
-  <!-- Eye -->
-  <circle cx="10" cy="4.5" r="1.2" fill="#000"/>
-</svg>BBS-PACK</a>
-  <a href="#" data-tab="toad"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 20" width="18" height="18" style="vertical-align:-3px;margin-right:5px">
-  <!-- body -->
-  <ellipse cx="11" cy="13" rx="7" ry="5.5" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
-  <!-- head -->
-  <ellipse cx="11" cy="8.5" rx="5.5" ry="4" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
-  <!-- left eye bump -->
-  <circle cx="7.5" cy="6" r="2.2" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
-  <circle cx="7.5" cy="6" r="1.2" fill="#111"/>
-  <circle cx="7.9" cy="5.6" r=".4" fill="#fff"/>
-  <!-- right eye bump -->
-  <circle cx="14.5" cy="6" r="2.2" fill="#22b14c" stroke="#1a8a3a" stroke-width=".5"/>
-  <circle cx="14.5" cy="6" r="1.2" fill="#111"/>
-  <circle cx="14.9" cy="5.6" r=".4" fill="#fff"/>
-  <!-- mouth -->
-  <path d="M8.5,11 Q11,13 13.5,11" fill="none" stroke="#1a8a3a" stroke-width=".7"/>
-  <!-- front legs -->
-  <path d="M4,14 Q2,16 3,18" fill="none" stroke="#1a8a3a" stroke-width="1.2" stroke-linecap="round"/>
-  <path d="M18,14 Q20,16 19,18" fill="none" stroke="#1a8a3a" stroke-width="1.2" stroke-linecap="round"/>
-</svg>Toadster</a>
+  <label class="game-switcher">
+    <span class="game-switcher-label">Switch Game</span>
+    <div class="custom-select" id="gameSelectWrap">
+      <button type="button" class="custom-select-btn" id="gameSelectBtn" aria-haspopup="listbox" aria-expanded="false">
+        <span class="custom-select-icon" id="gameSelectIcon">💪</span>
+        <span class="custom-select-text" id="gameSelectText">SysOp Smashin'</span>
+        <svg class="custom-select-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8">
+          <path d="M1 1l5 5 5-5" stroke="#00BFFF" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <ul class="custom-select-list" id="gameSelectList" role="listbox">
+        <li role="option" data-value="sysop"><span class="custom-select-icon">💪</span>SysOp Smashin'</li>
+        <li role="option" data-value="shadow"><span class="custom-select-icon">🔫</span>Shadow Stalker</li>
+        <li role="option" data-value="frantic"><span class="custom-select-icon">💥</span>FRANTIC!</li>
+        <li role="option" data-value="foggy"><span class="custom-select-icon">🏔️</span>Foggy Summit</li>
+        <li role="option" data-value="pack"><span class="custom-select-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17">
+  <path d="M3,17 L3,9 Q3,3 10,3 Q17,3 17,9 L17,17 L14.7,15 L12.3,17 L10,15 L7.7,17 L5.3,15 Z" fill="#3da5ff" stroke="#1f7fd6" stroke-width=".4"/>
+  <ellipse cx="7" cy="9.5" rx="1.7" ry="2.1" fill="#fff"/>
+  <ellipse cx="13" cy="9.5" rx="1.7" ry="2.1" fill="#fff"/>
+  <circle cx="7.6" cy="9.8" r=".8" fill="#1a3a6b"/>
+  <circle cx="13.6" cy="9.8" r=".8" fill="#1a3a6b"/>
+</svg></span>BBS-PACK</li>
+        <li role="option" data-value="toad"><span class="custom-select-icon">🐸</span>Toadster</li>
+        <li role="option" data-value="snakes"><span class="custom-select-icon">🐍</span>Snakes!</li>
+        <li role="option" data-value="bog"><span class="custom-select-icon">🪰</span>The Bog</li>
+        <li role="option" data-value="worms"><span class="custom-select-icon">🪱</span>We Got Worms!</li>
+      </ul>
+    </div>
+  </label>
 </nav>
 <hr id="gameNavDivider" class="section-divider" style="display:none; margin-top:12px; margin-bottom:18px;">
 
@@ -802,6 +859,208 @@ board and prove your worth!
 
 </div><!-- end #tab-toad -->
 
+
+<!-- ═══════════════════════════════════════ -->
+<!--  GAME 7: Snakes                        -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-snakes" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/SNAKEV10.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which game(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="snakesPrev">&#x2039;</button>
+          <div class="gallery-instruction">
+            Click the &#x25C4; or &#x25BA; buttons to scroll through the game images.
+          </div>
+          <button class="gallery-nav" id="snakesNext">&#x203A;</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="snakesMainImg" src="images/snakes0.png" alt="Snakes">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+                  Snakes! v1.00
+  (c) 2026 - NewWave Software
+
+Guide your snake around the
+board, gobbling apples and
+growing longer with every bite!
+
+Play in Trap mode, and try to 
+avoid 3 other computer players
+to be the last one standing!
+
+Or Play Bite Mode where you try
+to bite each computer snake's
+tail to be the last one alive.
+
+How long can you grow before
+you run out of room to move?
+
+Climb the BBS high score
+board and prove your worth!
+
+  - 16-Bit DOS BBS Door Game -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-snakes -->
+
+
+<!-- ═══════════════════════════════════════ -->
+<!--  GAME 8: The Bog                       -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-bog" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/BOGV10.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which game(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="bogPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the game images.
+          </div>
+          <button class="gallery-nav" id="bogNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="bogMainImg" src="images/thebog0.png" alt="The Bog">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+            The Bog v1.00
+  (c) 2026 - NewWave Software
+
+It's Frog against Frog in this
+player vs. Computer game. A
+day is only 60 seconds in this
+game,  but a day is all you
+need to beat the computer player.
+
+Eat the most flies & other bugs
+while jumping lilly pad to 
+lilly pad until deep into the
+nightf.
+
+Climb the BBS high score
+board and prove your worth!
+
+  - 16-Bit DOS BBS Door Game -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-bog -->
+
+
+<!-- ═══════════════════════════════════════ -->
+<!--  GAME 9: We Got Worms!                 -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-worms" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/WORMSV10.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which game(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="wormsPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the game images.
+          </div>
+          <button class="gallery-nav" id="wormsNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="wormsMainImg" src="images/worms0.png" alt="We Got Worms!">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+        We Got Worms! v1.00
+  (c) 2026 - NewWave Software
+
+Worms are attacking!  Travel 
+back to the arcade games of 
+yester-year.
+
+Get your blaster our and defend
+your area.  The worms will not
+stop and are joined by Spiders
+and other bugs the longer you 
+play.  All out to stop you.
+
+Keep blasting everything you see
+to max out that high score and 
+brag to all of your friends!
+
+  - 16-Bit DOS BBS Door Game -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-worms -->
+
 <br>
 <p style="text-align: center; margin-top: 0px;">
   <span style="font-size: 14px;">&copy; 1995 - <script>document.write(new Date().getFullYear())</script> NewWave Software</span>
@@ -811,10 +1070,81 @@ board and prove your worth!
 // ── Splash + tab switching ────────────────────────────────
 const splash  = document.getElementById('splash');
 const gameNav = document.getElementById('gameNav');
+const backBtn = document.getElementById('backBtn');
 let activeTab = 'sysop';
 
+// Custom dropdown elements
+const selectBtn  = document.getElementById('gameSelectBtn');
+const selectList = document.getElementById('gameSelectList');
+const selectIcon = document.getElementById('gameSelectIcon');
+const selectText = document.getElementById('gameSelectText');
+const selectItems = Array.from(selectList.querySelectorAll('li'));
+
+const gameLabels = {
+  sysop: "SysOp Smashin'", shadow: 'Shadow Stalker', frantic: 'FRANTIC!',
+  foggy: 'Foggy Summit', pack: 'BBS-PACK', toad: 'Toadster',
+  snakes: 'Snakes!', bog: 'The Bog', worms: 'We Got Worms!'
+};
+
+function setGameSelectValue(key) {
+  const item = selectItems.find(li => li.dataset.value === key);
+  if (!item) return;
+  const iconHTML = item.querySelector('.custom-select-icon').innerHTML;
+  selectIcon.innerHTML = iconHTML;
+  selectText.textContent = gameLabels[key] || item.textContent.trim();
+  selectItems.forEach(li => li.setAttribute('aria-selected', li.dataset.value === key ? 'true' : 'false'));
+}
+
+function closeGameSelect() {
+  selectList.classList.remove('open');
+  selectBtn.setAttribute('aria-expanded', 'false');
+}
+
+function openGameSelect() {
+  selectList.classList.add('open');
+  selectBtn.setAttribute('aria-expanded', 'true');
+}
+
+selectBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  if (selectList.classList.contains('open')) {
+    closeGameSelect();
+  } else {
+    openGameSelect();
+  }
+});
+
+selectItems.forEach(li => {
+  li.addEventListener('click', () => {
+    const key = li.dataset.value;
+    switchTab(key);
+    history.replaceState(null, '', '#' + key);
+    closeGameSelect();
+  });
+});
+
+document.addEventListener('click', e => {
+  if (!document.getElementById('gameSelectWrap').contains(e.target)) {
+    closeGameSelect();
+  }
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeGameSelect();
+});
+
+function showSplash() {
+  document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
+  gameNav.style.display = 'none';
+  document.getElementById('gameNavDivider').style.display = 'none';
+  splash.style.display = '';
+  backBtn.href = 'https://rgbbs.info/betaindex.html';
+  backBtn.onclick = null;
+  history.replaceState(null, '', location.pathname);
+}
+
 function switchTab(key) {
-  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad'];
+  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad', 'snakes', 'bog', 'worms'];
   if (!validKeys.includes(key)) return;
 
   // Hide splash, show tab nav + divider
@@ -822,21 +1152,18 @@ function switchTab(key) {
   gameNav.style.display = '';
   document.getElementById('gameNavDivider').style.display = '';
 
-  document.querySelectorAll('.game-nav a').forEach(a => a.classList.remove('active'));
   document.querySelectorAll('.game-panel').forEach(p => p.classList.remove('active'));
-  document.querySelector('.game-nav a[data-tab="' + key + '"]').classList.add('active');
   document.getElementById('tab-' + key).classList.add('active');
+  setGameSelectValue(key);
   activeTab = key;
-}
 
-// Tab nav clicks
-document.querySelectorAll('.game-nav a').forEach(link => {
-  link.addEventListener('click', e => {
+  // While viewing a game, "Back to Menu" returns to this site's splash, not the BBS menu
+  backBtn.href = 'nw.html';
+  backBtn.onclick = e => {
     e.preventDefault();
-    switchTab(link.dataset.tab);
-    history.replaceState(null, '', '#' + link.dataset.tab);
-  });
-});
+    showSplash();
+  };
+}
 
 // Splash game button clicks
 document.querySelectorAll('.splash-nav a').forEach(link => {
@@ -856,7 +1183,10 @@ const hashMap = {
   'frantic': 'frantic',
   'foggy': 'foggy', 'foggy-summit': 'foggy',
   'pack': 'pack', 'bbs-pack': 'pack',
-  'toad': 'toad', 'bbs-toadster': 'toad'
+  'toad': 'toad', 'bbs-toadster': 'toad',
+  'snakes': 'snakes',
+  'bog': 'bog', 'the-bog': 'bog',
+  'worms': 'worms', 'we-got-worms': 'worms'
 };
 const initialKey = hashMap[location.hash.replace('#', '')];
 if (initialKey) {
@@ -962,6 +1292,54 @@ document.getElementById('toadNext').addEventListener('click', () => {
   toadImg.src = toadImages[toadIndex];
 });
 
+// ── Snakes gallery ───────────────────────────────────
+const snakesImages = [
+  "images/snakes0.png","images/snakes1.png","images/snakes2.png",
+  "images/snakes3.png","images/snakes4.png"
+];
+let snakesIndex = 0;
+const snakesImg = document.getElementById('snakesMainImg');
+document.getElementById('snakesPrev').addEventListener('click', () => {
+  snakesIndex = (snakesIndex - 1 + snakesImages.length) % snakesImages.length;
+  snakesImg.src = snakesImages[snakesIndex];
+});
+document.getElementById('snakesNext').addEventListener('click', () => {
+  snakesIndex = (snakesIndex + 1) % snakesImages.length;
+  snakesImg.src = snakesImages[snakesIndex];
+});
+
+// ── The Bog gallery ──────────────────────────────────
+const bogImages = [
+  "images/thebog0.png","images/thebog1.png","images/thebog2.png",
+  "images/thebog3.png","images/thebog4.png"
+];
+let bogIndex = 0;
+const bogImg = document.getElementById('bogMainImg');
+document.getElementById('bogPrev').addEventListener('click', () => {
+  bogIndex = (bogIndex - 1 + bogImages.length) % bogImages.length;
+  bogImg.src = bogImages[bogIndex];
+});
+document.getElementById('bogNext').addEventListener('click', () => {
+  bogIndex = (bogIndex + 1) % bogImages.length;
+  bogImg.src = bogImages[bogIndex];
+});
+
+// ── We Got Worms! gallery ────────────────────────────
+const wormsImages = [
+  "images/worms0.png","images/worms1.png","images/worms2.png",
+  "images/worms3.png","images/worms4.png"
+];
+let wormsIndex = 0;
+const wormsImg = document.getElementById('wormsMainImg');
+document.getElementById('wormsPrev').addEventListener('click', () => {
+  wormsIndex = (wormsIndex - 1 + wormsImages.length) % wormsImages.length;
+  wormsImg.src = wormsImages[wormsIndex];
+});
+document.getElementById('wormsNext').addEventListener('click', () => {
+  wormsIndex = (wormsIndex + 1) % wormsImages.length;
+  wormsImg.src = wormsImages[wormsIndex];
+});
+
 // ── Arrow key support (targets active tab's gallery) ────
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') {
@@ -971,6 +1349,9 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'foggy')   document.getElementById('foggyPrev').click();
     else if (activeTab === 'pack')     document.getElementById('packPrev').click();
     else if (activeTab === 'toad')     document.getElementById('toadPrev').click();
+    else if (activeTab === 'snakes')   document.getElementById('snakesPrev').click();
+    else if (activeTab === 'bog')      document.getElementById('bogPrev').click();
+    else if (activeTab === 'worms')    document.getElementById('wormsPrev').click();
   }
   if (e.key === 'ArrowRight') {
     if (activeTab === 'sysop')        document.getElementById('sysopNext').click();
@@ -979,6 +1360,9 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'foggy')   document.getElementById('foggyNext').click();
     else if (activeTab === 'pack')     document.getElementById('packNext').click();
     else if (activeTab === 'toad')     document.getElementById('toadNext').click();
+    else if (activeTab === 'snakes')   document.getElementById('snakesNext').click();
+    else if (activeTab === 'bog')      document.getElementById('bogNext').click();
+    else if (activeTab === 'worms')    document.getElementById('wormsNext').click();
   }
 });
 </script>
