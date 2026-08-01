@@ -146,7 +146,7 @@
     border-radius: 10px;
     box-shadow: 0 12px 30px rgba(0,0,0,.6);
     z-index: 50;
-    max-height: 360px;
+    max-height: 520px;
     overflow-y: auto;
     display: none;
   }
@@ -364,6 +364,19 @@
     color: #fff;
   }
 
+  .splash-nav a.splash-nav-wide {
+    min-width: 860px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 900px) {
+    .splash-nav a.splash-nav-wide {
+      min-width: 0;
+      width: 100%;
+    }
+  }
+
   /* Blue ASCII Box */
   .ansi-box {
     background: #000000;
@@ -378,6 +391,10 @@
     height: fit-content;
     white-space: pre-wrap;
   }
+.red-text {
+  color: red;
+  font-weight: bold;
+}
 </style>
 
 </head>
@@ -413,13 +430,16 @@
     <a href="#" data-tab="bog">🪰 The Bog</a>
     <a href="#" data-tab="worms">🪱 We Got Worms!</a>
     </div>
+    <div class="splash-nav-row">
+    <a href="#" data-tab="draw32" class="splash-nav-wide">✏️ Draw32</a>
+    </div>
   </nav>
 </div>
 
 <!-- Game switcher dropdown (hidden until a game is chosen) -->
 <nav class="game-nav" id="gameNav" style="display:none">
   <label class="game-switcher">
-    <span class="game-switcher-label">Switch Game</span>
+    <span class="game-switcher-label">Change Program</span>
     <div class="custom-select" id="gameSelectWrap">
       <button type="button" class="custom-select-btn" id="gameSelectBtn" aria-haspopup="listbox" aria-expanded="false">
         <span class="custom-select-icon" id="gameSelectIcon">💪</span>
@@ -444,6 +464,7 @@
         <li role="option" data-value="snakes"><span class="custom-select-icon">🐍</span>Snakes!</li>
         <li role="option" data-value="bog"><span class="custom-select-icon">🪰</span>The Bog</li>
         <li role="option" data-value="worms"><span class="custom-select-icon">🪱</span>We Got Worms!</li>
+        <li role="option" data-value="draw32"><span class="custom-select-icon">✏️</span>Draw32</li>
       </ul>
     </div>
   </label>
@@ -1061,6 +1082,76 @@ brag to all of your friends!
 
 </div><!-- end #tab-worms -->
 
+<!-- ═══════════════════════════════════════ -->
+<!--  PROGRAM: DRAW32                        -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-draw32" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/D32V200.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+</div>
+ <p class="yellow-text">
+  Draw32 is <span class="red-text">$20</span>.
+  If you donate, please click the email link above and send me your BBS Name, SysOp name, and how to reach you.
+</p> <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="draw32Prev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the program images.
+          </div>
+          <button class="gallery-nav" id="draw32Next">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="draw32MainImg" src="images/draw0.png" alt="Draw32">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+              Draw32 v2.00
+(c) 2010-26 NewWave Software
+
+A full-featured ANSI/ASCII art
+editor for Win32, built in the
+spirit of the classic TheDraw.
+
+Paint in glorious CP437 with
+mouse or keyboard, lay down
+blocks, mirror and flip your
+art, and drop in TDF fonts.
+
+Import BMP/PNG images and
+convert them straight to ANSI
+or half-block art, then export
+your finished masterpiece back
+out to PNG or ANS.
+
+Everything a SysOp needs to
+create menus, ads and BBS art
+the old-school way!
+
+  - Win32 ANSI/ASCII Art Editor -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-draw32 -->
+
 <br>
 <p style="text-align: center; margin-top: 0px;">
   <span style="font-size: 14px;">&copy; 1995 - <script>document.write(new Date().getFullYear())</script> NewWave Software</span>
@@ -1083,7 +1174,7 @@ const selectItems = Array.from(selectList.querySelectorAll('li'));
 const gameLabels = {
   sysop: "SysOp Smashin'", shadow: 'Shadow Stalker', frantic: 'FRANTIC!',
   foggy: 'Foggy Summit', pack: 'BBS-PACK', toad: 'Toadster',
-  snakes: 'Snakes!', bog: 'The Bog', worms: 'We Got Worms!'
+  snakes: 'Snakes!', bog: 'The Bog', worms: 'We Got Worms!', draw32: 'Draw32'
 };
 
 function setGameSelectValue(key) {
@@ -1144,7 +1235,7 @@ function showSplash() {
 }
 
 function switchTab(key) {
-  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad', 'snakes', 'bog', 'worms'];
+  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad', 'snakes', 'bog', 'worms', 'draw32'];
   if (!validKeys.includes(key)) return;
 
   // Hide splash, show tab nav + divider
@@ -1186,7 +1277,8 @@ const hashMap = {
   'toad': 'toad', 'bbs-toadster': 'toad',
   'snakes': 'snakes',
   'bog': 'bog', 'the-bog': 'bog',
-  'worms': 'worms', 'we-got-worms': 'worms'
+  'worms': 'worms', 'we-got-worms': 'worms',
+  'draw32': 'draw32'
 };
 const initialKey = hashMap[location.hash.replace('#', '')];
 if (initialKey) {
@@ -1340,6 +1432,22 @@ document.getElementById('wormsNext').addEventListener('click', () => {
   wormsImg.src = wormsImages[wormsIndex];
 });
 
+// ── Draw32 gallery ───────────────────────────────────
+const draw32Images = [
+  "images/draw0.png","images/draw1.png","images/draw2.png",
+  "images/draw3.png","images/draw4.png"
+];
+let draw32Index = 0;
+const draw32Img = document.getElementById('draw32MainImg');
+document.getElementById('draw32Prev').addEventListener('click', () => {
+  draw32Index = (draw32Index - 1 + draw32Images.length) % draw32Images.length;
+  draw32Img.src = draw32Images[draw32Index];
+});
+document.getElementById('draw32Next').addEventListener('click', () => {
+  draw32Index = (draw32Index + 1) % draw32Images.length;
+  draw32Img.src = draw32Images[draw32Index];
+});
+
 // ── Arrow key support (targets active tab's gallery) ────
 document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft') {
@@ -1352,6 +1460,7 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'snakes')   document.getElementById('snakesPrev').click();
     else if (activeTab === 'bog')      document.getElementById('bogPrev').click();
     else if (activeTab === 'worms')    document.getElementById('wormsPrev').click();
+    else if (activeTab === 'draw32')   document.getElementById('draw32Prev').click();
   }
   if (e.key === 'ArrowRight') {
     if (activeTab === 'sysop')        document.getElementById('sysopNext').click();
@@ -1363,6 +1472,7 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'snakes')   document.getElementById('snakesNext').click();
     else if (activeTab === 'bog')      document.getElementById('bogNext').click();
     else if (activeTab === 'worms')    document.getElementById('wormsNext').click();
+    else if (activeTab === 'draw32')   document.getElementById('draw32Next').click();
   }
 });
 </script>
