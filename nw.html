@@ -379,6 +379,8 @@
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-auto-flow: column;
     gap: clamp(6px, 1vh, 10px) clamp(14px, 1.6vw, 22px);
   }
 
@@ -446,7 +448,7 @@
   }
 
   @media (max-width: 460px) {
-    .splash-nav-grid { grid-template-columns: repeat(2, 1fr); }
+    .splash-nav-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: none; grid-auto-flow: row; }
     .splash-nav a { white-space: normal; }
     #splash img.nw-logo { width: 92%; }
   }
@@ -502,6 +504,15 @@
         <li><a href="#" data-tab="snakes"><span class="card-icon">🐍</span>Snakes!</a></li>
         <li><a href="#" data-tab="bog"><span class="card-icon">🪰</span>The Bog</a></li>
         <li><a href="#" data-tab="worms"><span class="card-icon">🪱</span>We Got Worms!</a></li>
+        <li><a href="#" data-tab="salvage"><span class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+  <path d="M2,13 L4,8 L8,7 L8,4 L13,4 L13,7 L17,8 L18,13 L15,13 L14,15 L11,13 L9,15 L6,13 L4,15 Z" fill="#8a8f96" stroke="#4a4e54" stroke-width=".4"/>
+  <rect x="8" y="4" width="5" height="3" fill="#6b6f75" stroke="#4a4e54" stroke-width=".3"/>
+  <circle cx="10.5" cy="9.5" r="1.6" fill="#3da5ff" stroke="#1f7fd6" stroke-width=".3"/>
+  <rect x="4.5" y="10.5" width="2" height="1.2" fill="#5a5e64"/>
+  <rect x="13.5" y="10.5" width="2" height="1.2" fill="#5a5e64"/>
+  <circle cx="5" cy="9" r=".4" fill="#c9401f"/>
+  <circle cx="15.5" cy="9" r=".4" fill="#c9401f"/>
+</svg></span>Salvage Run</a></li>
         </ul>
       </nav>
     </div>
@@ -515,6 +526,9 @@
       </nav>
     </div>
   </div>
+  <p style="text-align:center; margin: clamp(70px, 12vh, 110px) 0 0;">
+    <span style="font-size: 13px; color: rgba(255,255,255,.5);">&copy; 1995 - <span id="splashYear"></span> NewWave Software</span>
+  </p>
 </div>
 
 <!-- Game switcher dropdown (hidden until a game is chosen) -->
@@ -545,6 +559,15 @@
         <li role="option" data-value="snakes"><span class="custom-select-icon">🐍</span>Snakes!</li>
         <li role="option" data-value="bog"><span class="custom-select-icon">🪰</span>The Bog</li>
         <li role="option" data-value="worms"><span class="custom-select-icon">🪱</span>We Got Worms!</li>
+        <li role="option" data-value="salvage"><span class="custom-select-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17">
+  <path d="M2,13 L4,8 L8,7 L8,4 L13,4 L13,7 L17,8 L18,13 L15,13 L14,15 L11,13 L9,15 L6,13 L4,15 Z" fill="#8a8f96" stroke="#4a4e54" stroke-width=".4"/>
+  <rect x="8" y="4" width="5" height="3" fill="#6b6f75" stroke="#4a4e54" stroke-width=".3"/>
+  <circle cx="10.5" cy="9.5" r="1.6" fill="#3da5ff" stroke="#1f7fd6" stroke-width=".3"/>
+  <rect x="4.5" y="10.5" width="2" height="1.2" fill="#5a5e64"/>
+  <rect x="13.5" y="10.5" width="2" height="1.2" fill="#5a5e64"/>
+  <circle cx="5" cy="9" r=".4" fill="#c9401f"/>
+  <circle cx="15.5" cy="9" r=".4" fill="#c9401f"/>
+</svg></span>Salvage Run</li>
         <li role="option" data-value="draw32"><span class="custom-select-icon">✏️</span>Draw32</li>
       </ul>
     </div>
@@ -1164,6 +1187,72 @@ brag to all of your friends!
 </div><!-- end #tab-worms -->
 
 <!-- ═══════════════════════════════════════ -->
+<!--  GAME 10: SALVAGE RUN                   -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-salvage" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/SALVAGE1.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which game(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="salvagePrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the game images.
+          </div>
+          <button class="gallery-nav" id="salvageNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="salvageMainImg" src="images/salvage0.png" alt="Salvage Run">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+         Salvage Run v1.00
+  (c) 2026 - NewWave Software
+
+The scrapyards of dead orbit are
+picked clean by anyone brave 
+enough to fly out and grab it.
+Strap into your rusted-out 
+hauler and go get what's left.
+
+Dodge drifting debris, dock 
+with derelict wrecks, and haul 
+their guts back before your 
+fuel or hull gives out.
+
+Every run pays out different -
+push your luck for the big score
+or cut and run while you still can.
+
+  - 16-Bit DOS BBS Door Game -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-salvage -->
+
+<!-- ═══════════════════════════════════════ -->
 <!--  PROGRAM: DRAW32                        -->
 <!-- ═══════════════════════════════════════ -->
 <div id="tab-draw32" class="game-panel">
@@ -1233,13 +1322,9 @@ the old-school way!
 
 </div><!-- end #tab-draw32 -->
 
-<br>
-<p style="text-align: center; margin-top: -48px;">
-  <span style="font-size: 14px;">&copy; 1995 - <script>document.write(new Date().getFullYear())</script> NewWave Software</span>
-</p>
-
 <script>
 // ── Splash + tab switching ────────────────────────────────
+document.getElementById('splashYear').textContent = new Date().getFullYear();
 const splash  = document.getElementById('splash');
 const gameNav = document.getElementById('gameNav');
 const backBtn = document.getElementById('backBtn');
@@ -1316,7 +1401,7 @@ function showSplash() {
 }
 
 function switchTab(key) {
-  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad', 'snakes', 'bog', 'worms', 'draw32'];
+  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad', 'snakes', 'bog', 'worms', 'salvage', 'draw32'];
   if (!validKeys.includes(key)) return;
 
   // Hide splash, show tab nav + divider
@@ -1359,6 +1444,7 @@ const hashMap = {
   'snakes': 'snakes',
   'bog': 'bog', 'the-bog': 'bog',
   'worms': 'worms', 'we-got-worms': 'worms',
+  'salvage': 'salvage', 'salvage-run': 'salvage',
   'draw32': 'draw32'
 };
 const initialKey = hashMap[location.hash.replace('#', '')];
@@ -1513,6 +1599,22 @@ document.getElementById('wormsNext').addEventListener('click', () => {
   wormsImg.src = wormsImages[wormsIndex];
 });
 
+// ── Salvage Run gallery ──────────────────────────────
+const salvageImages = [
+  "images/salvage0.png","images/salvage1.png","images/salvage2.png",
+  "images/salvage3.png","images/salvage4.png"
+];
+let salvageIndex = 0;
+const salvageImg = document.getElementById('salvageMainImg');
+document.getElementById('salvagePrev').addEventListener('click', () => {
+  salvageIndex = (salvageIndex - 1 + salvageImages.length) % salvageImages.length;
+  salvageImg.src = salvageImages[salvageIndex];
+});
+document.getElementById('salvageNext').addEventListener('click', () => {
+  salvageIndex = (salvageIndex + 1) % salvageImages.length;
+  salvageImg.src = salvageImages[salvageIndex];
+});
+
 // ── Draw32 gallery ───────────────────────────────────
 const draw32Images = [
   "images/draw0.png","images/draw1.png","images/draw2.png",
@@ -1541,6 +1643,7 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'snakes')   document.getElementById('snakesPrev').click();
     else if (activeTab === 'bog')      document.getElementById('bogPrev').click();
     else if (activeTab === 'worms')    document.getElementById('wormsPrev').click();
+    else if (activeTab === 'salvage')  document.getElementById('salvagePrev').click();
     else if (activeTab === 'draw32')   document.getElementById('draw32Prev').click();
   }
   if (e.key === 'ArrowRight') {
@@ -1553,6 +1656,7 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'snakes')   document.getElementById('snakesNext').click();
     else if (activeTab === 'bog')      document.getElementById('bogNext').click();
     else if (activeTab === 'worms')    document.getElementById('wormsNext').click();
+    else if (activeTab === 'salvage')  document.getElementById('salvageNext').click();
     else if (activeTab === 'draw32')   document.getElementById('draw32Next').click();
   }
 });
