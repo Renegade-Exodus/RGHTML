@@ -490,6 +490,27 @@
 </style>
 
 
+<style id="telnet-row-style">
+/* Row wrapper for the telnet box + its duplicate, side by side */
+.telnet-row{
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.telnet-row .github-lightbar{
+  width: 100%;
+  flex: 1 1 0;
+  margin: 0 0 24px;
+}
+@media (max-width: 900px){
+  .telnet-row{ flex-direction: column; align-items:center; }
+  .telnet-row .github-lightbar{ flex: 1 1 100%; max-width: 640px; }
+}
+</style>
+
+
 <style id="github-text-spacing-override">
 /* Add vertical breathing room above/below GitHub text area */
 .github-lightbar .github-text{
@@ -716,8 +737,10 @@ body.page-home .global-back-wrap{
         
 
 <!-- GitHub box (ported from whatdone.html) -->
+  <div class="telnet-row">
+
   <div class="github-lightbar initial-load" style="animation-delay: 1.8s;">
-<center>    <div class="ansi-legend">Telnet to The Titantic BBS Telnet - Online Since November 10, 1993!<br>
+<center>    <div class="ansi-legend">Telnet to The Titantic BBS Telnet - Since November 10, 1993!<br>
 </div>
 
     <div class="github-text">
@@ -734,6 +757,29 @@ body.page-home .global-back-wrap{
         <span class="label">TELNET VIA YOUR WEB BROWSER NOW!</span>
       </a>
     </div>
+  </div>
+
+  <!-- Duplicate box - edit content/links below as needed -->
+  <div class="github-lightbar initial-load" id="github-lightbar-2" style="animation-delay: 1.8s;">
+<center>    <div class="ansi-legend">NewWave Software Door Games & Utilities
+<br>
+</div>
+    <div class="github-text">
+      SysOp Smashin', Shadow Stalker, Foggy Summit, The Bog, Salvage Run, & More!<br>
+      Draw32 - CP437 Win32 Console based ANSI/ASCII Art Drawing Program
+    </div>
+</center>
+
+    <div style="text-align:center">
+
+      <a class="item telnet-cta" href="nw.html">
+
+        <span class="arrow">►</span>
+        <span class="label">CHECK THEM OUT!</span>
+      </a>
+    </div>
+  </div>
+
   </div>
 
 <!-- Content Sections -->
