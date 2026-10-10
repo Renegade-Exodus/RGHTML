@@ -324,12 +324,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: calc(100vh - 40px);
-    height: calc(100svh - 40px);
-    padding: 16px 20px;
+    min-height: calc(100vh - 40px);
+    min-height: calc(100svh - 40px);
+    padding: 16px 20px 32px;
     text-align: center;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-x: clip;
     margin-top: -48px;
   }
 
@@ -338,7 +338,7 @@
     z-index: 1;
     max-width: clamp(400px, 54vw, 880px);
     width: 92%;
-    margin: clamp(-40px, -6vh, -10px) 0 clamp(6px, 1.2vh, 14px);
+    margin: 0 0 clamp(6px, 1.2vh, 14px);
     /* crushes the faint near-black background baked into the PNG so it
        melts into the page instead of reading as a rectangle */
     filter: brightness(1.05) contrast(1.6) saturate(1.15);
@@ -350,7 +350,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    gap: clamp(60px, 10vw, 130px);
+    gap: clamp(28px, 4.5vw, 64px);
     width: 100%;
   }
 
@@ -364,13 +364,15 @@
     margin: clamp(28px, 5vh, 48px) 0 clamp(18px, 2.4vh, 28px);
   }
 
+  .splash-utils-col .splash-eyebrow { white-space: nowrap; }
+
   .splash-eyebrow span {
     color: var(--phosphor);
   }
 
   .splash-games-col {
     width: 100%;
-    max-width: 760px;
+    max-width: 520px;
   }
 
   .splash-nav-grid {
@@ -378,14 +380,15 @@
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, auto);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6, auto);
     grid-auto-flow: column;
     gap: clamp(6px, 1vh, 10px) clamp(14px, 1.6vw, 22px);
   }
 
   .splash-utils-col {
-    width: clamp(200px, 18vw, 260px);
+    width: auto;
+    min-width: clamp(200px, 18vw, 260px);
     flex-shrink: 0;
     margin-top: 2px;
   }
@@ -394,6 +397,9 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(6px, 1vh, 10px);
   }
 
   .splash-nav a {
@@ -441,9 +447,10 @@
     color: rgba(255,255,255,.25);
   }
 
-  @media (max-width: 720px) {
+  @media (max-width: 1080px) {
     .splash-panels { flex-direction: column; align-items: center; }
     .splash-games-col, .splash-utils-col { max-width: 460px; width: 100%; }
+    .splash-utils-col .splash-eyebrow { margin-top: clamp(14px, 2.5vh, 24px); }
     .splash-eyebrow { text-align: center; }
   }
 
@@ -535,15 +542,62 @@
     </div>
 
     <div class="splash-utils-col">
-      <p class="splash-eyebrow"><span>Classic BBS Utilities</span></p>
+      <p class="splash-eyebrow"><span>Win32 BBS Doors</span></p>
+      <nav class="splash-nav">
+        <ul class="splash-nav-solo">
+        <li><a href="#" data-tab="cdview"><span class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+  <rect x="1.2" y="2.2" width="10" height="12.5" rx=".8" fill="#2a2d32" stroke="#c9401f" stroke-width=".6" transform="rotate(-12 6 8)"/>
+  <rect x="8.8" y="2.2" width="10" height="12.5" rx=".8" fill="#2a2d32" stroke="#39FF14" stroke-width=".6" transform="rotate(12 14 8)"/>
+  <rect x="4.5" y="4" width="11" height="14" rx=".9" fill="#f2f2f2" stroke="#3da5ff" stroke-width=".7"/>
+  <rect x="5.6" y="5.2" width="8.8" height="7.6" fill="#7fc8ff"/>
+  <circle cx="12.4" cy="7.1" r="1.2" fill="#FFB000"/>
+  <path d="M5.6,12.8 L8.6,8.6 L10.6,11 L11.8,9.8 L14.4,12.8 Z" fill="#2e8b3e"/>
+  <rect x="5.6" y="14.2" width="2.4" height="2.4" rx=".3" fill="#c9401f"/>
+  <rect x="8.8" y="14.2" width="2.4" height="2.4" rx=".3" fill="#3da5ff"/>
+  <rect x="12" y="14.2" width="2.4" height="2.4" rx=".3" fill="#39FF14"/>
+</svg></span>CDView</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="splash-utils-col">
+      <p class="splash-eyebrow"><span>Win32 BBS Utilities</span></p>
       <nav class="splash-nav">
         <ul class="splash-nav-solo">
         <li><a href="#" data-tab="draw32"><span class="card-icon">✏️</span>Draw32</a></li>
+        <li><a href="#" data-tab="rgterm"><span class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+  <rect x="1.5" y="3" width="17" height="14" rx="1.5" fill="#0a0a0a" stroke="#8a8f96" stroke-width=".7"/>
+  <rect x="1.5" y="3" width="17" height="3" rx="1.5" fill="#3a3d42"/>
+  <rect x="1.5" y="5" width="17" height="1" fill="#3a3d42"/>
+  <circle cx="3.6" cy="4.5" r=".55" fill="#c9401f"/>
+  <circle cx="5.3" cy="4.5" r=".55" fill="#e0b020"/>
+  <circle cx="7" cy="4.5" r=".55" fill="#39FF14"/>
+  <path d="M4,9 L6.5,11 L4,13" stroke="#39FF14" stroke-width="1.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="8" y="12.3" width="4" height="1.1" fill="#39FF14"/>
+</svg></span>RGTerm</a></li>
+        <li><a href="#" data-tab="rgtel"><span class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+  <rect x="1" y="2.5" width="11" height="8.5" rx="1" fill="#0a0a0a" stroke="#8a8f96" stroke-width=".6"/>
+  <path d="M3,5 L4.6,6.5 L3,8" stroke="#00BFFF" stroke-width=".9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="5.4" y="7.3" width="2.6" height=".8" fill="#00BFFF"/>
+  <rect x="4.5" y="11" width="4" height="1.2" fill="#8a8f96"/>
+  <rect x="3" y="12.2" width="7" height=".9" rx=".4" fill="#8a8f96"/>
+  <path d="M6.5,13.1 L6.5,15.5 Q6.5,16.5 8,16.5 L10.5,16.5" stroke="#39FF14" stroke-width=".7" fill="none" stroke-dasharray="1 .8"/>
+  <circle cx="14.5" cy="14.5" r="4.3" fill="#1f7fd6" stroke="#3da5ff" stroke-width=".5"/>
+  <ellipse cx="14.5" cy="14.5" rx="1.9" ry="4.3" fill="none" stroke="#bfe3ff" stroke-width=".45"/>
+  <path d="M10.2,14.5 L18.8,14.5 M10.9,12.4 L18.1,12.4 M10.9,16.6 L18.1,16.6" stroke="#bfe3ff" stroke-width=".45"/>
+</svg></span>RGTel</a></li>
+        <li><a href="#" data-tab="rgfossil"><span class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+  <rect x="3.6" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="3.6" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="6.6" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="6.6" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="9.4" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="9.4" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="12.2" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="12.2" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="15.2" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="15.2" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/>
+  <rect x="2" y="4.4" width="16" height="11.2" rx=".8" fill="#1c1c1c" stroke="#5a5e64" stroke-width=".5"/>
+  <path d="M2,8.6 A1.4,1.4 0 0 1 2,11.4" fill="#0a0a0a" stroke="#5a5e64" stroke-width=".4"/>
+  <circle cx="4.3" cy="13.4" r=".7" fill="#5a5e64"/>
+  <text x="10.6" y="11.8" text-anchor="middle" font-family="'VT323',monospace" font-size="5.6" fill="#FFB000">.SYS</text>
+</svg></span>RGFOSSIL</a></li>
         </ul>
       </nav>
     </div>
   </div>
-  <p style="text-align:center; margin: clamp(70px, 12vh, 110px) 0 0;">
+  <p style="text-align:center; margin: clamp(36px, 7vh, 70px) 0 0;">
     <span style="font-size: 13px; color: rgba(255,255,255,.5);">&copy; 1995 - <span id="splashYear"></span> NewWave Software</span>
   </p>
 </div>
@@ -602,7 +656,46 @@
   <path d="M7,6 L5.5,3.3 M13,6 L14.5,3.3" stroke="#8a8f96" stroke-width=".7" fill="none" stroke-linecap="round"/>
   <rect x="7" y="17" width="6" height="1" fill="#8a8f96"/>
 </svg></span>Last Broadcast</li>
+        <li role="option" data-value="cdview"><span class="custom-select-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17">
+  <rect x="1.2" y="2.2" width="10" height="12.5" rx=".8" fill="#2a2d32" stroke="#c9401f" stroke-width=".6" transform="rotate(-12 6 8)"/>
+  <rect x="8.8" y="2.2" width="10" height="12.5" rx=".8" fill="#2a2d32" stroke="#39FF14" stroke-width=".6" transform="rotate(12 14 8)"/>
+  <rect x="4.5" y="4" width="11" height="14" rx=".9" fill="#f2f2f2" stroke="#3da5ff" stroke-width=".7"/>
+  <rect x="5.6" y="5.2" width="8.8" height="7.6" fill="#7fc8ff"/>
+  <circle cx="12.4" cy="7.1" r="1.2" fill="#FFB000"/>
+  <path d="M5.6,12.8 L8.6,8.6 L10.6,11 L11.8,9.8 L14.4,12.8 Z" fill="#2e8b3e"/>
+  <rect x="5.6" y="14.2" width="2.4" height="2.4" rx=".3" fill="#c9401f"/>
+  <rect x="8.8" y="14.2" width="2.4" height="2.4" rx=".3" fill="#3da5ff"/>
+  <rect x="12" y="14.2" width="2.4" height="2.4" rx=".3" fill="#39FF14"/>
+</svg></span>CDView</li>
         <li role="option" data-value="draw32"><span class="custom-select-icon">✏️</span>Draw32</li>
+        <li role="option" data-value="rgterm"><span class="custom-select-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17">
+  <rect x="1.5" y="3" width="17" height="14" rx="1.5" fill="#0a0a0a" stroke="#8a8f96" stroke-width=".7"/>
+  <rect x="1.5" y="3" width="17" height="3" rx="1.5" fill="#3a3d42"/>
+  <rect x="1.5" y="5" width="17" height="1" fill="#3a3d42"/>
+  <circle cx="3.6" cy="4.5" r=".55" fill="#c9401f"/>
+  <circle cx="5.3" cy="4.5" r=".55" fill="#e0b020"/>
+  <circle cx="7" cy="4.5" r=".55" fill="#39FF14"/>
+  <path d="M4,9 L6.5,11 L4,13" stroke="#39FF14" stroke-width="1.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="8" y="12.3" width="4" height="1.1" fill="#39FF14"/>
+</svg></span>RGTerm</li>
+        <li role="option" data-value="rgtel"><span class="custom-select-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17">
+  <rect x="1" y="2.5" width="11" height="8.5" rx="1" fill="#0a0a0a" stroke="#8a8f96" stroke-width=".6"/>
+  <path d="M3,5 L4.6,6.5 L3,8" stroke="#00BFFF" stroke-width=".9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="5.4" y="7.3" width="2.6" height=".8" fill="#00BFFF"/>
+  <rect x="4.5" y="11" width="4" height="1.2" fill="#8a8f96"/>
+  <rect x="3" y="12.2" width="7" height=".9" rx=".4" fill="#8a8f96"/>
+  <path d="M6.5,13.1 L6.5,15.5 Q6.5,16.5 8,16.5 L10.5,16.5" stroke="#39FF14" stroke-width=".7" fill="none" stroke-dasharray="1 .8"/>
+  <circle cx="14.5" cy="14.5" r="4.3" fill="#1f7fd6" stroke="#3da5ff" stroke-width=".5"/>
+  <ellipse cx="14.5" cy="14.5" rx="1.9" ry="4.3" fill="none" stroke="#bfe3ff" stroke-width=".45"/>
+  <path d="M10.2,14.5 L18.8,14.5 M10.9,12.4 L18.1,12.4 M10.9,16.6 L18.1,16.6" stroke="#bfe3ff" stroke-width=".45"/>
+</svg></span>RGTel</li>
+        <li role="option" data-value="rgfossil"><span class="custom-select-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="17" height="17">
+  <rect x="3.6" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="3.6" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="6.6" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="6.6" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="9.4" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="9.4" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="12.2" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="12.2" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="15.2" y="2" width="1.2" height="2.6" fill="#c8ccd2"/><rect x="15.2" y="15.4" width="1.2" height="2.6" fill="#c8ccd2"/>
+  <rect x="2" y="4.4" width="16" height="11.2" rx=".8" fill="#1c1c1c" stroke="#5a5e64" stroke-width=".5"/>
+  <path d="M2,8.6 A1.4,1.4 0 0 1 2,11.4" fill="#0a0a0a" stroke="#5a5e64" stroke-width=".4"/>
+  <circle cx="4.3" cy="13.4" r=".7" fill="#5a5e64"/>
+  <text x="10.6" y="11.8" text-anchor="middle" font-family="'VT323',monospace" font-size="5.6" fill="#FFB000">.SYS</text>
+</svg></span>RGFOSSIL</li>
       </ul>
     </div>
   </label>
@@ -1421,6 +1514,70 @@ Broadcast?
 </div><!-- end #tab-lastbc -->
 
 <!-- ═══════════════════════════════════════ -->
+<!--  WIN32 DOOR: CDVIEW                     -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-cdview" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/CDVIEW10.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which program(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="cdviewPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the program images.
+          </div>
+          <button class="gallery-nav" id="cdviewNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="cdviewMainImg" src="images/cdview0.png" alt="CDView">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+         CDView v1.00/Win32
+  (c) 2026 - NewWave Software
+
+An image viewer door for your
+BBS. Let callers browse and
+view JPG, PNG and GIF pictures
+right from your board.
+
+Flip through galleries, check
+out file details, and see the
+art your users have uploaded -
+without leaving the BBS.
+
+Bring a little color to your
+file areas!
+
+      - Win32 BBS Door -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-cdview -->
+
+<!-- ═══════════════════════════════════════ -->
 <!--  PROGRAM: DRAW32                        -->
 <!-- ═══════════════════════════════════════ -->
 <div id="tab-draw32" class="game-panel">
@@ -1492,6 +1649,200 @@ Minor code updates/fixes.
 
 </div><!-- end #tab-draw32 -->
 
+<!-- ═══════════════════════════════════════ -->
+<!--  PROGRAM: RGTERM                        -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-rgterm" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/RGTERMV1.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which program(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="rgtermPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the program images.
+          </div>
+          <button class="gallery-nav" id="rgtermNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="rgtermMainImg" src="images/rgterm0.png" alt="RGTerm">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+         RGTerm v1.00/Win32
+  (c) 2026 - NewWave Software
+
+ Telnet - SSH - TLS - RLogin
+ - Raw Modes - ANSI - RIP - 
+ SkyPix - PETSCII - ATASCII
+ Viewdata - IGS - Avatar 
+
+ DDO-F/X LITE and OOII doors, 
+ Telnetdoor Replacement, 
+
+ Ability to use older Door
+ specific Term programs such as
+ GTERM, PitTERM, GWTERM. 
+
+ Sixel/JXL Images, ANSI Music. 
+ Scripts + recorder, Scroll Back
+
+ Blind Access - Screen-reader 
+
+ Phonebook import, IEMSI, Hot 
+ Keys, Macros,+ MUCH MORE!!
+
+ This is the SyncTERM Killer!
+
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-rgterm -->
+
+<!-- ═══════════════════════════════════════ -->
+<!--  PROGRAM: RGTEL                        -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-rgtel" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/RGTELV12.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which program(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="rgtelPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the program images.
+          </div>
+          <button class="gallery-nav" id="rgtelNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="rgtelMainImg" src="images/rgtel0.png" alt="RGTel">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+            RGTel v1.20/Win32
+  (c) 2026 - NewWave Software
+
+RGBOT - Bot Blocking Protection
+
+Auto restart upon new black 
+listed IPs Auto Temp and 
+Permanent IP Bans - Selectable 
+Ports - Whitelist IPs
+
+Auto Logging with Normal or 
+Debug Logging 
+
+Should work with most any BBS software
+
+      - Win32 Telnet Client -
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-rgtel -->
+
+<!-- ═══════════════════════════════════════ -->
+<!--  PROGRAM: RGFOSSIL                     -->
+<!-- ═══════════════════════════════════════ -->
+<div id="tab-rgfossil" class="game-panel">
+
+  <div class="button-row">
+    <a href="zip/RGFOSSV1.ZIP" Download>
+      <img src="images/download.png" alt="Download">
+    </a>
+    <a href="https://paypal.me/renegadebbs?country.x=US&locale.x=en_US" target="_blank" rel="noopener">
+      <img src="images/donate.png" alt="Donate with PayPal">
+    </a>
+    <a href="mailto:e@rgbbs.info">
+      <img src="images/email.png" alt="E-mail">
+    </a>
+  </div>
+  <p class="yellow-text">
+    If you donate, please click the email link above and let me know which program(s) you donated towards and how to reach you.
+  </p>
+  <br>
+
+  <div class="main-content">
+    <!-- LEFT: Gallery -->
+    <div>
+      <div class="gallery">
+        <div class="gallery-header">
+          <button class="gallery-nav" id="rgfossilPrev">‹</button>
+          <div class="gallery-instruction">
+            Click the ◀ or ▶ buttons to scroll through the program images.
+          </div>
+          <button class="gallery-nav" id="rgfossilNext">›</button>
+        </div>
+        <div class="gallery-stage">
+          <img id="rgfossilMainImg" src="images/rgfossil0.png" alt="RGFOSSIL">
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Description -->
+    <div>
+      <div class="ansi-box">
+           RGFOSSIL v1.00
+  (c) 2026 - NewWave Software
+
+Revision 5 FOSSIL Driver for 
+DOS BBSes running under 
+32-bit Windows (NTVDM).
+
+Switch-for-switch NetFOSS 1.26
+CLONE - Drop-in replacement, 
+just change paths.
+
+Works with RGTEL and Net2BBS. 
+      </div>
+    </div>
+  </div>
+
+</div><!-- end #tab-rgfossil -->
+
 <script>
 // ── Splash + tab switching ────────────────────────────────
 document.getElementById('splashYear').textContent = new Date().getFullYear();
@@ -1511,7 +1862,7 @@ const gameLabels = {
   sysop: "SysOp Smashin'", shadow: 'Shadow Stalker', frantic: 'FRANTIC!',
   foggy: 'Foggy Summit', pack: 'BBS-PACK', toad: 'Toadster',
   snakes: 'Snakes!', bog: 'The Bog', worms: 'We Got Worms!', salvage: 'Salvage Run',
-  wire: 'The Wire', lastbc: 'Last Broadcast', draw32: 'Draw32'
+  wire: 'The Wire', lastbc: 'Last Broadcast', cdview: 'CDView', draw32: 'Draw32', rgterm: 'RGTerm', rgtel: 'RGTel', rgfossil: 'RGFOSSIL'
 };
 
 function setGameSelectValue(key) {
@@ -1572,7 +1923,7 @@ function showSplash() {
 }
 
 function switchTab(key) {
-  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad', 'snakes', 'bog', 'worms', 'salvage', 'wire', 'lastbc', 'draw32'];
+  const validKeys = ['sysop', 'shadow', 'frantic', 'foggy', 'pack', 'toad', 'snakes', 'bog', 'worms', 'salvage', 'wire', 'lastbc', 'cdview', 'draw32', 'rgterm', 'rgtel', 'rgfossil'];
   if (!validKeys.includes(key)) return;
 
   // Hide splash, show tab nav + divider
@@ -1618,7 +1969,11 @@ const hashMap = {
   'salvage': 'salvage', 'salvage-run': 'salvage',
   'wire': 'wire', 'the-wire': 'wire',
   'lastbc': 'lastbc', 'last-broadcast': 'lastbc',
-  'draw32': 'draw32'
+  'cdview': 'cdview',
+  'draw32': 'draw32',
+  'rgterm': 'rgterm',
+  'rgtel': 'rgtel',
+  'rgfossil': 'rgfossil'
 };
 const initialKey = hashMap[location.hash.replace('#', '')];
 if (initialKey) {
@@ -1820,6 +2175,19 @@ document.getElementById('lastbcNext').addEventListener('click', () => {
   lastbcImg.src = lastbcImages[lastbcIndex];
 });
 
+// ── CDView gallery ───────────────────────────────────
+const cdviewImages = Array.from({length: 5}, (_, i) => `images/cdview${i}.png`);
+let cdviewIndex = 0;
+const cdviewImg = document.getElementById('cdviewMainImg');
+document.getElementById('cdviewPrev').addEventListener('click', () => {
+  cdviewIndex = (cdviewIndex - 1 + cdviewImages.length) % cdviewImages.length;
+  cdviewImg.src = cdviewImages[cdviewIndex];
+});
+document.getElementById('cdviewNext').addEventListener('click', () => {
+  cdviewIndex = (cdviewIndex + 1) % cdviewImages.length;
+  cdviewImg.src = cdviewImages[cdviewIndex];
+});
+
 // ── Draw32 gallery ───────────────────────────────────
 const draw32Images = [
   "images/draw0.png","images/draw1.png","images/draw2.png",
@@ -1834,6 +2202,45 @@ document.getElementById('draw32Prev').addEventListener('click', () => {
 document.getElementById('draw32Next').addEventListener('click', () => {
   draw32Index = (draw32Index + 1) % draw32Images.length;
   draw32Img.src = draw32Images[draw32Index];
+});
+
+// ── RGTerm gallery ───────────────────────────────────
+const rgtermImages = Array.from({length: 10}, (_, i) => `images/rgterm${i}.png`);
+let rgtermIndex = 0;
+const rgtermImg = document.getElementById('rgtermMainImg');
+document.getElementById('rgtermPrev').addEventListener('click', () => {
+  rgtermIndex = (rgtermIndex - 1 + rgtermImages.length) % rgtermImages.length;
+  rgtermImg.src = rgtermImages[rgtermIndex];
+});
+document.getElementById('rgtermNext').addEventListener('click', () => {
+  rgtermIndex = (rgtermIndex + 1) % rgtermImages.length;
+  rgtermImg.src = rgtermImages[rgtermIndex];
+});
+
+// ── RGTel gallery ───────────────────────────────────
+const rgtelImages = Array.from({length: 5}, (_, i) => `images/rgtel${i}.png`);
+let rgtelIndex = 0;
+const rgtelImg = document.getElementById('rgtelMainImg');
+document.getElementById('rgtelPrev').addEventListener('click', () => {
+  rgtelIndex = (rgtelIndex - 1 + rgtelImages.length) % rgtelImages.length;
+  rgtelImg.src = rgtelImages[rgtelIndex];
+});
+document.getElementById('rgtelNext').addEventListener('click', () => {
+  rgtelIndex = (rgtelIndex + 1) % rgtelImages.length;
+  rgtelImg.src = rgtelImages[rgtelIndex];
+});
+
+// ── RGFOSSIL gallery ───────────────────────────────────
+const rgfossilImages = Array.from({length: 5}, (_, i) => `images/rgfossil${i}.png`);
+let rgfossilIndex = 0;
+const rgfossilImg = document.getElementById('rgfossilMainImg');
+document.getElementById('rgfossilPrev').addEventListener('click', () => {
+  rgfossilIndex = (rgfossilIndex - 1 + rgfossilImages.length) % rgfossilImages.length;
+  rgfossilImg.src = rgfossilImages[rgfossilIndex];
+});
+document.getElementById('rgfossilNext').addEventListener('click', () => {
+  rgfossilIndex = (rgfossilIndex + 1) % rgfossilImages.length;
+  rgfossilImg.src = rgfossilImages[rgfossilIndex];
 });
 
 // ── Arrow key support (targets active tab's gallery) ────
@@ -1851,7 +2258,11 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'salvage')  document.getElementById('salvagePrev').click();
     else if (activeTab === 'wire')     document.getElementById('wirePrev').click();
     else if (activeTab === 'lastbc')   document.getElementById('lastbcPrev').click();
+    else if (activeTab === 'cdview')   document.getElementById('cdviewPrev').click();
     else if (activeTab === 'draw32')   document.getElementById('draw32Prev').click();
+    else if (activeTab === 'rgterm')   document.getElementById('rgtermPrev').click();
+    else if (activeTab === 'rgtel')    document.getElementById('rgtelPrev').click();
+    else if (activeTab === 'rgfossil') document.getElementById('rgfossilPrev').click();
   }
   if (e.key === 'ArrowRight') {
     if (activeTab === 'sysop')        document.getElementById('sysopNext').click();
@@ -1866,7 +2277,11 @@ document.addEventListener('keydown', e => {
     else if (activeTab === 'salvage')  document.getElementById('salvageNext').click();
     else if (activeTab === 'wire')     document.getElementById('wireNext').click();
     else if (activeTab === 'lastbc')   document.getElementById('lastbcNext').click();
+    else if (activeTab === 'cdview')   document.getElementById('cdviewNext').click();
     else if (activeTab === 'draw32')   document.getElementById('draw32Next').click();
+    else if (activeTab === 'rgterm')   document.getElementById('rgtermNext').click();
+    else if (activeTab === 'rgtel')    document.getElementById('rgtelNext').click();
+    else if (activeTab === 'rgfossil') document.getElementById('rgfossilNext').click();
   }
 });
 </script>
