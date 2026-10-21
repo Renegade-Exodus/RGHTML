@@ -193,7 +193,6 @@ figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
 <li><a href="#ch-utilities"><span class="num">27</span>Utilities (RGMAINT, RGCFG …)</a></li>
 <li><a href="#ch-glossary"><span class="num">Glossary</span>Glossary of Terms</a></li>
       </ul></nav>
-      <div class="side-foot">Based on the Renegade v1.30/DOS manual, updated for 1.44 (Windows, DOS, Linux).</div>
     </div></aside>
     <main>
 <section id="ch-new" class="lvl2"><h2><span class="num">★</span> What's new in Renegade 1.44</h2>
@@ -234,7 +233,7 @@ switch is still accepted (so old batch files work) but does nothing, and the "Us
 <section id="ch-1" class="lvl2"><h2><span class="num">Chapter 1</span> Installation, Startup, and the WFC Screen</h2></section>
 <section id="ch-1-a" class="lvl3"><h3><span class="num">1-A</span> System Requirements</h3><div class="update"><b>Renegade 1.44</b> Windows: any 32-bit or 64-bit Windows (console). DOS: a 386 or better with
 <code>CWSDPMI.EXE</code> and a FOSSIL driver. Linux: x86 or x86-64. Memory limits from the original DOS version no longer apply.
-See <a href="#ch-platforms">Running on Windows, DOS and Linux</a>.</div><p>Required: 80286 Processor, 285K Available Conventional Memory, Fossil Driver Recommended Minimum: 80386DX/25 Processor, 570K Available Conventional Memory, 1024K Available EMS Memory</p></section>
+See <a href="#ch-platforms">Running on Windows, DOS and Linux</a>.</div></section>
 <section id="ch-1-b" class="lvl3"><h3><span class="num">1-B</span> Installing Renegade</h3><p>Unzip the distribution archive into a temporary directory, and run <code>INSTALL.EXE</code>. Answer the questions as you're prompted.</p>
 <p>That's it. :)</p></section>
 <section id="ch-1-c" class="lvl3"><h3><span class="num">1-C</span> System Startup and Commandline Parameters</h3><div class="update"><b>Renegade 1.44</b> The Windows program is <code>RG32.EXE</code>. New: <code>-H&lt;handle&gt;</code> hands Renegade a
@@ -296,8 +295,8 @@ overlays. <code>-?</code> shows this screen:</div><figure class="term "><div cla
 <code>RG32 -N&lt;node&gt; -H&lt;socket handle&gt; -Q</code>; Renegade takes over the connected socket. COM ports are used directly. External
 protocols, archivers and doors must be Windows or DOS programs your system can run.</p>
 <h4>DOS</h4>
-<p><code>RENEGADE.EXE</code> needs <code>CWSDPMI.EXE</code> (in the BBS directory or on the PATH) and a FOSSIL driver for remote callers. It runs
-under real DOS, Windows NTVDM and DOSBox.</p>
+<p><code>RENEGADE.EXE</code> runs under Windows NTVDM as is, with no add-ons. Under real DOS and DOSBox it needs <code>CWSDPMI.EXE</code>
+(in the BBS directory or on the PATH). A FOSSIL driver is needed for remote callers.</p>
 <h4>Linux</h4>
 <p>Linux file names are case-sensitive and Renegade uses upper-case paths everywhere, so give the BBS an upper-case home and enter
 Linux paths in the configuration:</p>
