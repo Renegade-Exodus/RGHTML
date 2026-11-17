@@ -142,6 +142,7 @@ figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
   table.kv,table.grid{display:block;overflow-x:auto}
 }
 @media print{aside,.menu-btn,.top,.back-btn,.grid-overlay{display:none}.wrap{display:block}}
+.tools td:first-child{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -164,7 +165,7 @@ figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
 <li><a href="#ch-new"><span class="num">★</span>What's new in 1.44</a></li>
 <li><a href="#ch-lightbars"><span class="num">★</span>Lightbars</a></li>
 <li><a href="#ch-foreword"><span class="num">Foreword</span>Upgrading, Version Numbers, and what is Renegade anyway?</a></li>
-<li><a href="#ch-1"><span class="num">1</span>Installation, Startup, and the WFC Screen</a><ul><li><a href="#ch-1-a"><span class="num">1-A</span>System Requirements</a></li><li><a href="#ch-1-b"><span class="num">1-B</span>Installing Renegade</a></li><li><a href="#ch-1-c"><span class="num">1-C</span>System Startup and Commandline Parameters</a></li><li><a href="#ch-1-d"><span class="num">1-D</span>WFC Screen Information</a></li><li><a href="#ch-1-e"><span class="num">1-E</span>WFC Screen Commands</a></li><li><a href="#ch-platforms"><span class="num">1-F</span>Windows, DOS &amp; Linux</a></li></ul></li>
+<li><a href="#ch-1"><span class="num">1</span>Installation, Startup, and the WFC Screen</a><ul><li><a href="#ch-1-a"><span class="num">1-A</span>System Requirements</a></li><li><a href="#ch-1-b"><span class="num">1-B</span>Installing Renegade</a></li><li><a href="#ch-1-b-1"><span class="num">1-B-1</span>Quick Setup</a></li><li><a href="#ch-1-c"><span class="num">1-C</span>System Startup and Commandline Parameters</a></li><li><a href="#ch-1-d"><span class="num">1-D</span>WFC Screen Information</a></li><li><a href="#ch-1-e"><span class="num">1-E</span>WFC Screen Commands</a></li><li><a href="#ch-platforms"><span class="num">1-F</span>Windows, DOS &amp; Linux</a></li></ul></li>
 <li><a href="#ch-2"><span class="num">2</span>Sysop Function Keys</a></li>
 <li><a href="#ch-3"><span class="num">3</span>ACS System</a></li>
 <li><a href="#ch-4"><span class="num">4</span>Special Files</a><ul><li><a href="#ch-4-a"><span class="num">4-A</span>The BBS List</a></li><li><a href="#ch-4-b"><span class="num">4-B</span>The Last Callers List</a></li><li><a href="#ch-4-c"><span class="num">4-C</span>The Who's On Listing</a></li><li><a href="#ch-4-c-1"><span class="num">4-C-1</span>One-Liners</a></li><li><a href="#ch-4-d"><span class="num">4-D</span>The User Listing</a></li><li><a href="#ch-4-e"><span class="num">4-E</span>The Trashcan File</a></li><li><a href="#ch-4-f"><span class="num">4-F</span>The NEWLET.ASC File</a></li><li><a href="#ch-4-g"><span class="num">4-G</span>The Global Menu</a></li><li><a href="#ch-4-h"><span class="num">4-H</span>The READP, FILEP, and NEWINFO Menus</a></li></ul></li>
@@ -189,7 +190,7 @@ figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
 <li><a href="#ch-22"><span class="num">22</span>Conference System</a></li>
 <li><a href="#ch-23"><span class="num">23</span>Setting Up Doors</a></li>
 <li><a href="#ch-26"><span class="num">24</span>Renegade Support</a></li>
-<li><a href="#ch-utilities"><span class="num">25</span>Utilities (RGMAINT, RGCFG …)</a></li>
+<li><a href="#ch-utilities"><span class="num">25</span>Utilities (RGINST, RGSETUP, RGMRC, RGMAINT …)</a></li>
 <li><a href="#ch-glossary"><span class="num">Glossary</span>Glossary of Terms</a></li>
       </ul></nav>
     </div></aside>
@@ -225,7 +226,22 @@ or <kbd>P</kbd>. See <a href="#ch-lightbars">Lightbars</a>.</td></tr>
 <kbd>R</kbd> turns the SysOp editor lightbars on, and each caller can turn every lightbar off for himself with <code>OP</code> option 23.</td></tr>
 </table>
 
-<h4>What's different from v1.30/DOS</h4>
+<h4>New tools</h4>
+<table class="grid tools">
+<tr><th>Program</th><th>What it does</th></tr>
+<tr><td><b>RGINST</b> + Quick Setup</td><td>Installs the BBS from the <code>.RGD</code> archives and sets every path, then asks one screen of
+questions and sets up Renegade, RGTEL (telnet), MRC chat, RGXfer (BinkP mail) and RGEcho (echomail) together &mdash; with
+<code>RGSTART</code> to start it all. See <a href="#ch-1-b">1-B</a> and <a href="#ch-1-b-1">1-B-1</a>.</td></tr>
+<tr><td><b>RGSETUP</b></td><td>A separate lightbar configuration program in the style of Mystic's setup: paths, message / file / protocol
+settings, the area, protocol, archiver, conference and node editors, new user questions and file area maintenance &mdash; one program,
+one <code>RGSETUP.CFG</code>. Pipe (<code>|xx</code>) and scheme (<code>^n</code>) colors show as colors. See <a href="#rgsetup">RGSETUP</a>.</td></tr>
+<tr><td><b>RGMRC</b></td><td>A native Multi Relay Chat bridge for Windows and Linux &mdash; no Python needed. SSL through Windows' own
+SChannel or Linux OpenSSL. See <a href="#rgmrc">RGMRC</a>.</td></tr>
+<tr><td>Banners</td><td>Every utility clears the screen and shows the same banner: <code>&lt;Name&gt; v1.44/&lt;platform&gt;</code> and
+<i>Copyright (c) 1991-2026 NewWave Software</i>.</td></tr>
+</table>
+
+<h4>What's different from v1.40/DOS</h4>
 <table class="grid">
 <tr><th>Area</th><th>In this edition</th></tr>
 <tr><td>Overlays, swapping</td><td>Gone. Everything is inside the program, so <code>RENEGADE.OVR</code> can be deleted. The <code>-D</code>
@@ -234,6 +250,8 @@ switch is still accepted (so old batch files work) but does nothing. The "Use EM
 <tr><td>WFC screen</td><td>The <i>Overlays</i> field is now <b>Platform</b> (DOS, Win32 or Linux), and <i>Build</i> shows the version.
 <kbd>Z</kbd> opens the history editor as a scrolling list of days.</td></tr>
 <tr><td>Version number</td><td>Built into the program at compile time from <code>VERSION.TXT</code>; <code>%VR</code> shows e.g. <code>1.44/Win32</code>.</td></tr>
+<tr><td>Logon header</td><td>The copyright line shown at logon (and in RENEMAIL) reads <b style="color:#5f5">NewWave Software</b>, in green.</td></tr>
+<tr><td>DOS builds</td><td>Fixed: every DOS program could stop at once with an NTVDM &ldquo;unhandled exception&rdquo; (<code>X#=0D</code>) or a page fault &mdash; the DOS startup code jumped to the wrong address.</td></tr>
 <tr><td>System Configuration</td><td>No more second pages: the few page-2 items of ACS Settings, System Variables and System Toggles are
 now keys <kbd>1</kbd>&ndash;<kbd>6</kbd> on page 1. Wherever <kbd>Enter</kbd> quits a screen, <kbd>Q</kbd> quits too
 (with a lightbar, <kbd>Enter</kbd> selects).</td></tr>
@@ -249,7 +267,7 @@ counts correctly on every node.</td></tr>
 text viewers, so a dropped caller never leaves a node running.</td></tr>
 <tr><td>Editors</td><td>Every record editor saves what you changed when you leave it (with <kbd>Q</kbd>, <kbd>[</kbd> <kbd>]</kbd>, <kbd>{</kbd> <kbd>}</kbd> or <kbd>;</kbd>).</td></tr>
 <tr><td>New users</td><td>The new-user template (user #0) can no longer pass a real user's data to new users; name and password are always asked.</td></tr>
-<tr><td>Utilities</td><td><b>RGMAINT</b> (replaces RUP) packs users and messages, sorts file areas and the BBS list; <b>RGCFG</b> exports/imports the configuration as INI text. See <a href="#ch-utilities">Utilities</a>.</td></tr>
+<tr><td>Utilities</td><td><b>RGMAINT</b> (replaces RUP) packs users and messages, sorts file areas and the BBS list; <b>RGINST</b>, <b>RGSETUP</b> and <b>RGMRC</b> are new (above). The separate file maintenance program (RGFD) is now part of RGSETUP. See <a href="#ch-utilities">Utilities</a>.</td></tr>
 <tr><td>Data files</td><td>Byte-for-byte compatible with the Turbo Pascal version on every platform &mdash; you can move a BBS between Windows, DOS and Linux.</td></tr>
 <tr><td>Removed</td><td>OS/2, Windows 95 and DESQview set-up notes, overlay error levels, the old swap settings and the separate
 file/message lightbar options of <code>OP</code> (31, 32) &mdash; option 23 covers all lightbars.</td></tr>
@@ -306,17 +324,71 @@ such as RGTEL or Net2BBS; COM ports are used directly.</td></tr>
 </table>
 <p>Memory limits from the original DOS version no longer apply. See <a href="#ch-platforms">Running on Windows, DOS and Linux</a>.</p></section>
 <section id="ch-1-b" class="lvl3"><h3><span class="num">1-B</span> Installing Renegade</h3>
-<p>Unzip the distribution archive into the folder the BBS will live in (for example <code>D:\BBS</code> or <code>/home/bbs</code>).
-Then:</p>
+<p>Renegade is installed with <b>RGINST</b> (<code>RGINST.EXE</code> on DOS and Windows, <code>rginst</code> on Linux).</p>
 <ol>
-<li>Start the BBS locally: <code>RG32 -L</code> (Windows), <code>RENEGADE -L</code> (DOS) or <code>./renegade -L</code> (Linux).</li>
-<li>At the WFC screen press <kbd>S</kbd>, then <kbd>A</kbd> (Main BBS Configuration) and check the paths <kbd>0</kbd>&ndash;<kbd>9</kbd>.
-On Linux enter Linux paths (<code>/home/bbs/DATA/</code>); drive letters are not converted.</li>
-<li>Set your BBS name, SysOp name and SysOp password (<kbd>A</kbd>, <kbd>C</kbd>, <kbd>I</kbd>).</li>
-<li>Set up your telnet server (or modem) to start a node &mdash; see <a href="#ch-1-c">1-C</a> and <a href="#ch-platforms">1-F</a>.</li>
+<li>Unzip the distribution archive into an empty temporary folder. It holds RGINST and the <code>.RGD</code> archives
+(<code>BBS.RGD</code>, <code>DATA.RGD</code>, <code>MISC.RGD</code>, <code>TEXT.RGD</code> &hellip;).</li>
+<li>Run RGINST from that folder (or <code>RGINST &lt;folder with the .RGD files&gt;</code>).</li>
+<li>In the lightbar menu, type the install folder (for example <code>C:\RG</code>). The folder fields are live &mdash; move the bar onto
+one and type; <kbd>&uarr;</kbd>/<kbd>&darr;</kbd>, <kbd>Tab</kbd> or <kbd>Enter</kbd> save it. <kbd>Esc</kbd> quits.</li>
+<li>Choose <b>Begin Installation</b> and answer <b>Yes</b> in the pop-up (<kbd>&larr;</kbd>/<kbd>&rarr;</kbd> or <kbd>Tab</kbd> pick,
+<kbd>Enter</kbd> selects, <kbd>Y</kbd>/<kbd>N</kbd> work too).</li>
+<li>A <b>Finished</b> pop-up shows the files unpacked, paths changed and warnings. Press a key for <a href="#ch-1-b-1">Quick Setup</a>.</li>
 </ol>
+<table class="grid">
+<tr><th>Archive</th><th>Where it goes</th></tr>
+<tr><td><code>BBS.RGD</code></td><td>the install folder itself</td></tr>
+<tr><td><code>&lt;NAME&gt;.RGD</code></td><td><code>&lt;install folder&gt;\&lt;NAME&gt;\</code> &mdash; DATA, ARCS, DOCS, MISC, MSGS, RGL, TEXT and the add-ons
+RGECHO, RGTEL, RGX, RGFOSSIL</td></tr>
+<tr><td><code>MRC.RGD</code></td><td>MRC chat &mdash; into the RGL folder</td></tr>
+<tr><td><code>PROT.RGD</code></td><td>not needed any more &mdash; the PROT folder is just made</td></tr>
+</table>
+<p>Every path in <code>RENEGADE.DAT</code>, the node files, file and message areas, protocols, events, menus and the batch, script and
+<code>.INI</code> files is changed to your install folder, and missing folders are made. On Linux every path uses <code>/</code> and the
+programs are made executable. <code>INSTALL.LOG</code> in the install folder lists every change. The log on screen is laid out in
+columns: names in cyan, headings in yellow, the summary in green, warnings in red.</p>
+<div class="note"><b>Note</b> Keep the install folder to 26 characters or less; Renegade paths can be at most 40 characters. No unzip
+program is needed &mdash; RGINST checks the CRC of every file it unpacks.</div>
 <p>If you are upgrading, copy the new program files over the old ones; your data files are used as they are. Delete
-<code>RENEGADE.OVR</code> &mdash; it is no longer used.</p></section>
+<code>RENEGADE.OVR</code> &mdash; it is no longer used &mdash; and the MRC Python files (<code>mrc_client.py</code>, <code>mrc_config.py</code>,
+<code>mrc_start.py</code>, <code>START_MRC.BAT</code>) if you used them.</p></section>
+<section id="ch-1-b-1" class="lvl3"><h3><span class="num">1-B-1</span> Quick Setup</h3>
+<p>After the archives are unpacked, RGINST asks one screen of questions and writes every configuration file, so a new BBS can go on
+line with little else to do. Run it again later on an installed BBS with <code>RGINST -SETUP [bbs folder]</code> &mdash; it starts from
+the current settings. Every file it replaces is saved as <code>*.BAK</code> first; settings it doesn't ask about are kept in
+<code>RGTEL.INI</code>, <code>RGXFER.CFG</code> and RGEcho's <code>SETUP.CFG</code>. The help line keeps the keys on the bottom row.</p>
+<table class="grid">
+<tr><th>Question</th><th>Used for</th></tr>
+<tr><td>BBS Name, SysOp Name</td><td><code>RENEGADE.DAT</code>, RGXfer, RGEcho, MRC</td></tr>
+<tr><td>Location</td><td>the mailer, the origin line, MRC <code>/INFO</code></td></tr>
+<tr><td>Internet Host</td><td>the name callers telnet to, e.g. <code>ttb.rgbbs.info</code> (MRC <code>/INFO</code>)</td></tr>
+<tr><td>Telnet Port, Nodes</td><td><code>RGTEL.INI</code>; <code>NODE1..n.DAT</code> &mdash; node <i>n</i> drops its door files in <code>&lt;bbs&gt;\TEMPn\</code> &mdash; multinode on</td></tr>
+<tr><td>MRC Chat</td><td>Yes/No &mdash; <code>MRC_CLIENT</code> and the RGMRC bridge (greyed out, with the reason, when MRC is not installed)</td></tr>
+<tr><td>FTN Network</td><td>Yes/No &mdash; RGXfer and RGEcho; No = Renegade and RGTEL only</td></tr>
+<tr><td>Network Name</td><td>the BinkP domain, e.g. <code>metronet</code></td></tr>
+<tr><td>Your Address / Hub Address</td><td>e.g. <code>25:25/101</code> and <code>25:25/0</code></td></tr>
+<tr><td>Hub Host[:Port]</td><td>e.g. <code>ttb.rgbbs.info:24554</code></td></tr>
+<tr><td>Session Password</td><td>BinkP session and packet password</td></tr>
+<tr><td>AreaFix Password</td><td>blank = the session password</td></tr>
+</table>
+<h4>What gets written</h4>
+<table class="grid">
+<tr><th>File</th><th>Contents</th></tr>
+<tr><td><code>RGTEL\RGTEL.INI</code></td><td>port, nodes, StartPath and the command line (<code>RG32</code> on Win32, <code>RENEGADE.EXE</code> on DOS, <code>renegade</code> on Linux)</td></tr>
+<tr><td><code>MAIL\</code></td><td>INBOUND (password sessions), INSECURE, OUTBOUND, NETMAIL, INPKTS, OUTPKTS, SEMA, HOLD, BAD, TEMP (RGXfer's temp folder)</td></tr>
+<tr><td><code>RGX\RGXFER.CFG</code></td><td>address, the hub as a BinkP node, BinkP daemon on, an event calling the hub every 60 minutes, BETWEEN on</td></tr>
+<tr><td><code>RGX\BETWEEN.BAT</code></td><td>(<code>between.sh</code> on Linux) runs <code>RGECHO TOSS IMPORT SCAN PACK</code> before and after each call</td></tr>
+<tr><td><code>RGECHO\DATA\*.CFG</code></td><td><b>SETUP</b> (tosses straight into Renegade, auto-create bases on, tear lines left alone), <b>AREAFILE</b>
+(NETMAIL on Renegade's EMAIL base, BADECHO), <b>GRPFILE</b> (every new echo becomes a Renegade area), <b>NODEFILE</b> (the hub as uplink)</td></tr>
+<tr><td><code>MAIL\NETMAIL\n.MSG</code></td><td><code>%LIST</code> to AreaFix &mdash; sent on the first call</td></tr>
+<tr><td><code>RGL\MRC.CFG</code></td><td>MRC: paths, BBS name, <code>/INFO</code> details, SSL port 5001; <code>DATA\mystic\temp1..n</code> are made</td></tr>
+<tr><td><code>RGSTART.BAT</code></td><td>(<code>rgstart.sh</code> on Linux) starts RGTEL, RGXfer and RGMRC &mdash; on Linux in a tmux session <code>bbs</code>, or in the background without tmux</td></tr>
+</table>
+<p>New echoes from the hub show up in Renegade by themselves the first time a message arrives in them; join echoes by netmail to AreaFix
+(<code>+TAGNAME</code> lines) or with RGESETUP. A <b>Finished</b> pop-up closes Quick Setup, and the last screen shows how to start the BBS.</p>
+<div class="note"><b>Note</b> Windows/DOS: RGEcho packs mail with <code>PKZIP.EXE</code> / <code>PKUNZIP.EXE</code> from the BBS
+<code>ARCS</code> folder (a warning is logged when they are not there). Linux uses <code>zip</code> / <code>unzip</code>.</div>
+</section>
 <section id="ch-1-c" class="lvl3"><h3><span class="num">1-C</span> System Startup and Commandline Parameters</h3><div class="update"><b>Renegade 1.44</b> The Windows program is <code>RG32.EXE</code>. New: <code>-H&lt;handle&gt;</code> hands Renegade a
 connected telnet socket (Windows handle / Linux file descriptor). <code>-D</code> (overlay to disk) is accepted but ignored &mdash; there are no
 overlays. <code>-?</code> shows this screen:</div><figure class="term "><div class="term-bar"><i></i><i></i><i></i><span>Renegade 1.44</span></div><div class="term-scroll"><pre><span class="f7">╔═════════════════════════════════════════════════════════════════════════════╗ </span>
@@ -2395,12 +2467,65 @@ end up in <code>BIN\WIN32</code>, <code>BIN\DOS</code> or <code>bin/linux</code>
 <table class="grid">
 <tr><th>Program</th><th>What it does</th></tr>
 <tr><td><b>RG32 / RENEGADE</b></td><td>The BBS itself.</td></tr>
+<tr><td><b>RGINST</b></td><td>Installs a new BBS from the <code>.RGD</code> archives, sets every path and runs Quick Setup (<a href="#ch-1-b">1-B</a>, <a href="#ch-1-b-1">1-B-1</a>).</td></tr>
+<tr><td><b>RGSETUP</b></td><td>Lightbar configuration program: paths, settings, editors and file area maintenance (<a href="#rgsetup">below</a>).</td></tr>
+<tr><td><b>RGMRC</b></td><td>The Multi Relay Chat bridge (<a href="#rgmrc">below</a>).</td></tr>
 <tr><td><b>RGMAINT</b></td><td>Maintenance: packs the user base, packs and trims message bases, sorts file areas and the BBS list.</td></tr>
-<tr><td><b>RGCFG</b></td><td>Exports the configuration to readable INI files and imports it back.</td></tr>
 <tr><td><b>RGLNG</b></td><td>Compiles <code>RGLNG.TXT</code> into the language files the BBS reads.</td></tr>
 <tr><td><b>RENEMAIL</b></td><td>Imports and exports echomail / netmail between Renegade and your tosser.</td></tr>
 <tr><td><b>RGQUOTE</b>, <b>TAGLINE</b></td><td>Quote and tagline file tools.</td></tr>
 </table>
+
+<h4 id="rgsetup">RGSETUP &mdash; Renegade Setup</h4>
+<p>RGSETUP is a separate configuration program in the style of Mystic's setup: a menu bar across the top, pull-down menus, and lightbar
+forms and lists for everything. Run it from the BBS folder (<code>rgsetup</code> on Linux). Its own settings are kept in
+<code>RGSETUP.CFG</code> (an old <code>RGSETUP.INI</code> is renamed).</p>
+<table class="grid">
+<tr><th>Menu</th><th>Holds</th></tr>
+<tr><td>Configuration</td><td>System Information, Paths, Message Settings, File Settings, Logon &amp; New Users, New User Questions (real name,
+handle, age &hellip; toggles), SysOp ACS, Time &amp; Credits, SysOp Macros</td></tr>
+<tr><td>Networking</td><td>Network Addresses, EchoMail/NetMail, Offline Mail</td></tr>
+<tr><td>Editors</td><td>Message Areas, Msg Area Template (<code>MBASES.DEF</code> &mdash; the defaults for a new message area; <kbd>X</kbd> in the
+area list uses it), File Areas, Protocols, Archivers, Conferences, Nodes/Modems (with each node's door drop file path)</td></tr>
+<tr><td>Utilities</td><td>File area maintenance: the areas to maintain, Run File Maintenance, file area settings, fixes, descriptions
+(<code>FILE_ID.DIZ</code>), description formats (<code>FILES.BBS</code> styles), FILELIST and other options, Create CD-ROM Areas. Long file
+names are handled the Renegade way (an 8.3 alias on disk, the long name in the description). Temporary work is done in the BBS temp path.</td></tr>
+<tr><td>Other</td><td>Edit ANSI/Art File and Run ANSI Editor (e.g. DRAW32 &mdash; RGSETUP waits and comes back), Edit Text File, RGSetup Options, About</td></tr>
+</table>
+<p>Keys: the arrows move, <kbd>Enter</kbd> edits or selects, <kbd>Space</kbd> toggles Yes/No, <kbd>Esc</kbd> goes back; the bottom two lines
+show the help and keys for each item. Path fields take DOS/Windows or Linux paths; <kbd>F2</kbd> changes the drive and <kbd>F3</kbd> the drive
+and BBS folder in every path. Pipe colors (<code>|00</code>&ndash;<code>|23</code>) and the scheme colors (<code>^0</code>&ndash;<code>^9</code>,
+from <code>SCHEME.DAT</code>) show as colors in the lists.</p>
+
+<h4 id="rgmrc">RGMRC &mdash; Multi Relay Chat bridge</h4>
+<p>StackFault's MRC chat client for Mystic, converted with MPL2RGL, runs on Renegade as <code>MRC_CLIENT</code>. The connection to the MRC
+server is kept by <b>RGMRC</b> (<code>RGMRC.EXE</code> on Windows, <code>rgmrc</code> on Linux) &mdash; a native port of
+<code>mrc_client.py</code> (MRC protocol 1.3.7). No Python is needed.</p>
+<p><code>MRC.RGD</code> has everything and nothing from anyone's BBS: <code>MRC_CLIENT.RGL/.RGX</code>, <code>RGMRC.EXE</code> /
+<code>rgmrc</code>, a blank <code>MRC.CFG</code>, the themes (<code>DATA\mystic\scripts\</code>, <code>DATA\mystic\text\</code>), an
+empty <code>DATA\mystic\data\users.dat</code> and <code>MRC-RGL.TXT</code>.</p>
+<ol>
+<li>RGINST unpacks <code>MRC.RGD</code> into the RGL folder, and Quick Setup fills in <code>RGL\MRC.CFG</code> (MRC Chat = Yes, plus the
+Internet Host). By hand: set <code>bbspath = "c:/bbs/rgl/DATA/mystic"</code>, <code>pidfile</code>, <code>bbsname</code> (5&ndash;40
+characters) and the <code>info_</code> lines &mdash; every &ldquo;Unconfigured BBS&rdquo; must be changed.</li>
+<li>Start RGMRC (RGSTART does it) and leave it running. It reconnects by itself; <kbd>Q</kbd> or <kbd>Ctrl-C</kbd> stops it cleanly.</li>
+<li>In <code>RGL.CFG</code> give the chat its own limits: <code>[MRC_CLIENT] MaxTime=0 MaxData=0</code>.</li>
+<li>Menu command <code>-X MRC_CLIENT</code>.</li>
+</ol>
+<table class="grid">
+<tr><th>MRC.CFG</th><th>Meaning</th></tr>
+<tr><td><code>usessl</code></td><td>1 = port 5001, SSL (the default on every build) &middot; 0 = port 5000, plain. RGMRC is always the Win32 or
+Linux program, so SSL works with the DOS Renegade too.</td></tr>
+<tr><td><code>nocertcheck</code></td><td>0 = check the server's certificate: against the Windows roots, then RGMRC's own copy of the Let's Encrypt
+roots (Windows 7 often lacks them &mdash; SChannel error <code>$80090325</code>), then <code>cafile</code>. 1 = don't check.</td></tr>
+<tr><td><code>cafile</code></td><td>extra trusted root certificates (PEM file)</td></tr>
+<tr><td><code>platform</code></td><td>what RGMRC tells the server &mdash; <code>RENEGADE</code></td></tr>
+</table>
+<p>SSL uses Windows' own SChannel (TLS 1.2 needs Windows 7 or newer) or OpenSSL on Linux. The screen shows the BBS and server, a colored log
+with the chat going by (the server's HELLO shows as &ldquo;Server accepted the connection&rdquo;), and a status bar: online / connecting /
+offline, lag, the server's BBS, room and user counts, uptime and packets. A <b>Connecting</b> box shows while it connects. <kbd>Q</kbd> quits,
+<kbd>C</kbd> clears the log; with its output redirected (or <code>RGMRC -plain</code>) it writes plain log lines. One bridge serves every node;
+each node uses its own folder <code>RGL\DATA\mystic\temp&lt;node&gt;\</code>.</p>
 
 <h4 id="rgmaint">RGMAINT &mdash; Renegade Maintenance</h4>
 <p>RGMAINT (formerly RUP, the Renegade User Packer) does the jobs that need the BBS to be down. Run it from the BBS directory,
@@ -2452,26 +2577,6 @@ text is compacted and reply links are fixed.</p></dd>
 the same person. If anything doesn't match, nothing is replaced. Originals are copied to <code>DATA\RGMBAK\</code> before the swap.
 Run with <code>/T</code> first if you're unsure.</div>
 
-<h4 id="rgcfg">RGCFG &mdash; configuration as text</h4>
-<pre class="plain example">RGCFG EXPORT [dir]    RENEGADE.DAT, areas, menus ...  ->  dir\*.INI
-RGCFG IMPORT [dir]    dir\*.INI  ->  .DAT files       (dir defaults to CONFIG)</pre>
-<table class="grid">
-<tr><th>INI file</th><th>Data file</th></tr>
-<tr><td><code>GENERAL.INI</code></td><td><code>RENEGADE.DAT</code></td></tr>
-<tr><td><code>MBASES.INI</code></td><td><code>DATA\MBASES.DAT</code></td></tr>
-<tr><td><code>FBASES.INI</code></td><td><code>DATA\FBASES.DAT</code></td></tr>
-<tr><td><code>MENUS.INI</code></td><td><code>DATA\MENUS.DAT</code></td></tr>
-<tr><td><code>PROTOCOL.INI</code></td><td><code>DATA\PROTOCOL.DAT</code></td></tr>
-<tr><td><code>CONFRENC.INI</code></td><td><code>DATA\CONFRENC.DAT</code></td></tr>
-<tr><td><code>SCHEME.INI</code></td><td><code>DATA\SCHEME.DAT</code></td></tr>
-</table>
-<p>Each record is a <code>[section]</code> with <code>Key=Value</code> lines. Strings are quoted, booleans are <code>Yes</code>/<code>No</code>, flag sets
-are comma lists. <code>GENERAL.INI</code> is applied on top of the current <code>RENEGADE.DAT</code>, so a file with just a few keys changes just
-those. Stop the BBS before importing; every replaced <code>.DAT</code> is kept as <code>.BAK</code>, and a file with errors is not imported at all.</p>
-<pre class="plain example">; CONFIG\GENERAL.INI - change only the BBS name and the SysOp's name
-[General]
-BBSName="The Titantic BBS"
-SysOpName="Exodus"</pre>
 </section>
 <section id="ch-glossary" class="lvl2"><h2><span class="num">Glossary</span> Glossary of Terms</h2><dl class="opts"><dt>ANSI</dt><dd><p>Short for American National Standards Institute, in BBS slang it's a format for saving files. The format was adopted by ANSI as it's standard, and the format acquired the name of the organization as a result.</p></dd><dt>CTS/RTS</dt><dd><p>Short for Clear to Send/Request to Send, respectively. Also known as Hardware Flow Control.</p>
 <p>DOS - Short for Disk Operating System. Usually preceeded by a prefix of some sort. MS-DOS is Microsoft DOS, published by Microsoft, PC-DOS is IBM's commercial version of DOS.</p></dd><dt>Local</dt><dd><p>From the SysOp's point of view, any system which is accessed by basically sitting down in front of it. Everything else is remote. The computer he runs his BBS off of is the Local Computer. The Local Computer's screen is the local display, anything typed on the Local Computer's keyboard is local input.</p></dd><dt>Newbie</dt><dd><p>Slang for novice; sometimes used interchangeably with the word clueless. Sometimes used as a derogative, other times as friendly chiding (depends on the person saying it). In general, it denotes a person new to the hobby, and therefore not yet familiar with most of it's aspects.</p>
