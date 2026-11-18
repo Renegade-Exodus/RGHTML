@@ -683,6 +683,65 @@ body.page-home .global-back-wrap{
 }
 </style>
 
+<style id="downloads-v144-flashy">
+.downloads-pane{ max-width:1400px; margin:0 auto; padding:0 18px 30px; }
+.downloads-pane .section-title{ font-family:'Syne',sans-serif; font-size:2.4rem; font-weight:700; margin:34px 0 14px;
+  background:linear-gradient(90deg,#7fd8ff,#4a8cff); -webkit-background-clip:text; background-clip:text; color:transparent; letter-spacing:.5px; }
+/* Hero with animated rainbow border */
+@property --rg-ang{ syntax:'<angle>'; inherits:false; initial-value:0deg; }
+.rg-hero{ position:relative; border-radius:22px; padding:2px;
+  background:linear-gradient(135deg,rgba(90,160,255,.55),rgba(40,80,200,.25));
+  box-shadow:0 0 30px rgba(60,130,255,.12); }
+@keyframes rgSpin{ to{ --rg-ang:360deg; } }
+.rg-hero-inner{ position:relative; overflow:hidden; border-radius:20px; padding:26px;
+  background:radial-gradient(ellipse at top left,rgba(60,130,255,.10),transparent 60%),#05070c; }
+.rg-hero-inner::before{ content:""; position:absolute; inset:0; pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px); }
+.rg-hero-top{ display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap; margin-bottom:22px; position:relative; }
+.rg-kicker{ font-family:ui-monospace,Consolas,monospace; color:rgba(255,255,255,.65); font-size:13px; letter-spacing:.15em; text-transform:uppercase; }
+.rg-new{ display:inline-block; margin-right:8px; padding:2px 10px; border-radius:999px; background:#3a7bff; color:#fff; font-weight:900; letter-spacing:.1em; }
+@keyframes rgPulse{ 50%{ box-shadow:0 0 4px rgba(224,241,11,.3); transform:scale(.95);} }
+.rg-hero-title{ font-family:'Syne',sans-serif; font-size:clamp(2.2rem,5vw,3.8rem); margin:6px 0 4px; color:#fff; line-height:1; }
+.rg-ver{ color:#6fb4ff; }
+@keyframes rgShine{ to{ background-position:200% 0; } }
+.rg-hero-sub{ color:rgba(255,255,255,.7); font-size:1.05rem; }
+.rg-hero-ansi{ font-family:ui-monospace,Consolas,monospace; color:#4a8cff; font-size:18px; opacity:.7; white-space:nowrap; }
+.rg-dl-grid{ position:relative; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+@media (max-width:1000px){ .rg-dl-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:560px){ .rg-dl-grid{ grid-template-columns:1fr; } }
+.rg-dl{ --c:0,255,255; position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px;
+  padding:22px 14px 16px; border-radius:16px; text-decoration:none; color:#fff;
+  background:linear-gradient(180deg,rgba(var(--c),.08),rgba(var(--c),.02)); border:1px solid rgba(var(--c),.30);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 26px rgba(0,0,0,.5);
+  transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease; overflow:hidden; outline:none; }
+.rg-dl::after{ content:""; position:absolute; top:0; left:-60%; width:40%; height:100%; transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent); transition:left .5s ease; }
+
+.rg-dl:hover,.rg-dl:focus-visible{ transform:translateY(-2px); border-color:rgba(var(--c),.95);
+  box-shadow:0 0 0 3px rgba(var(--c),.15),0 12px 28px rgba(0,0,0,.6); }
+.rg-dos{ --c:110,190,255; } .rg-win{ --c:90,140,255; } .rg-lnx{ --c:120,170,255; } .rg-upg{ --c:150,200,255; }
+.rg-dl-icon{ font-family:ui-monospace,Consolas,monospace; font-size:30px; font-weight:900; height:46px; display:flex; align-items:center;
+  color:rgb(var(--c)); }
+.rg-dl-plat{ font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:700; }
+.rg-dl-kind{ color:rgba(255,255,255,.7); font-size:.95rem; }
+.rg-dl-file{ font-family:ui-monospace,Consolas,monospace; color:rgb(var(--c)); font-size:13px; letter-spacing:.08em; opacity:.9; }
+.rg-dl-btn{ margin-top:10px; width:100%; padding:9px 10px; border-radius:10px; font-family:ui-monospace,Consolas,monospace; font-weight:900; letter-spacing:.15em;
+  background:rgba(var(--c),.14); border:1px solid rgba(var(--c),.40); }
+.rg-dl:hover .rg-dl-btn,.rg-dl:focus-visible .rg-dl-btn{ background:rgba(var(--c),.30); }
+.rg-dl-btn .arrow{ color:inherit; }
+.rg-hero-note{ position:relative; margin-top:18px; text-align:center; color:rgba(255,255,255,.6); font-size:13px; }
+.rg-hero-note b{ color:#8cc4ff; }
+/* Previous list in 2 columns */
+.downloads-pane .prev-list{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:12px; }
+@media (max-width:800px){ .downloads-pane .prev-list{ grid-template-columns:1fr; } }
+.downloads-pane .prev-list li{ margin:3px 0; }
+/* Legacy utilities: toned down */
+.downloads-pane .util-box{ opacity:.85; transition:opacity .2s; }
+.downloads-pane .util-box:hover{ opacity:1; }
+.downloads-pane .util-grid{ grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); }
+@media (prefers-reduced-motion:reduce){ .rg-hero,.rg-new,.rg-ver{ animation:none; } }
+</style>
+
 </head>
 <body class="page-home">
 
@@ -701,7 +760,7 @@ body.page-home .global-back-wrap{
 <h1><img src="images/title.png" alt="https://www.rgbbs.info" class="fixed-image" width="900" height="150"></h1>
    
 <h1 class="since-2003">... since 2003</h1>
-<h2 style="color: #00FF00">Renegade v1.40/DOS released - 03/01/2026</h2>
+<h2 style="color: #00FF00">Renegade v1.44/DOS/Win32/Linux released on 11/17/2026!</h2>
         </div>
 
         <!-- Menu Grid -->
@@ -802,267 +861,105 @@ body.page-home .global-back-wrap{
 
   <div class="downloads-pane">
 
-    <div class="lightbar-wrap">
-      <div class="cols">
-        <div class="stack">
-<div class="section-title">Latest Releases</div>
-          <section class="box bbs-box latest-box">
-          <div class="legend">
-            <div class="title">[ Latest Release & Update ]</div>
-            <div class="hint">↑ ↓ Enter</div>
+    <!-- ===== FEATURED: v1.44 ===== -->
+    <div class="section-title">Latest Release</div>
+    <section class="rg-hero">
+      <div class="rg-hero-inner">
+        <div class="rg-hero-top">
+          <div>
+            <div class="rg-kicker"><span class="rg-new">NEW</span> Now on three platforms</div>
+            <h3 class="rg-hero-title">Renegade <span class="rg-ver">v1.44</span></h3>
+            <div class="rg-hero-sub">DOS &bull; Windows &bull; Linux &mdash; pick your platform and go.</div>
           </div>
-          <ul class="ansi" role="menu" aria-label="Renegade Downloads">
-            <li role="none">
-      <a class="item" role="menuitem" href="files/RGV140F.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> FULL INSTALL - v1.40/DOS  <span class="bracket">]</span></span>
-        
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV140U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> UPGRADE - v1.40/DOS From v1.35/DOS  <span class="bracket">]</span></span>
-        
-      </a>
-    </li>
-          </ul>
-        </section>
-
-<div class="section-title">Previous Upgrades</div>
-          <section class="box bbs-box">
-          <div class="legend">
-            <div class="title">[ Previous Upgrades to Download ]</div>
-            <div class="hint">↑ ↓ Enter</div>
-          </div>
-          <ul class="ansi" role="menu" aria-label="Previous upgrades">
-            <li role="none">
-      <a class="item" role="menuitem" href="files/RGV135U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.35/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2024</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV133U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.33/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2023</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV130U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.30/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2022</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV125U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.25/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2021</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV122U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.22/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2020</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV120U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.20a/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2013</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV119A.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.19a/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2012</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV118A.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.18a/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2011</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV110U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.10/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2009</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGV100U.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v1.00/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2008</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RG0930UP.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v09-30.6/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2006</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RG0630UP.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v06-30.6/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2006</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RG0519UP.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v05-19.4/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2004</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RG0110UP.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v01-10.4/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2004</span>
-      </a>
-    </li>
-<li role="none">
-      <a class="item" role="menuitem" href="files/RGU1126D.ZIP">
-        <span class="arrow">►</span>
-        <span class="label"><span class="bracket">[</span> Renegade v11-26.3/DOS  <span class="bracket">]</span></span>
-        <span class="meta">Released - 2003</span>
-      </a>
-    </li>
-          </ul>
-        </section>
+          <div class="rg-hero-ansi" aria-hidden="true">&#9608;&#9619;&#9618;&#9617; v1.44 &#9617;&#9618;&#9619;&#9608;</div>
         </div>
 
-        <div class="stack">
-<div class="section-title">Utilities</div>
-          <section class="box">
-            <div class="legend">
-              <div class="title">[ Utilities Downloads - Updated 01/10/2026 ]</div>
-              <div class="hint"></div>
-            </div>
-            <div class="util-grid">
-              
-      <div class="util-card" tabindex="0" data-idx="1">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGAPI20.ZIP">RGAPI20.ZIP</a>
+        <div class="rg-dl-grid">
+          <a class="rg-dl rg-dos" href="files/RGD144.ZIP">
+            <div class="rg-dl-icon">C:\&gt;_</div>
+            <div class="rg-dl-plat">DOS</div>
+            <div class="rg-dl-kind">Full Install</div>
+            <div class="rg-dl-file">RGD144.ZIP</div>
+            <div class="rg-dl-btn"><span class="arrow">►</span> DOWNLOAD</div>
+          </a>
+          <a class="rg-dl rg-win" href="files/RGW144.ZIP">
+            <div class="rg-dl-icon">&#9638;</div>
+            <div class="rg-dl-plat">Windows</div>
+            <div class="rg-dl-kind">Full Install</div>
+            <div class="rg-dl-file">RGW144.ZIP</div>
+            <div class="rg-dl-btn"><span class="arrow">►</span> DOWNLOAD</div>
+          </a>
+          <a class="rg-dl rg-lnx" href="files/RGL144.ZIP">
+            <div class="rg-dl-icon">$ _</div>
+            <div class="rg-dl-plat">Linux</div>
+            <div class="rg-dl-kind">Full Install</div>
+            <div class="rg-dl-file">RGL144.ZIP</div>
+            <div class="rg-dl-btn"><span class="arrow">►</span> DOWNLOAD</div>
+          </a>
+          <a class="rg-dl rg-upg" href="files/RGU144.ZIP">
+            <div class="rg-dl-icon">&#8679;</div>
+            <div class="rg-dl-plat">Upgrade</div>
+            <div class="rg-dl-kind">v1.40 &rarr; v1.44</div>
+            <div class="rg-dl-file">RGU144.ZIP</div>
+            <div class="rg-dl-btn"><span class="arrow">►</span> DOWNLOAD</div>
+          </a>
         </div>
-        <div class="util-desc">(RGAPI) v2.00 Renegade Programmers API. Includes FUNCTIONS and PROCEDURES commonly used in programming Renegade utils. Useful tool for programmers. Updated for Renegade v1.33/DOS+</div>
+        <div class="rg-hero-note">Already running v1.40? Grab the <b>Upgrade</b> package. New install? Choose the full package for your OS.</div>
       </div>
+    </section>
 
-
-      <div class="util-card" tabindex="0" data-idx="2">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGBOTV10.ZIP">RGBOTV10.ZIP</a>
-        </div>
-        <div class="util-desc">(RGBOT) v1.0 The User will have to press <ESC> twice in order for the program to drop out and load the BBS. If any other key is pressed, it will hang up on the user/bot.</div>
+    <!-- ===== PREVIOUS ===== -->
+    <div class="section-title">Previous Releases</div>
+    <section class="box bbs-box">
+      <div class="legend">
+        <div class="title">[ Previous Releases &amp; Upgrades ]</div>
+        <div class="hint">↑ ↓ Enter</div>
       </div>
+      <ul class="ansi prev-list" role="menu" aria-label="Previous upgrades">
+        <li role="none"><a class="item" role="menuitem" href="files/RGV140F.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.40/DOS - Full Install <span class="bracket">]</span></span><span class="meta">Released - 2026</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV140U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.40/DOS - Upgrade from v1.35 <span class="bracket">]</span></span><span class="meta">Released - 2026</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV135U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.35/DOS <span class="bracket">]</span></span><span class="meta">Released - 2024</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV133U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.33/DOS <span class="bracket">]</span></span><span class="meta">Released - 2023</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV130U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.30/DOS <span class="bracket">]</span></span><span class="meta">Released - 2022</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV125U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.25/DOS <span class="bracket">]</span></span><span class="meta">Released - 2021</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV122U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.22/DOS <span class="bracket">]</span></span><span class="meta">Released - 2020</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV120U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.20a/DOS <span class="bracket">]</span></span><span class="meta">Released - 2013</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV119A.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.19a/DOS <span class="bracket">]</span></span><span class="meta">Released - 2012</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV118A.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.18a/DOS <span class="bracket">]</span></span><span class="meta">Released - 2011</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV110U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.10/DOS <span class="bracket">]</span></span><span class="meta">Released - 2009</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGV100U.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v1.00/DOS <span class="bracket">]</span></span><span class="meta">Released - 2008</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RG0930UP.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v09-30.6/DOS <span class="bracket">]</span></span><span class="meta">Released - 2006</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RG0630UP.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v06-30.6/DOS <span class="bracket">]</span></span><span class="meta">Released - 2006</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RG0519UP.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v05-19.4/DOS <span class="bracket">]</span></span><span class="meta">Released - 2004</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RG0110UP.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v01-10.4/DOS <span class="bracket">]</span></span><span class="meta">Released - 2004</span></a></li>
+        <li role="none"><a class="item" role="menuitem" href="files/RGU1126D.ZIP"><span class="arrow">►</span><span class="label"><span class="bracket">[</span> Renegade v11-26.3/DOS <span class="bracket">]</span></span><span class="meta">Released - 2003</span></a></li>
+      </ul>
+    </section>
 
-       <div class="util-card" tabindex="0" data-idx="4">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGFBV1.ZIP">RGFBV1.ZIP</a>
-        </div>
-        <div class="util-desc">(RGFBADD) v1.00 Renegade File Base Addition Utility to quickly make multiple
-File bases from the command prompt via a text config file.  RG v1.35+ </div> </div>
-
-      <div class="util-card" tabindex="0" data-idx="3">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGFILEV1.ZIP">RGFILEV1.ZIP</a>
-        </div>
-        <div class="util-desc">(RGFILES) v1.00 This util will scan all of your file bases and create an ALLFILES.TXT
-from Renegades internal listings.  RG v1.35+</div></div>
-
-
-      <div class="util-card" tabindex="0" data-idx="5">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGMBV1.ZIP">RGMBV1.ZIP</a>
-        </div>
-        <div class="util-desc">(RGMBASE) v1.00 Renegade Message Base Creation Utility Quickly create message bases 
-from the command prompt and have them fully created inside of Renegade v1.35+</div>
+    <!-- ===== UTILITIES (legacy, bottom) ===== -->
+    <div class="section-title">Legacy Utilities</div>
+    <section class="box util-box">
+      <div class="legend">
+        <div class="title">[ Utilities Downloads - Updated 01/10/2026 ]</div>
+        <div class="hint">Most are now built into Renegade</div>
       </div>
-
-      <div class="util-card" tabindex="0" data-idx="6">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGMENUV1.ZIP">RGMENUV1.ZIP</a>
-        </div>
-        <div class="util-desc">(RGMENU) v1.00 MENUS.DAT <-> MENUxxx.MNU Converter Utility for Renegade v1.35+ to convert MENUS.DAT into *.MNU text files for easy editing and then back into MENUS.DAT for Renegade to access.    </div></div>
-
-      <div class="util-card" tabindex="0" data-idx="8">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGPOSTV1.ZIP">RGPOSTV1.ZIP</a>
-        </div>
-        <div class="util-desc">(RGPOST) v1.00 Now you can post any text file from the command line into Renegade's message areas or email accounts.</div>
+      <div class="util-grid">
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGAPI20.ZIP">RGAPI20.ZIP</a></div><div class="util-desc">(RGAPI) v2.00 Renegade Programmers API. Includes FUNCTIONS and PROCEDURES commonly used in programming Renegade utils. Useful tool for programmers. Updated for Renegade v1.33/DOS+</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGBOTV10.ZIP">RGBOTV10.ZIP</a></div><div class="util-desc">(RGBOT) v1.0 The User will have to press &lt;ESC&gt; twice in order for the program to drop out and load the BBS. If any other key is pressed, it will hang up on the user/bot.</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGFBV1.ZIP">RGFBV1.ZIP</a></div><div class="util-desc">(RGFBADD) v1.00 Renegade File Base Addition Utility to quickly make multiple File bases from the command prompt via a text config file. RG v1.35+</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGFILEV1.ZIP">RGFILEV1.ZIP</a></div><div class="util-desc">(RGFILES) v1.00 This util will scan all of your file bases and create an ALLFILES.TXT from Renegades internal listings. RG v1.35+</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGMBV1.ZIP">RGMBV1.ZIP</a></div><div class="util-desc">(RGMBASE) v1.00 Renegade Message Base Creation Utility. Quickly create message bases from the command prompt and have them fully created inside of Renegade v1.35+</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGMENUV1.ZIP">RGMENUV1.ZIP</a></div><div class="util-desc">(RGMENU) v1.00 MENUS.DAT &lt;-&gt; MENUxxx.MNU Converter Utility for Renegade v1.35+ to convert MENUS.DAT into *.MNU text files for easy editing and then back into MENUS.DAT for Renegade to access.</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGPOSTV1.ZIP">RGPOSTV1.ZIP</a></div><div class="util-desc">(RGPOST) v1.00 Now you can post any text file from the command line into Renegade's message areas or email accounts.</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGRED100.ZIP">RGRED100.ZIP</a></div><div class="util-desc">(RGRED) v1.00 This will check through all of your file bases and any one line description file without any text will be replaced with whatever you set on the command line.</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGSHOV15.ZIP">RGSHOV15.ZIP</a></div><div class="util-desc">(RGSHOW) v1.5 A tiny external utility that reads Renegade's MULTNODE.DAT and displays the current node list (users online) without loading Renegade.</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RUPV11.ZIP">RUPV11.ZIP</a></div><div class="util-desc">(RUP) v1.10 Is for Renegade v1.35+ that will remove all those deleted user accounts from your USERS.DAT file. It will also pack the USER.DAT file and update all Message Area .SCN files.</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RG2FDV2.ZIP">RG2FDV2.ZIP</a></div><div class="util-desc">(RG2FD) v2.0 Renegade v1.22/DOS+ Last Caller to FrontDoor v2.26/2.3x Last Caller. Import your Last Caller from Renegade into FrontDoor's Waiting For Caller Screen.</div></div>
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/M2DV1.ZIP">M2DV1.ZIP</a></div><div class="util-desc">(MNU2DAT) v1.0 For Renegade v1.35+ Add Renegade vY2K or older .MNU files and import them into your current MENUS.DAT file!</div></div>
       </div>
+    </section>
 
-      <div class="util-card" tabindex="0" data-idx="8">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGRED100.ZIP">RGRED100.ZIP</a>
-        </div>
-        <div class="util-desc">(RGRED) v1.00 This will check through all of your file bases and any one line description file without any text will be replaced with whatever you set on the command line.</div>
-      </div>
-
-      <div class="util-card" tabindex="0" data-idx="9">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RGSHOV15.ZIP">RGSHOV15.ZIP</a>
-        </div>
-        <div class="util-desc">(RGSHOW) v1.5 A tiny external utility that reads Renegade's MULTNODE.DAT and displays the current node list (users online) without loading Renegade.  </div>
-</div>
-
-
-      <div class="util-card" tabindex="0" data-idx="7">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RUPV11.ZIP">RUPV11.ZIP</a>
-        </div>
-        <div class="util-desc">(RUP) v1.10 Is for Renegade v1.35+ that will remove all those deleted user accounts from your USERS.DAT file.  It will also pack the USER.DAT file and update all Message Area .SCN files.
-        </div></div>
-
-      <div class="util-card" tabindex="0" data-idx="9">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/RG2FDV2.ZIP">RG2FDV2.ZIP</a>
-        </div>
-        <div class="util-desc">(RG2FD) v2.0 Renegade v1.22/DOS+ Last Caller to FrontDoor v2.26/2.3x Last Caller. Import your Last Caller from Renegade into FrontDoor's Waiting For Caller Screen.</div>
-      </div>
-
-      <div class="util-card" tabindex="0" data-idx="9">
-        <div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div>
-        <div class="util-top">
-          <a class="util-file" href="zip/M2DV1.ZIP">M2DV1.ZIP</a>
-        </div>
-        <div class="util-desc">(MNU2DAT) v1.0 For Renegade v1.35+ Add Renegade vY2K or older
-.MNU files and import them into your current MENUS.DAT file!</div>
-      </div>
-
-
-
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-
-</div>
+  </div>
 </div>
 
 
@@ -1556,8 +1453,9 @@ href="https://web.archive.org/web/20011030012613/http://www.angelfire.com/de/aus
     if (!cards.length) return;
 
     function colsCount(){
-      // 2 columns on this page; keep logic flexible if CSS changes later
-      return 2;
+      const top = cards[0].offsetTop; let n = 0;
+      for (const c of cards){ if (c.offsetTop !== top) break; n++; }
+      return Math.max(1, n);
     }
 
     function focusCard(i){
