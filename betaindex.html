@@ -740,6 +740,27 @@ body.page-home .global-back-wrap{
 .downloads-pane .util-box:hover{ opacity:1; }
 .downloads-pane .util-grid{ grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); }
 @media (prefers-reduced-motion:reduce){ .rg-hero,.rg-new,.rg-ver{ animation:none; } }
+/* Collapsible archive boxes (from betawhatdone) */
+.hide-box{ max-width:1420px; margin:28px 0; background:rgba(255,255,255,.03); border:2px solid rgba(224,241,11,.25); border-radius:16px; overflow:hidden; }
+.hide-header{ padding:18px 24px; background:rgba(0,0,0,.85); font-size:21px; font-weight:600; cursor:pointer; user-select:none; color:#ddd; }
+.hide-header::before{ content:"\25B6  "; margin-right:8px; }
+.hide-box.open .hide-header::before{ content:"\25BC  "; }
+.hide-header:hover,.hide-header:focus-visible{ background:rgba(0,255,255,.06); outline:none; }
+.hide-content{ max-height:0; overflow:hidden; transition:max-height .4s ease; }
+.hide-box.open .hide-content{ max-height:8000px; }
+.hide-content > .box{ margin:16px; }
+.cur-util-box .util-grid{ grid-template-columns:1fr; }
+.cur-util-list{ margin:10px 0 0 18px; padding:0; }
+.cur-util-list li{ margin:6px 0; }
+.cur-util-list b{ color:#55ffff; }
+/* Screenshot viewer */
+.shot-viewer{ max-width:1100px; margin:20px auto 40px; text-align:center; }
+.shot-bar{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+.shot-btn{ width:64px; height:64px; flex:0 0 64px; border-radius:12px; border:1px solid rgba(255,255,255,.18); background:#1a1a1a; color:#fff; font-size:24px; cursor:pointer; }
+.shot-btn:hover,.shot-btn:focus-visible{ background:#2a2a2a; border-color:#55ffff; outline:none; }
+.shot-hint{ color:rgba(255,255,255,.75); font-size:15px; }
+#shotImg{ display:block; margin:0 auto; max-width:100%; height:auto; image-rendering:pixelated; }
+.shot-cap{ margin-top:10px; color:rgba(255,255,255,.55); font-size:13px; }
 </style>
 
 </head>
@@ -908,8 +929,27 @@ body.page-home .global-back-wrap{
       </div>
     </section>
 
-    <!-- ===== PREVIOUS ===== -->
-    <div class="section-title">Previous Releases</div>
+    <!-- ===== CURRENT UTILITIES ===== -->
+    <div class="section-title">Current Utilities</div>
+    <section class="box util-box cur-util-box">
+      <div class="legend">
+        <div class="title">[ Current Utilities - Updated 11/19/2026 ]</div>
+        <div class="hint">For Renegade v1.44 &bull; DOS/Win32/Linux</div>
+      </div>
+      <div class="util-grid">
+        <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/RGUTILV1.ZIP">RGUTILV1.ZIP</a></div><div class="util-desc">(RGUTIL) v1.00 Renegade Utilities &mdash; 3 utilities for all your BBSing needs! For Renegade v1.44. DOS/Win32/Linux builds included!
+          <ul class="cur-util-list">
+            <li><b>RGPOST</b> &ndash; Post text files from the command prompt to any message base or email base.</li>
+            <li><b>RGSHOW</b> &ndash; Reads Renegade's MULTNODE.DAT and displays the current node list (users online) without loading Renegade. Auto-refreshes every 15 seconds by default, or refresh manually. View Last Callers and Today's SysOp log, plus the last caller and time they called on the main page once the first caller of the day logs on.</li>
+            <li><b>RGBASE</b> &ndash; Renegade Message &amp; File Base Creator. Make message and file bases from the command prompt using simple text templates.</li>
+          </ul></div></div>
+      </div>
+    </section>
+
+    <!-- ===== ARCHIVE (collapsible) ===== -->
+    <div class="hide-box">
+      <div class="hide-header" role="button" tabindex="0" aria-expanded="false">PREVIOUS RELEASES</div>
+      <div class="hide-content">
     <section class="box bbs-box">
       <div class="legend">
         <div class="title">[ Previous Releases &amp; Upgrades ]</div>
@@ -935,8 +975,12 @@ body.page-home .global-back-wrap{
       </ul>
     </section>
 
-    <!-- ===== UTILITIES (legacy, bottom) ===== -->
-    <div class="section-title">Legacy Utilities</div>
+      </div>
+    </div>
+
+    <div class="hide-box">
+      <div class="hide-header" role="button" tabindex="0" aria-expanded="false">LEGACY UTILITIES</div>
+      <div class="hide-content">
     <section class="box util-box">
       <div class="legend">
         <div class="title">[ Utilities Downloads - Updated 01/10/2026 ]</div>
@@ -957,6 +1001,20 @@ body.page-home .global-back-wrap{
         <div class="util-card" tabindex="0"><div class="ansi-card-head" aria-hidden="true">[ DOWNLOAD ]</div><div class="util-top"><a class="util-file" href="zip/M2DV1.ZIP">M2DV1.ZIP</a></div><div class="util-desc">(MNU2DAT) v1.0 For Renegade v1.35+ Add Renegade vY2K or older .MNU files and import them into your current MENUS.DAT file!</div></div>
       </div>
     </section>
+      </div>
+    </div>
+
+    <!-- ===== SCREENSHOTS ===== -->
+    <div class="section-title" style="text-align:center">Screenshots</div>
+    <div class="shot-viewer" id="shotViewer">
+      <div class="shot-bar">
+        <button type="button" class="shot-btn" id="shotPrev" aria-label="Previous screenshot">&#10094;</button>
+        <div class="shot-hint">Click the &#9664; or &#9654; buttons (or use arrow keys) to scroll through screenshots.</div>
+        <button type="button" class="shot-btn" id="shotNext" aria-label="Next screenshot">&#10095;</button>
+      </div>
+      <img id="shotImg" src="resources/1.png" alt="Renegade BBS screenshot">
+    </div>
+
 
   </div>
 </div>
@@ -1555,5 +1613,35 @@ href="https://web.archive.org/web/20011030012613/http://www.angelfire.com/de/aus
 })();
 </script>
 
+<script>
+document.querySelectorAll('.hide-header').forEach(h=>{
+  const t=()=>{const o=h.parentElement.classList.toggle('open');h.setAttribute('aria-expanded',o);};
+  h.addEventListener('click',t);
+  h.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});
+});
+</script>
+<script>
+(function(){
+  // Add more screenshots here, in display order
+  const shots = Array.from({length:20},(_,i)=>"resources/"+(i+1)+".png");
+  const img=document.getElementById('shotImg');
+  if(!img) return;
+  let n=0;
+  function show(i){ n=(i+shots.length)%shots.length; img.src=shots[n]; }
+  document.getElementById('shotPrev').onclick=()=>show(n-1);
+  document.getElementById('shotNext').onclick=()=>show(n+1);
+  document.addEventListener('keydown',e=>{
+    const ov=document.getElementById('dlImageOverlay');
+    if(ov && ov.style.display==='block') return;
+    const t=document.activeElement;
+    if(t && (t.matches('input,textarea,select,[role="menuitem"],.util-card'))) return;
+    const r=img.getBoundingClientRect();
+    if(!img.offsetParent || r.bottom<0 || r.top>innerHeight) return;  // only when viewer is visible
+    if(e.key==='ArrowRight'){ e.preventDefault(); show(n+1); }
+    else if(e.key==='ArrowLeft'){ e.preventDefault(); show(n-1); }
+  });
+  show(0);
+})();
+</script>
 </body>
 </html>
